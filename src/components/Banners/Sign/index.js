@@ -1,19 +1,13 @@
 import React from 'react';
 
-import commonStyles from '../../../commons/styles'
+import useStyles from './styles';
 
 
 export default function Banner() {
+    const { banner } = useStyles();
+
     return (
-        <div style={{
-            flex: 3,
-            height: '100%',
-            color: 'white',
-            background: commonStyles.secundaryColor,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
-        }}>
+        <div className={banner}>
             Área Banner Sign In
         </div>
     );

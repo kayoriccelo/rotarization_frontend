@@ -1,6 +1,7 @@
 import React from 'react';
 import { TextField } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+
+import useStyles from './styles';
 
 
 export default function InputText({ label, value, maxLength, handleChange }) {
@@ -12,19 +13,12 @@ export default function InputText({ label, value, maxLength, handleChange }) {
             value={value}
             variant="outlined"
             type='text'
+            margin="dense"
             label={label}
             inputProps={{
-                maxLength: maxLength,
+                maxLength,
             }}
             onChange={handleChange}
         />
     );
 };
-
-
-const useStyles = makeStyles({
-    inputText: {
-        marginBottom: 10,
-        width: '80%',
-    }
-});

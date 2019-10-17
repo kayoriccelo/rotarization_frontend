@@ -15,6 +15,7 @@ axios.interceptors.request.use(config => {
     return Promise.reject(error);
 });
 
+
 axios.interceptors.response.use(
     response => {
         return response;
@@ -41,6 +42,7 @@ axios.interceptors.response.use(
     }
 );
 
+
 axios2.interceptors.request.use(config => {
     // config.baseURL = rota;
     config.baseURL = 'http://127.0.0.1:8000'
@@ -48,6 +50,7 @@ axios2.interceptors.request.use(config => {
 }, error => {
     return Promise.reject(error);
 });
+
 
 export { axios2 as apiNotToken };
 

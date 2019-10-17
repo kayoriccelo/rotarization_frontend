@@ -25,7 +25,9 @@ export const logout = () => dispatch => {
     window.location.href = '/signin';
 };
 
-const initialState = {};
+const initialState = {
+    isLogged: false
+};
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {

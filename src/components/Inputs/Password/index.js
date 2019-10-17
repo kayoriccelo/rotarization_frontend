@@ -2,23 +2,24 @@ import React, { useState } from 'react';
 import clsx from 'clsx';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
-import { makeStyles } from '@material-ui/core/styles';
 import { TextField, IconButton, InputAdornment } from '@material-ui/core';
+
+import useStyles from './styles';
 
 
 export default function InputPassword({ label, password, handleChange }) {
-    const classes = useStyles();
+    const { input, margin } = useStyles();
     const [showPassword, setShowPassword] = useState(false);
 
     const handleClickShowPassword = () => setShowPassword(!showPassword);
     const handleMouseDownPassword = event => event.preventDefault();
 
-
     return (
         <TextField
-            className={clsx(classes.margin, classes.input)}
+            className={clsx(margin, input)}
             variant="outlined"
             type={showPassword ? 'text' : 'password'}
+            margin="dense"
             label={label ? label : "Password"}
             value={password}
             onChange={handleChange}
@@ -40,14 +41,3 @@ export default function InputPassword({ label, password, handleChange }) {
         />
     );
 };
-
-
-const useStyles = makeStyles({
-    input: {
-        marginBottom: 20,
-        width: '80%',
-    },
-    button: {
-        width: '80%'
-    }
-});

@@ -3,10 +3,12 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { InputText, InputPassword, Submit } from '../../components';
+import useStyles from './styles';
 import { login } from './store/ducks';
 
 
 const Form = ({ history, login }) => {
+    const { form } = useStyles();
     const [values, setValues] = useState({ username: null, password: null });
 
     const handleChange = fieldName => e => setValues({ ...values, [fieldName]: e.target.value });
@@ -14,7 +16,7 @@ const Form = ({ history, login }) => {
     const submit = () => login(values, history);
 
     return (
-        <div style={{ flex: 1, height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+        <div className={form}>
             <InputText
                 label="Usuário"
                 value={values['username']}
