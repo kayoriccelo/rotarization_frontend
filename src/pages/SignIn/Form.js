@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { InputText, InputPassword, Submit } from '../../components';
+import { InputText, InputPassword, Submit, ButtonLink } from '../../components';
 import useStyles from './styles';
 import { login } from './store/ducks';
 
@@ -35,6 +35,12 @@ const Form = ({ history, login }) => {
             <Submit
                 label="Entrar"
                 onSubmit={submit}
+            />
+
+            <ButtonLink
+                labelPrimary="Crie uma!"
+                labelSecundary="Não tem uma conta?"
+                toLink="/signup"
             />
         </div>
     );
