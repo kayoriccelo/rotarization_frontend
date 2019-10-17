@@ -9,7 +9,10 @@ import { login } from './store/ducks';
 
 const Form = ({ history, login }) => {
     const { form } = useStyles();
-    const [values, setValues] = useState({ username: null, password: null });
+    const [values, setValues] = useState({
+        username: null,
+        password: null
+    });
 
     const handleChange = fieldName => e => setValues({ ...values, [fieldName]: e.target.value });
 

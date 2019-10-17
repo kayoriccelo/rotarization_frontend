@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import {
     ContainerSign as Container, BannerSign as Banner
@@ -7,9 +7,20 @@ import Form from './Form';
 
 
 const SignUp = ({ history }) => {
+    const [width, setWidth] = useState(0);
+
+    useEffect(() => {
+        updateWindowDimensions();
+        window.addEventListener('resize', updateWindowDimensions);
+
+        return () => window.removeEventListener('resize', updateWindowDimensions)
+    }, []);
+
+    const updateWindowDimensions = () => setWidth(window.innerWidth);
+
     return (
         <Container>
-            <Banner />
+            {width >= 750 && <Banner />}
             <Form history={history} />
         </Container>
     );
