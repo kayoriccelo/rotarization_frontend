@@ -9,19 +9,21 @@ import useStyles from './styles';
 
 export default function DrawerCustom({ screen }) {
     const classes = useStyles();
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(true);
 
     useEffect(() => {
-        screen.width <= 500 && setOpen(false);
-    }, []);
-
+        setOpen(screen.width > 500);
+    }, [screen]);
 
     return (
         <Drawer
             variant="permanent"
             open={open}
             classes={{
-                paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
+                paper: clsx(
+                    classes.drawerPaper,
+                    !open && classes.drawerPaperClose
+                )
             }}
         >
             <div style={{ flexGrow: 1 }}>
@@ -42,12 +44,12 @@ export default function DrawerCustom({ screen }) {
                     </ListItem>
                 </List>
             </div>
-            <div style={{ marginBottom: 'auto' }}>
+            <div style={{ marginBottom: 'auto', display: 'flex', justifyContent: 'center' }}>
                 <Divider />
                 <IconButton onClick={() => setOpen(!open)}>
                     {open ? <ArrowLeft /> : <ArrowRight />}
                 </IconButton>
             </div>
-        </Drawer >
+        </Drawer>
     );
 };

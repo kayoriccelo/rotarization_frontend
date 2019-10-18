@@ -21,6 +21,10 @@ const useStyles = makeStyles(theme => ({
         [theme.breakpoints.up('sm')]: {
             width: theme.spacing(9),
         },
+        '&:hover': {
+            width: 240,
+            position: 'absolute'
+        }
     },
     toolbarIcon: {
         display: 'flex',
