@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import SignIn from '../SignIn';
 import SignUp from '../SignUp';
+import Home from '../Home';
 
 
 export default function App() {
@@ -11,6 +12,7 @@ export default function App() {
             <Switch>
                 <Route exact path='/signin' component={SignIn} />
                 <Route exact path='/signup' component={SignUp} />
+                <Route path='/' component={Home} />
             </Switch>
         </BrowserRouter>
     );

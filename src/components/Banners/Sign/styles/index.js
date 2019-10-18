@@ -4,7 +4,7 @@ import commonStyles from '../../../../commons/styles';
 
 export default makeStyles({
     banner: {
-        flex: 3,
+        flex: 5,
         height: '100%',
         color: 'white',
         background: commonStyles.secundaryColor,
