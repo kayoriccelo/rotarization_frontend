@@ -4,7 +4,7 @@ const useStyles = makeStyles(theme => ({
     drawerPaper: {
         position: 'relative',
         whiteSpace: 'nowrap',
-        width: 240,
+        width: 280,
         height: '100vh',
         transition: theme.transitions.create('width', {
             easing: theme.transitions.easing.sharp,
@@ -26,18 +26,10 @@ const useStyles = makeStyles(theme => ({
             position: 'absolute'
         }
     },
-    toolbarIcon: {
+    openSideBar: {
+        marginBottom: 'auto',
         display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'flex-end',
-        padding: '0 8px',
-        ...theme.mixins.toolbar,
-    },
-    nested: {
-        paddingLeft: theme.spacing(4),
-    },
-    avatar: {
-        height: 54
+        justifyContent: 'center'
     }
 }));
 

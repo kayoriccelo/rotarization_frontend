@@ -2,7 +2,10 @@ import { makeStyles } from '@material-ui/core/styles';
 
 
 export default makeStyles({
-    root: {
-        backgroundColor: '#f2f2f2'
+    menu: {
+        paddingLeft: 15
     },
+    subMenu: {
+        paddingLeft: 25
+    }
 });

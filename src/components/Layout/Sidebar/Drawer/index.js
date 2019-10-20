@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
-import {
-    Drawer, Divider, List, IconButton, ListItem, ListItemText, ListItemIcon, ListSubheader, Collapse
-} from '@material-ui/core';
-import { MenuBook, ArrowLeft, ArrowRight } from '@material-ui/icons';
+import { Drawer, Divider, IconButton } from '@material-ui/core';
+import { ArrowLeft, ArrowRight } from '@material-ui/icons';
 import useStyles from './styles';
 
 
-export default function DrawerCustom({ screen }) {
-    const classes = useStyles();
+export default function DrawerCustom({ screen, children }) {
+    const { drawerPaper, drawerPaperClose, openSideBar } = useStyles();
     const [open, setOpen] = useState(true);
 
     useEffect(() => {
@@ -21,31 +19,22 @@ export default function DrawerCustom({ screen }) {
             open={open}
             classes={{
                 paper: clsx(
-                    classes.drawerPaper,
-                    !open && classes.drawerPaperClose
+                    drawerPaper,
+                    !open && drawerPaperClose
                 )
             }}
         >
             <div style={{ flexGrow: 1 }}>
-                <List
-                    component="nav"
-                    aria-labelledby="nested-list-subheader"
-                    subheader={open &&
-                        <ListSubheader component="div" id="nested-list-subheader">
-                            Menus
-                        </ListSubheader>
-                    }
-                >
-                    <ListItem button key={1}>
-                        <ListItemIcon>
-                            <MenuBook />
-                        </ListItemIcon>
-                        <ListItemText primary={'Testando'} />
-                    </ListItem>
-                </List>
+                {
+                    React.Children.map(children, child => {
+                        return React.cloneElement(child, {
+                            ...child.props, open
+                        });
+                    })
+                }
             </div>
-            <div style={{ marginBottom: 'auto', display: 'flex', justifyContent: 'center' }}>
-                <Divider />
+            <Divider />
+            <div className={openSideBar}>
                 <IconButton onClick={() => setOpen(!open)}>
                     {open ? <ArrowLeft /> : <ArrowRight />}
                 </IconButton>
