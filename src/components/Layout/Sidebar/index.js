@@ -4,7 +4,7 @@ import { Collapse, Divider } from '@material-ui/core';
 import DrawerCustom from './Drawer';
 import ListCustom from './Drawer/List';
 import ListItemCustom from './Drawer/List/ListItem';
-import routes from '../../../routes';
+import menus from '../../../routes/menus';
 import useStyles from './styles';
 
 
@@ -18,11 +18,11 @@ export default function Sidebar({ screen, history }) {
             <DrawerCustom screen={screen} >
                 <ListCustom>
                     {
-                        routes.map((item, index) => {
-                            return !item.routes ? (
+                        menus.map((item, index) => {
+                            return !item.menus ? (
                                 <ListItemCustom
                                     key={index}
-                                    label={item.label}
+                                    label={item.title}
                                     icon={item.icon}
                                     className={menu}
                                     onClick={() => history.push(item.pathName)}
@@ -31,7 +31,7 @@ export default function Sidebar({ screen, history }) {
                                     <>
                                         <ListItemCustom
                                             key={index}
-                                            label={item.label}
+                                            label={item.title}
                                             icon={item.icon}
                                             className={menu}
                                             isSubMenu={true}
@@ -41,11 +41,11 @@ export default function Sidebar({ screen, history }) {
                                             <Divider />
 
                                             {
-                                                item.routes.map((sub_item, sub_index) => {
+                                                item.menus.map((sub_item, sub_index) => {
                                                     return (
                                                         <ListItemCustom
                                                             key={sub_index}
-                                                            label={sub_item.label}
+                                                            label={sub_item.title}
                                                             icon={sub_item.icon}
                                                             isItemSubMenu={true}
                                                             openMenu={openMenu}
