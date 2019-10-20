@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { Card, CardContent, Button} from '@material-ui/core';
+
+import useStyles from './styles';
 
 
 export default function FormCustom({ instance, load, children, handlerSubmit, handlerCancel }) {

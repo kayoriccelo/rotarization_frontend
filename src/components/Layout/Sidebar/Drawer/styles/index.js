@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
             width: theme.spacing(9),
         },
         '&:hover': {
-            width: 240,
+            width: 280,
             position: 'absolute'
         }
     },
