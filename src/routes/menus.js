@@ -2,7 +2,7 @@ import React from 'react';
 import { Dashboard, ViewList, Business } from "@material-ui/icons";
 
 
-const menus = [
+export default [
     {
         title: 'Início',
         pathName: '/',
@@ -23,5 +23,3 @@ const menus = [
         ],
     },
 ];
-
-export default menus;

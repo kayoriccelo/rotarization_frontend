@@ -1,7 +1,7 @@
 import Home from '../pages/Home';
 
 
-const routes = [
+export default [
     {
         key: 'home',
         exact: true,
@@ -10,5 +10,3 @@ const routes = [
         roles: ['guest', 'admin']
     },
 ];
-
-export default routes;
