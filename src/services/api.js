@@ -25,7 +25,7 @@ axios.interceptors.response.use(
         const originalRequest = config;
 
         if (status === 401 && config && !config.__isRetryRequest && localStorage.getItem('refresh')) {
-            return axios.post('api/token-refresh/', { refresh: localStorage.getItem('refresh') }).then(res => {
+            return axios.post('token-refresh/', { refresh: localStorage.getItem('refresh') }).then(res => {
                 localStorage.setItem('access', res.data.access);
                 originalRequest.headers['Authorization'] = `Bearer ${res.data.access}`;
                 return Promise.resolve(axios.request(originalRequest));

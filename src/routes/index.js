@@ -3,19 +3,26 @@ import { Route, Redirect } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { routes } from './routes';
+import RouteCustom from '../components/Route';
 import { loadUser } from '../auth/store/ducks';
+import routes from './routes';
+
+export { routes };
 
 
-const PrivateRoute = ({ isAuthenticated, component: Component, history, loadUser, ...rest }) => {
+const PrivateRoute = ({ user, component: Component, history, loadUser, ...rest }) => {
     useEffect(() => {
-        (localStorage.getItem('access') && !isAuthenticated) && loadUser(history)
-    }, [isAuthenticated, history, loadUser]);
+        (localStorage.getItem('access') && !user.isAuthenticated) && loadUser(history)
+    }, [user, history, loadUser]);
 
     return (
         <Route {...rest} render={props =>
-            isAuthenticated
-                ? (<Component {...props} />)
+            user.isAuthenticated
+                ? (
+                    <RouteCustom>
+                        <Component {...props} />
+                    </RouteCustom>
+                )
                 : (<Redirect
                     to={{
                         pathname: "/signin",
@@ -26,8 +33,7 @@ const PrivateRoute = ({ isAuthenticated, component: Component, history, loadUser
     );
 };
 
-export { routes };
 
-const mapStateToProps = ({ auth }) => ({ isAuthenticated: auth.user.isAuthenticated });
+const mapStateToProps = ({ auth }) => ({ user: auth.user });
 const mapDispatchToProps = (dispatch) => bindActionCreators({ loadUser }, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(PrivateRoute);

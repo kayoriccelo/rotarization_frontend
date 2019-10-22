@@ -1,12 +1,12 @@
-import Home from '../pages/Home';
+import Dashboard from '../pages/Dashboard';
 
 
 export default [
     {
-        key: 'home',
+        key: 'dashboard',
         exact: true,
-        pathName: '/',
-        component: Home,
+        pathName: '/dashboard',
+        component: Dashboard,
         roles: ['guest', 'admin']
     },
 ];

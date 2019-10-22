@@ -7,7 +7,7 @@ export default makeStyles({
         flex: 5,
         height: '100%',
         color: 'white',
-        background: commonStyles.secundaryColor,
+        background: commonStyles.backgroundColor,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center'

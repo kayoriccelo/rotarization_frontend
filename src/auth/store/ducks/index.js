@@ -6,20 +6,41 @@ export { showMessage };
 
 export const Types = {
     USER: 'auth/USER',
+    LOGOUT: 'auth/LOGOUT'
 };
 
 export const loadUser = (history) => dispatch => {
-    return api.get('/api/user/')
+    return api.get('/api/v1/user/')
         .then(res => {
-            dispatch({ type: Types.USER, payload: res.data.results[0] })
-            history.push('dashboard');
-        }, error => {
+            const user = res.data.results[0];
+
+            dispatch({
+                type: Types.USER,
+                payload: {
+                    ...user,
+                    isAuthenticated: true,
+                    role: user.is_admin ? 'admin' : 'guest'
+                }
+            });
+
+            history && history.push('/');
+        }, err => {
             try {
-                dispatch(showMessage({ open: true, message: error.response.data.non_field_errors[0], variant: 'error' }));
+                dispatch(showMessage({
+                    open: true,
+                    message: err.response.data.non_field_errors[0],
+                    variant: 'error'
+                }));
             } catch (e) {
                 dispatch(showMessage({ open: true, message: 'Not Authorized. ', variant: 'error' }));
             };
         });
+};
+
+export const logout = () => dispatch => {
+    dispatch({ type: Types.LOGOUT, payload: false });
+    localStorage.clear();
+    window.location.href = '/signin';
 };
 
 export const initialState = {

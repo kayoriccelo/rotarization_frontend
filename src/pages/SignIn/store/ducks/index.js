@@ -1,8 +1,9 @@
 import { apiNotToken } from '../../../../services/api';
+import { loadUser } from '../../../../auth/store/ducks';
+
 
 const Types = {
     LOGIN: 'signin/LOGIN',
-    LOGOUT: 'signin/LOGOUT'
 };
 
 export const login = (values, history) => dispatch => {
@@ -11,18 +12,12 @@ export const login = (values, history) => dispatch => {
             localStorage.setItem('access', res.data.access);
             localStorage.setItem('refresh', res.data.refresh);
 
-            // dispatch(loadUser(history));
+            dispatch(loadUser(history));
             console.log('Login success;');
         }, err => {
             // TODO: Kayo Riccelo - Tratar erros;
             console.log('Login error;');
         });
-};
-
-export const logout = () => dispatch => {
-    dispatch({ type: Types.LOGOUT, payload: false });
-    localStorage.clear();
-    window.location.href = '/signin';
 };
 
 const initialState = {
