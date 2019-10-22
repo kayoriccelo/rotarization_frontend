@@ -1,25 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Card, CardContent, Button} from '@material-ui/core';
 
 import useStyles from './styles';
 
 
-export default function FormCustom({ instance, load, children, handlerSubmit, handlerCancel }) {
+export default function FormCustom(props) {
     const { card, cardContent, actions, button } = useStyles();
-    const [object, setObject] = useState(null);
+
+    const { object, instance, load, setObject } = props;
 
     useEffect(() => {
         object === null && load()
             .then(res => object !== instance && setObject(instance));
 
-    }, [object, instance, load]);
+    }, [object, instance, load, setObject]);
 
     return (
         object &&
         <Card className={card}>
             <CardContent className={cardContent}>
 
-                {children}
+                {props.children}
 
                 <div className={actions}>
                     <Button
@@ -27,7 +28,7 @@ export default function FormCustom({ instance, load, children, handlerSubmit, ha
                         variant="contained"
                         color="secondary"
                         className={button}
-                        onClick={handlerCancel}
+                        onClick={props.handleCancel}
                     >
                         Cancelar
                     </Button>
@@ -36,7 +37,7 @@ export default function FormCustom({ instance, load, children, handlerSubmit, ha
                         variant="contained"
                         color="primary"
                         className={button}
-                        onClick={handlerSubmit}
+                        onClick={props.handleSubmit}
                     >
                         Salvar
                     </Button>
