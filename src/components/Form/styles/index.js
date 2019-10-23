@@ -6,12 +6,17 @@ const useStyles = makeStyles({
         overflow: 'auto',
     },
     cardContent: {
-        height: `calc(90vh - 125px)`,
+        overflowX: 'auto',
+        height: 'calc(100vh - 200px)'
     },
     actions: {
+        height: 40,
+        background: 'linear-gradient(to right, #ffffff 0%, #e6e6e6 100%)',
         display: 'flex',
-        justifyContent: 'flex-end',
-        marginTop: 8
+        flexDirection: 'row-reverse',
+        alignItems: 'center',
+        padding: 5,
+        borderRadius: 5
     },
     button: {
         margin: 2,

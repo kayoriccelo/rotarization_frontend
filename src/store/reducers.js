@@ -9,6 +9,8 @@ import authReducer from '../auth/store/ducks';
 import signInReducer from '../pages/SignIn/store/ducks';
 import signUpReducer from '../pages/SignUp/store/ducks';
 
+import companyReducer from '../pages/Company/store/ducks';
+
 
 const reducers = combineReducers({
     router: routerReducer,
@@ -20,6 +22,8 @@ const reducers = combineReducers({
 
     signin: signInReducer,
     signup: signUpReducer,
+
+    company: companyReducer,
 });
 
 export default reducers;

@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { FormCustom } from '../../components';
+import { maskCnpj, maskPhone } from '../../commons/useful';
+import { FormCustom, InputText } from '../../components';
+import { load, update } from './store/ducks';
 
 
 const FormCompany = ({ instance, load, update, history }) => {
@@ -12,6 +14,8 @@ const FormCompany = ({ instance, load, update, history }) => {
 
     const handleCancel = () => history.push('dashboard');
 
+    const handleChange = (name) => event => setCompany({ ...company, [name]: event.target.value });
+
     return (
         <FormCustom
             object={company}
@@ -20,7 +24,19 @@ const FormCompany = ({ instance, load, update, history }) => {
             handleCancel={handleCancel}
             instance={instance}
             load={load}
-        />
+        >
+            {company && (
+                <div>
+                    <InputText label="Cnpj" maxLength="18" value={maskCnpj(company.cnpj)} handleChange={handleChange('cnpj')} />
+
+                    <InputText label="Razão social" maxLength="140" value={company.business_name} handleChange={handleChange('business_name')} />
+
+                    <InputText label="Email" maxLength="100" value={company.email} handleChange={handleChange('email')} />
+
+                    <InputText label="Telefone" maxLength="15" value={maskPhone(company.phone)} handleChange={handleChange('phone')} />
+                </div>
+            )}
+        </FormCustom>
     );
 };
 

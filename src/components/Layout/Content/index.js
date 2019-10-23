@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Switch, Redirect } from 'react-router-dom';
 
 import useStyles from './styles';
-
 import PrivateRoute, { routes } from '../../../routes';
 
 
@@ -15,11 +14,15 @@ const Content = ({ user, history }) => {
             <Switch>
                 {routes.map(route => {
                     if (route.roles.indexOf(user.role) > -1) {
-                        return <PrivateRoute {...route} history={history} />
+                        return <PrivateRoute
+                            {...route}
+                            history={history}
+                        />
                     };
 
                     return false
                 })}
+
                 <Redirect from="/" to="/dashboard" />
             </Switch>
         </div>

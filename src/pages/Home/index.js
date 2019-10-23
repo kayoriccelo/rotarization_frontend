@@ -26,7 +26,7 @@ export default function Home({ history }) {
             <div className={main}>
                 <Header history={history} />
 
-                <Content history={history} />
+                <Content history={history}/>
 
                 <Footer />
             </div>

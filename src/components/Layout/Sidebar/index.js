@@ -25,7 +25,7 @@ export default function Sidebar({ screen, history }) {
                                     label={item.title}
                                     icon={item.icon}
                                     className={menu}
-                                    onClick={() => history.push(item.pathName)}
+                                    onClick={() => history.push(item.path)}
                                 />
                             ) : (
                                     <>
@@ -50,7 +50,7 @@ export default function Sidebar({ screen, history }) {
                                                             isItemSubMenu={true}
                                                             openMenu={openMenu}
                                                             className={subMenu}
-                                                            onClick={() => history.push(sub_item.pathName)}
+                                                            onClick={() => history.push(sub_item.path)}
                                                         />
                                                     )
                                                 })

@@ -45,7 +45,7 @@ export const logout = () => dispatch => {
 
 export const initialState = {
     user: {
-        role: 'guest',
+        role: null,
         isAuthenticated: false,
     }
 };

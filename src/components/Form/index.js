@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Card, CardContent, Button} from '@material-ui/core';
+import { Button } from '@material-ui/core';
 
 import useStyles from './styles';
 
@@ -17,33 +17,30 @@ export default function FormCustom(props) {
 
     return (
         object &&
-        <Card className={card}>
-            <CardContent className={cardContent}>
-
+        <div className={card}>
+            <div className={cardContent}>
                 {props.children}
-
-                <div className={actions}>
-                    <Button
-                        size="small"
-                        variant="contained"
-                        color="secondary"
-                        className={button}
-                        onClick={props.handleCancel}
-                    >
-                        Cancelar
+            </div>
+            <div className={actions}>
+                <Button
+                    size="small"
+                    variant="contained"
+                    color="secondary"
+                    className={button}
+                    onClick={props.handleCancel}
+                >
+                    Cancelar
                     </Button>
-                    <Button
-                        size="small"
-                        variant="contained"
-                        color="primary"
-                        className={button}
-                        onClick={props.handleSubmit}
-                    >
-                        Salvar
-                    </Button>
-                </div>
-
-            </CardContent>
-        </Card>
+                <Button
+                    size="small"
+                    variant="contained"
+                    color="primary"
+                    className={button}
+                    onClick={props.handleSubmit}
+                >
+                    Salvar
+                </Button>
+            </div>
+        </div>
     );
 };

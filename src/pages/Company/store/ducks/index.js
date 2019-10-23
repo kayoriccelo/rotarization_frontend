@@ -7,15 +7,16 @@ const Types = {
 };
 
 export const load = () => dispatch => {
-    return api.get('company').then(res => {
-        dispatch({
-            type: Types.LOAD,
-            payload: res.response
+    return api.get('api/v1/company')
+        .then(res => {
+            dispatch({
+                type: Types.LOAD,
+                payload: res.data.results[0]
+            })
+            console.log('Load company success;');
+        }, err => {
+            console.log('Load company error;');
         })
-        console.log('Load company success;');
-    }, err => {
-        console.log('Load company error;');
-    })
 }
 
 export const update = (values, history) => dispatch => {
