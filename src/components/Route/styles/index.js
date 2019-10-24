@@ -14,7 +14,7 @@ export default makeStyles({
     },
     title: {
         color: commonStyles.primaryColor,
-        fontSize: 18,
+        fontSize: 15,
     },
     subTitle:{
         color: commonStyles.primaryColor,

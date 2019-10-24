@@ -12,8 +12,9 @@ const FormCompany = ({ instance, load, update, setTitle, history }) => {
 
     useEffect(() => {
         setTitle({ title: 'Empresa' });
-    }, [setTitle]);
 
+        return () => setTitle({ title: '', subTitle: ''});
+    }, [setTitle]);
 
     const handleSubmit = () => update(company, history);
 

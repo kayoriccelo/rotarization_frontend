@@ -10,7 +10,7 @@ export default function FormCustom(props) {
     const { object, instance, load, setSubTitle, setObject } = props;
 
     useEffect(() => {
-        load()
+        load();
     }, [load]);
 
     useEffect(() => {
