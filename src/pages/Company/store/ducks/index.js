@@ -1,4 +1,7 @@
 import api from '../../../../services/api';
+import { setTitle } from '../../../../components/Route/store/ducks';
+
+export { setTitle };
 
 
 const Types = {
@@ -20,7 +23,7 @@ export const load = () => dispatch => {
 }
 
 export const update = (values, history) => dispatch => {
-    return api.put('token/', values)
+    return api.put(`api/v1/company/${values.id}/`, values)
         .then(res => {
             // TODO: Kayo Riccelo - Mostrar mensagem de sucesso.;
             console.log('Update company success;');

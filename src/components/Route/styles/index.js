@@ -12,6 +12,15 @@ export default makeStyles({
     main: {
         padding: '15px 30px 0px 30px',
     },
+    title: {
+        color: commonStyles.primaryColor,
+        fontSize: 18,
+    },
+    subTitle:{
+        color: commonStyles.primaryColor,
+        paddingBottom: 15,
+        fontSize: 12, 
+    },
     border: {
         borderRadius: 10,
         backgroundColor: 'white'
@@ -21,6 +30,6 @@ export default makeStyles({
         padding: 5,
         borderRadius: 10,
         border: '1px solid #DDD',
-        height: 'calc(100vh - 150px)'
+        height: 'calc(100vh - 200px)'
     }
 });

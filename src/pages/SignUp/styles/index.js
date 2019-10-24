@@ -8,5 +8,8 @@ export default makeStyles({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center'
+    },
+    formContent: {
+        width: '80%',
     }
 });

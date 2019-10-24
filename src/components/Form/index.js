@@ -7,13 +7,18 @@ import useStyles from './styles';
 export default function FormCustom(props) {
     const { card, cardContent, actions, button } = useStyles();
 
-    const { object, instance, load, setObject } = props;
+    const { object, instance, load, setSubTitle, setObject } = props;
 
     useEffect(() => {
-        object === null && load()
-            .then(res => object !== instance && setObject(instance));
+        load()
+    }, [load]);
 
-    }, [object, instance, load, setObject]);
+    useEffect(() => {
+        if (object !== instance) {
+            setObject(instance);
+            setSubTitle(instance);
+        };
+    }, [object, instance, setObject, setSubTitle]);
 
     return (
         object &&
@@ -25,20 +30,19 @@ export default function FormCustom(props) {
                 <Button
                     size="small"
                     variant="contained"
-                    color="secondary"
-                    className={button}
-                    onClick={props.handleCancel}
-                >
-                    Cancelar
-                    </Button>
-                <Button
-                    size="small"
-                    variant="contained"
                     color="primary"
                     className={button}
                     onClick={props.handleSubmit}
                 >
                     Salvar
+                </Button>
+                <Button
+                    size="small"
+                    variant="contained"
+                    className={button}
+                    onClick={props.handleCancel}
+                >
+                    Cancelar
                 </Button>
             </div>
         </div>

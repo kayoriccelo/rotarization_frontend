@@ -8,7 +8,7 @@ import { login } from './store/ducks';
 
 
 const Form = ({ history, login }) => {
-    const { form } = useStyles();
+    const { form, formContent } = useStyles();
     const [values, setValues] = useState({
         username: null,
         password: null
@@ -20,17 +20,19 @@ const Form = ({ history, login }) => {
 
     return (
         <div className={form}>
-            <InputText
-                label="Usuário"
-                value={values['username']}
-                handleChange={handleChange('username')}
-            />
+            <div className={formContent}>
+                <InputText
+                    label="Usuário"
+                    value={values['username']}
+                    handleChange={handleChange('username')}
+                />
 
-            <InputPassword
-                label="Senha"
-                password={values['password']}
-                handleChange={handleChange('password')}
-            />
+                <InputPassword
+                    label="Senha"
+                    password={values['password']}
+                    handleChange={handleChange('password')}
+                />
+            </div>
 
             <Submit
                 label="Entrar"
