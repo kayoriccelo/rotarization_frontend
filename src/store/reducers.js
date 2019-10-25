@@ -11,6 +11,7 @@ import signInReducer from '../pages/SignIn/store/ducks';
 import signUpReducer from '../pages/SignUp/store/ducks';
 
 import companyReducer from '../pages/Company/store/ducks';
+import employeeReducer from '../pages/Employee/store/ducks';
 
 
 const reducers = combineReducers({
@@ -26,6 +27,7 @@ const reducers = combineReducers({
     signUp: signUpReducer,
 
     company: companyReducer,
+    employee: employeeReducer,
 });
 
 export default reducers;

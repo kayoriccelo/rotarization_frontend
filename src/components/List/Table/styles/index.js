@@ -4,6 +4,8 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles({
     rootTable: {
         overflow: 'auto',
+        minHeight: 450,
+        minWidth: 450,
         margin: 2
     },
     card: {

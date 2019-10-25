@@ -7,23 +7,27 @@ import { FormCustom, InputText } from '../../components';
 import { load, update, setTitle } from './store/ducks';
 
 
-const FormCompany = ({ instance, load, update, setTitle, history }) => {
+const EditCompany = ({ instance, load, update, setTitle, history }) => {
     const [company, setCompany] = useState(null);
 
     useEffect(() => {
         setTitle({ title: 'Empresa' });
 
-        return () => setTitle({ title: '', subTitle: ''});
+        return () => setTitle({ title: '', subTitle: '' });
     }, [setTitle]);
+
+    useEffect(() => {
+        load();
+    }, [load]);
 
     const handleSubmit = () => update(company, history);
 
     const handleCancel = () => history.push('dashboard');
 
     const handleChange = (name) => event => {
-        if (name === 'business_name') {
-            setTitle({ subTitle: `${company.cnpj} - ${event.target.value}` });
-        };
+        name === 'business_name' && setTitle({
+            subTitle: `${company.cnpj} - ${event.target.value}`
+        });
 
         setCompany({ ...company, [name]: event.target.value });
     };
@@ -35,8 +39,9 @@ const FormCompany = ({ instance, load, update, setTitle, history }) => {
             handleSubmit={handleSubmit}
             handleCancel={handleCancel}
             instance={instance}
-            load={load}
-            setSubTitle={company => setTitle({ subTitle: `${company.cnpj} - ${company.business_name}` })}
+            setSubTitle={company => setTitle({
+                subTitle: `${company.cnpj} - ${company.business_name}`
+            })}
         >
             {company && (
                 <div>
@@ -73,6 +78,7 @@ const FormCompany = ({ instance, load, update, setTitle, history }) => {
     );
 };
 
-const mapStateToProps = ({ company }) => ({ instance: company.instance })
+
+const mapStateToProps = ({ company }) => ({ instance: company.instance });
 const mapDispatchToProps = dispatch => bindActionCreators({ load, update, setTitle }, dispatch);
-export default connect(mapStateToProps, mapDispatchToProps)(FormCompany);
+export default connect(mapStateToProps, mapDispatchToProps)(EditCompany);

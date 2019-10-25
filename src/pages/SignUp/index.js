@@ -14,7 +14,7 @@ const SignUp = ({ history }) => {
         updateDimensions(setScreen)();
         window.addEventListener('resize', updateDimensions(setScreen));
 
-        return () => window.removeEventListener('resize', updateDimensions(setScreen))
+        return () => window.removeEventListener('resize', updateDimensions(setScreen));
     }, []);
 
     return (

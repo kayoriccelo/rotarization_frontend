@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dashboard, ViewList, Business } from "@material-ui/icons";
+import { Dashboard, ViewList, Business, SupervisorAccount } from "@material-ui/icons";
 
 
 export default [
@@ -18,6 +18,11 @@ export default [
                 title: 'Empresa',
                 path: '/registration/company',
                 icon: (<Business />),
+            },
+            {
+                title: 'Funcionários',
+                path: '/registration/employee',
+                icon: (<SupervisorAccount />),
             },
         ],
     },
