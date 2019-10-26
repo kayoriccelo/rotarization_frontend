@@ -5,7 +5,7 @@ import commonStyles from '../../../../commons/styles';
 
 export default makeStyles({
     root: {
-        height: 30,
+        height: 45,
         paddingTop: 10,
         background: commonStyles.backgroundColor
     },

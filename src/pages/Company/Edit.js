@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 
 import { maskCnpj, maskPhone } from '../../commons/useful';
 import { FormCustom, InputText } from '../../components';
-import { load, update, setTitle } from './store/ducks';
+import { load, save, setTitle } from './store/ducks';
 
 
-const EditCompany = ({ instance, load, update, setTitle, history }) => {
+const EditCompany = ({ instance, load, save, setTitle, history }) => {
     const [company, setCompany] = useState(null);
 
     useEffect(() => {
@@ -20,7 +20,7 @@ const EditCompany = ({ instance, load, update, setTitle, history }) => {
         load();
     }, [load]);
 
-    const handleSubmit = () => update(company, history);
+    const handleSubmit = () => save(company, history);
 
     const handleCancel = () => history.push('dashboard');
 
@@ -80,5 +80,5 @@ const EditCompany = ({ instance, load, update, setTitle, history }) => {
 
 
 const mapStateToProps = ({ company }) => ({ instance: company.instance });
-const mapDispatchToProps = dispatch => bindActionCreators({ load, update, setTitle }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ load, save, setTitle }, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(EditCompany);

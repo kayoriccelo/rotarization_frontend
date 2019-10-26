@@ -1,13 +1,15 @@
 import api from '../../../../services/api';
 import { setTitle } from '../../../../components/Route/store/ducks';
-
-export { setTitle };
+import { saveDefault } from '../../../../commons/store/ducks/actions';
+import { showMessage } from '../../../../components/Message/store/ducks';
 
 
 const Types = {
     LOAD: 'company/LOAD',
     UPDATE: 'company/UPDATE'
 };
+
+export { setTitle };
 
 export const load = () => dispatch => {
     return api.get('api/v1/company')
@@ -16,24 +18,17 @@ export const load = () => dispatch => {
                 type: Types.LOAD,
                 payload: res.data.results[0]
             })
-            console.log('Load company success;');
         }, err => {
-            console.log('Load company error;');
+            dispatch(showMessage({
+                open: true,
+                message: 'Não foi possível carregar os dados.',
+                variant: 'error'
+            }));
         })
 }
 
-export const update = (values, history) => dispatch => {
-    return api.put(`api/v1/company/${values.id}/`, values)
-        .then(res => {
-            // TODO: Kayo Riccelo - Mostrar mensagem de sucesso.;
-            console.log('Update company success;');
-
-            history.push('/dashboard')
-        }, err => {
-            // TODO: Kayo Riccelo - Tratar erros;
-            console.log('Update company error;');
-        });
-};
+export const save = (company, history) =>
+    saveDefault(company, 'company', Types.UPDATE, history, '/dashboard');
 
 const initialState = {
     instance: null

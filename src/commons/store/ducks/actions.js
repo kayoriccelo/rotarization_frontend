@@ -34,7 +34,9 @@ export const loadDefault = (id, model, type) => dispatch => {
 };
 
 export const saveDefault = (instance, model, type, history, path) => dispatch => {
-    const crud = instance['id'] ? { method: api.put, url: `${instance.id}/` } : { method: api.post, url: '' };
+    const crud = instance['id'] 
+        ? { method: api.put, url: `${instance.id}/` } 
+        : { method: api.post, url: '' };
 
     return crud.method(`api/v1/${model}/${crud['url']}`, instance)
         .then(res => {
@@ -67,4 +69,27 @@ export const saveDefault = (instance, model, type, history, path) => dispatch =>
         });
 };
 
-export const deleteDefault = (id, model) => api.delete(`api/v1/${model}/${id}`);
+export const removeDefault = (id, model, dispatchs) => dispatch => {
+    return api.delete(`api/v1/${model}/${id}`).then(res => {
+        dispatchs.map(item => dispatch(item));
+        dispatch(showMessage({
+            open: true,
+            message: 'Registro excluido com sucesso..',
+            variant: 'success'
+        }));
+    }, err => {
+        try {
+            dispatch(showMessage({
+                open: true,
+                message: err.response.data.non_field_errors[0],
+                variant: 'error'
+            }));
+        } catch (e) {
+            dispatch(showMessage({
+                open: true,
+                message: 'Não foi possível excluir o registro.',
+                variant: 'error'
+            }));
+        };
+    });
+};

@@ -38,8 +38,8 @@ const AddEmployee = ({ save, setTitle, history }) => {
             setObject={setEmployee}
             handleSubmit={handleSubmit}
             handleCancel={handleCancel}
-            setSubTitle={employee => setTitle({
-                subTitle: `${employee.cnpj} - ${employee.business_name}`
+            setSubTitle={employee => employee && setTitle({
+                subTitle: `${employee.cpf} - ${employee.name}`
             })}
         >
             {employee && (

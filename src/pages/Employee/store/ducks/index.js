@@ -1,6 +1,5 @@
 import { setTitle } from '../../../../components/Route/store/ducks';
-import { showMessage } from '../../../../components/Message/store/ducks';
-import { getListDefault, loadDefault, saveDefault, deleteDefault } from '../../../../commons/store/ducks/actions';
+import { getListDefault, loadDefault, saveDefault, removeDefault } from '../../../../commons/store/ducks/actions';
 import { setPages } from '../../../../components/List/Pagination/store/ducks';
 
 
@@ -21,23 +20,16 @@ export function createInstance() {
     };
 };
 
-export const getList = (page, pageSize, search = '') => getListDefault(search, page, pageSize, 'employee', Types.LIST);
+export const getList = (page, pageSize, search = '') =>
+    getListDefault(search, page, pageSize, 'employee', Types.LIST);
 
 export const load = (id) => loadDefault(id, 'employee', Types.GET)
 
-export const save = (employee, history) => saveDefault(employee, 'employee', Types.POST, history, '/registration/employee');
+export const save = (employee, history) =>
+    saveDefault(employee, 'employee', Types.POST, history, '/registration/employee');
 
-export const deleteItem = (id, page, pageSize) => {
-    return dispatch => {
-        deleteDefault(id, 'employee').then(res => {
-            dispatch(showMessage({ open: true, message: 'Record successfully deleted.', variant: 'success' }));
-            dispatch(getList(page, pageSize));
-            dispatch(setPages(page, pageSize));
-        }, error => {
-            dispatch(showMessage({ open: true, message: 'Unable to delete record.', variant: 'error' }));
-        });
-    };
-};
+export const remove = (id, page, pageSize) =>
+    removeDefault(id, 'employee', [getList(page, pageSize), setPages(page, pageSize)])
 
 export const initialState = {
     data: { itens: [], count: 0 },
@@ -47,7 +39,12 @@ export const initialState = {
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case Types.LIST:
-            return { ...state, data: { itens: action.payload.results, count: action.payload.count } };
+            return {
+                ...state, data: {
+                    itens: action.payload.results,
+                    count: action.payload.count
+                }
+            };
 
         case Types.GET:
             return { ...state, instance: action.payload };

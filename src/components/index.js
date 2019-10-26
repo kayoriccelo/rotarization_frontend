@@ -1,5 +1,6 @@
 import ContainerSign from './Layout/Containers/Sign';
 import BannerSign from './Banners/Sign';
+import Message from './Message';
 import Submit from './Buttons/Submit';
 import ButtonLink from './Buttons/Link';
 import Checkbox from './Checkbox';
@@ -20,7 +21,8 @@ export {
     BannerSign,
     ListCustom,
     FormCustom,
-
+    Message,
+    
     Submit,
     ButtonLink,
     Checkbox,

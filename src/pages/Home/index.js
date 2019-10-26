@@ -5,6 +5,7 @@ import Header from '../../components/Layout/Header';
 import Sidebar from '../../components/Layout/Sidebar';
 import Content from '../../components/Layout/Content';
 import Footer from '../../components/Layout/Footer';
+import { Message } from '../../components'; 
 import useStyles from './styles';
 
 
@@ -30,6 +31,7 @@ export default function Home({ history }) {
 
                 <Footer />
             </div>
+            <Message />
         </div>
     );
 };

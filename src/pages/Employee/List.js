@@ -4,10 +4,10 @@ import { bindActionCreators } from 'redux';
 
 import { SearchCustom, TableCustom } from '../../components';
 import { maskCpf } from '../../commons/useful';
-import { getList, deleteItem, setTitle } from './store/ducks';
+import { getList, remove, setTitle } from './store/ducks';
 
 
-export const List = ({ data, page, pageSize, getList, deleteItem, setTitle, history }) => {
+export const List = ({ data, page, pageSize, getList, remove, setTitle, history }) => {
     let timer = null;
     let search = '';
     
@@ -39,7 +39,7 @@ export const List = ({ data, page, pageSize, getList, deleteItem, setTitle, hist
 
     const clickAdd = () => history.push('/registration/employee/new');
 
-    const clickDelete = id => deleteItem(id, 0, pageSize);
+    const clickDelete = id => remove(id, 0, pageSize);
 
     return (
         <>
@@ -63,5 +63,5 @@ const mapStateToProps = ({ employee, pagination }) => ({
     page: pagination.page, 
     pageSize: pagination.pageSize
 });
-const mapDispatchToProps = (dispatch) => bindActionCreators({ getList, deleteItem, setTitle }, dispatch);
+const mapDispatchToProps = (dispatch) => bindActionCreators({ getList, remove, setTitle }, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(List);
