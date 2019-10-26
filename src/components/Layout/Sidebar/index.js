@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Collapse, Divider } from '@material-ui/core';
 
 import DrawerCustom from './Drawer';
@@ -11,11 +11,39 @@ import useStyles from './styles';
 export default function Sidebar({ screen, history }) {
     const { menu, subMenu } = useStyles();
     const [openMenu, setOpenMenu] = useState(false);
+    const [openDrawer, setOpenDrawer] = useState(false);
+
+    useEffect(() => {
+        setOpenDrawer(screen.width > 500);
+    }, [screen]);
 
     return (
         <>
-            {/* TODO: Kayo Riccelo - Incluir alguma Logo */}
-            <DrawerCustom screen={screen} >
+            <DrawerCustom 
+                setOpenDrawer={setOpenDrawer}
+                openDrawer={openDrawer}
+            >
+                <div style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    height: 150
+                }}>
+                    <div>
+                        LOGO
+                    </div>
+                    {openDrawer && (
+                        <>
+                            <div>
+                                Nome do Sistema
+                            </div>
+                            <div>
+                                Nome da Software House
+                            </div>
+                        </>
+                    )}
+                </div>
                 <ListCustom>
                     {
                         menus.map((item, index) => {
@@ -55,7 +83,7 @@ export default function Sidebar({ screen, history }) {
                                                     )
                                                 })
                                             }
-                                            
+
                                             <Divider />
                                         </Collapse>
                                     </>

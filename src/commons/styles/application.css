@@ -1,3 +1,35 @@
 body {
     margin: 0
 }
+
+/* Alterando ccs dos componentes do Materia UI */
+
+.MuiListItem-button {
+    background: linear-gradient(to right, rgb(247, 247, 247) 0%, rgb(255, 255, 255) 100%);  
+}
+
+.MuiListItem-button:hover {
+    background: rgb(199, 199, 199)!important;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.MuiListItem-button:focus {
+    background: rgb(199, 199, 199)!important;  
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.MuiCollapse-wrapperInner > .MuiListItem-button:hover {
+    background: rgb(214, 214, 214)!important;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    width: 90%;
+}
+
+.MuiCollapse-wrapperInner > .MuiListItem-button:focus {
+    background: rgb(214, 214, 214)!important;  
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    width: 90%;
+}
