@@ -13,6 +13,7 @@ import signUpReducer from '../pages/SignUp/store/ducks';
 import companyReducer from '../pages/Company/store/ducks';
 import employeeReducer from '../pages/Employee/store/ducks';
 import clientReducer from '../pages/Client/store/ducks';
+import localizationReducer from '../pages/Localization/store/ducks';
 
 
 const reducers = combineReducers({
@@ -30,6 +31,7 @@ const reducers = combineReducers({
     company: companyReducer,
     employee: employeeReducer,
     client: clientReducer,
+    localization: localizationReducer
 });
 
 export default reducers;

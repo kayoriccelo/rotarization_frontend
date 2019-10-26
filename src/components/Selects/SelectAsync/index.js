@@ -9,7 +9,7 @@ import api from '../../../services/api';
 import useStyles from './styles';
 
 
-export default function SelectCustom({ label, url, values, fieldName, handleChange }) {
+export default function SelectCustom({ label, url, values, fieldName, displayName, handleChange }) {
     const { formControl } = useStyles();
 
     const inputLabel = useRef(null);
@@ -57,7 +57,7 @@ export default function SelectCustom({ label, url, values, fieldName, handleChan
                         key={`${option.id}`}
                         value={`${option.id}`}
                     >
-                        {option.description}
+                        {displayName ? option[displayName] : option.description}
                     </MenuItem>
                 ))}
             </Select>

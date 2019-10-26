@@ -33,3 +33,7 @@ body {
     border-bottom-right-radius: 30px;
     width: 90%;
 }
+
+.MuiSelect-selectMenu {
+    padding: 12px 14px!important;
+}

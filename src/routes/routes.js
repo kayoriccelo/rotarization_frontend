@@ -2,6 +2,8 @@ import Dashboard from '../pages/Dashboard';
 import { Company } from '../pages/Company';
 import { AddEmployee, EditEmployee, ListEmployee } from '../pages/Employee';
 import { AddClient, EditClient, ListClient } from '../pages/Client';
+import { AddLocalization, EditLocalization, ListLocalization } from '../pages/Localization';
+
 
 
 export default [
@@ -59,6 +61,27 @@ export default [
         exact: true,
         path: '/registration/client',
         component: ListClient,
+        roles: ['guest', 'admin']
+    },
+    {
+        key: 'registration-localization-new',
+        exact: true,
+        path: '/registration/localization/new',
+        component: AddLocalization,
+        roles: ['guest', 'admin']
+    },
+    {
+        key: 'registration-localization-edit',
+        exact: true,
+        path: '/registration/localization/:id',
+        component: EditLocalization,
+        roles: ['guest', 'admin']
+    },
+    {
+        key: 'registration-localization',
+        exact: true,
+        path: '/registration/localization',
+        component: ListLocalization,
         roles: ['guest', 'admin']
     },
 ];
