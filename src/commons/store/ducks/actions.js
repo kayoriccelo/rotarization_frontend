@@ -6,7 +6,7 @@ export const getListDefault = (search, page, pageSize, model, type) => dispatch 
     search = search !== '' ? `?search=${search}&` : `?`;
     search += `page=${page + 1}&page_size=${pageSize}`
 
-    return api.get(`api/${model}${search}`)
+    return api.get(`api/v1/${model}${search}`)
         .then(res => {
             dispatch({
                 type,
@@ -18,7 +18,7 @@ export const getListDefault = (search, page, pageSize, model, type) => dispatch 
 };
 
 export const loadDefault = (id, model, type) => dispatch => {
-    return api.get(`api/${model}?id=${id}`)
+    return api.get(`api/v1/${model}?id=${id}`)
         .then(res => {
             dispatch({
                 type,
@@ -36,7 +36,7 @@ export const loadDefault = (id, model, type) => dispatch => {
 export const saveDefault = (instance, model, type, history, path) => dispatch => {
     const crud = instance['id'] ? { method: api.put, url: `${instance.id}/` } : { method: api.post, url: '' };
 
-    return crud.method(`api/${model}/${crud['url']}`, instance)
+    return crud.method(`api/v1/${model}/${crud['url']}`, instance)
         .then(res => {
             dispatch({
                 type,
@@ -67,4 +67,4 @@ export const saveDefault = (instance, model, type, history, path) => dispatch =>
         });
 };
 
-export const deleteDefault = (id, model) => api.delete(`api/${model}/${id}`);
+export const deleteDefault = (id, model) => api.delete(`api/v1/${model}/${id}`);

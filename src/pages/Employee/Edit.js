@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 
 import { maskCpf } from '../../commons/useful';
 import { FormCustom, InputText } from '../../components';
-import { load, update, setTitle } from './store/ducks';
+import { load, save, setTitle } from './store/ducks';
 
 
-const EditEmployee = ({ instance, load, update, setTitle, history }) => {
+const EditEmployee = ({ instance, load, save, setTitle, id, history }) => {
     const [employee, setEmployee] = useState(null);
 
     useEffect(() => {
@@ -17,19 +17,21 @@ const EditEmployee = ({ instance, load, update, setTitle, history }) => {
     }, [setTitle]);
 
     useEffect(() => {
-        employee && load();
-    }, [employee, load]);
+        !employee && load(id);
 
-    const handleSubmit = () => update(employee, history);
+        employee && setTitle({ subTitle: `${employee.cpf} - ${employee.name}`});
+    }, [employee, id, load, setTitle]);
 
-    const handleCancel = () => history.push('/employees');
+    const handleSubmit = () => save(employee, history);
 
-    const handleChange = (name) => event => {
-        name === 'description' && setTitle({
+    const handleCancel = () => history.push('/registration/employee');
+
+    const handleChange = name => event => {
+        name === 'name' && setTitle({
             subTitle: `${employee.cpf} - ${event.target.value}`
         });
 
-        setCompany({ ...employee, [name]: event.target.value });
+        setEmployee({ ...employee, [name]: event.target.value });
     };
 
     return (
@@ -39,7 +41,6 @@ const EditEmployee = ({ instance, load, update, setTitle, history }) => {
             handleSubmit={handleSubmit}
             handleCancel={handleCancel}
             instance={instance}
-            load={load}
             setSubTitle={employee => setTitle({
                 subTitle: `${employee.cnpj} - ${employee.business_name}`
             })}
@@ -67,5 +68,5 @@ const EditEmployee = ({ instance, load, update, setTitle, history }) => {
 
 
 const mapStateToProps = ({ employee }) => ({ instance: employee.instance });
-const mapDispatchToProps = dispatch => bindActionCreators({ load, update, setTitle }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ load, save, setTitle }, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(EditEmployee);

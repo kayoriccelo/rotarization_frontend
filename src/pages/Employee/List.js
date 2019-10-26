@@ -8,14 +8,14 @@ import { getList, deleteItem, setTitle } from './store/ducks';
 
 
 export const List = ({ data, page, pageSize, getList, deleteItem, setTitle, history }) => {
+    let timer = null;
+    let search = '';
+    
     const columns = [
         { field: 'cpf', label: 'Cpf', is_edit: true, mask: maskCpf },
         { field: 'name', label: 'Name' },
         { field: 'actions', label: 'Actions' }
     ];
-
-    let timer = null;
-    let search = '';
 
     useEffect(() => {
         getList(page, pageSize);

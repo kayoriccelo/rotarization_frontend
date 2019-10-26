@@ -10,7 +10,7 @@ export default function FormCustom(props) {
     const { object, instance, setSubTitle, setObject } = props;
 
     useEffect(() => {
-        if (object !== instance) {
+        if (!object && object !== instance) {
             setObject(instance);
             setSubTitle(instance);
         };

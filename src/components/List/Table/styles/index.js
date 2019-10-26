@@ -4,18 +4,16 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles({
     rootTable: {
         overflow: 'auto',
-        minHeight: 450,
-        minWidth: 450,
         margin: 2
     },
     card: {
-        height: window.innerWidth <= 780 ? `calc(100vh - 220px)` : `calc(90vh - 140px)`,
-        minWidth: 450,
-        overflowX: 'auto',
-        overflowY: 'visible'
+        // height: window.innerWidth <= 780 ? `calc(60vh - 100px)` : `calc(100vh - 280px)`,
+        minWidth:  window.innerWidth <= 780 ? 100 : 450,
+        overflow: 'auto'
     },
     cardNotPagination: {
-        height: window.innerWidth <= 780 ? `calc(80vh - 180px)` : `calc(90vh - 150px)`,
+        // height: window.innerWidth <= 780 ? `calc(60vh - 220px)` : `calc(100vh - 280px)`,
+        minWidth: window.innerWidth <= 780 ? 100 : 450,
         overflowX: 'auto',
         overflowY: 'visible'
     },
@@ -24,18 +22,7 @@ const useStyles = makeStyles({
         fontSize: 14,
         fontStyle: 'italic',
         color: 'black'
-    },
-    visuallyHidden: {
-        border: 0,
-        clip: 'rect(0 0 0 0)',
-        height: 1,
-        margin: -1,
-        overflow: 'hidden',
-        padding: 0,
-        position: 'absolute',
-        top: 20,
-        width: 1,
-    },
+    }
 });
 
 export default useStyles;

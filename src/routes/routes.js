@@ -1,6 +1,6 @@
 import Dashboard from '../pages/Dashboard';
 import { Company } from '../pages/Company';
-import { ListEmployee } from '../pages/Employee';
+import { AddEmployee, EditEmployee, ListEmployee } from '../pages/Employee';
 
 
 export default [
@@ -16,6 +16,20 @@ export default [
         exact: true,
         path: '/registration/company',
         component: Company,
+        roles: ['guest', 'admin']
+    },
+    {
+        key: 'registration-employee-new',
+        exact: true,
+        path: '/registration/employee/new',
+        component: AddEmployee,
+        roles: ['guest', 'admin']
+    },
+    {
+        key: 'registration-employee-edit',
+        exact: true,
+        path: '/registration/employee/:id',
+        component: EditEmployee,
         roles: ['guest', 'admin']
     },
     {
