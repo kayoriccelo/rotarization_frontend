@@ -7,5 +7,5 @@ export default {
     buttonPrimaryHover: '#384047',
     buttonSecundary: '',
 
-    backgroundColor: `linear-gradient(to right, #161a1d 0%, #2d3339 100%)`
+    backgroundColor: `linear-gradient(to right, #161a1d 0%, #434c56 100%)`
 };

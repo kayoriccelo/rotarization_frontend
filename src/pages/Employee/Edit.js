@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { maskCpf } from '../../commons/useful';
-import { FormCustom, InputText } from '../../components';
+import { FormCustom } from '../../components';
+import Data from './Data';
 import { load, save, setTitle } from './store/ducks';
 
 
@@ -19,7 +19,7 @@ const EditEmployee = ({ instance, load, save, setTitle, id, history }) => {
     useEffect(() => {
         !employee && load(id);
 
-        employee && setTitle({ subTitle: `${employee.cpf} - ${employee.name}`});
+        employee && setTitle({ subTitle: `${employee.cpf} - ${employee.name}` });
     }, [employee, id, load, setTitle]);
 
     const handleSubmit = () => save(employee, history);
@@ -30,6 +30,10 @@ const EditEmployee = ({ instance, load, save, setTitle, id, history }) => {
         name === 'name' && setTitle({
             subTitle: `${employee.cpf} - ${event.target.value}`
         });
+
+        if (['cpf', 'phone'].indexOf(name) > -1) {
+            event.target.value = event.target.value.replace(/\D/g, '');
+        };
 
         setEmployee({ ...employee, [name]: event.target.value });
     };
@@ -46,21 +50,10 @@ const EditEmployee = ({ instance, load, save, setTitle, id, history }) => {
             })}
         >
             {employee && (
-                <div>
-                    <InputText
-                        label="Cpf"
-                        maxLength="14"
-                        value={maskCpf(employee.cpf)}
-                        handleChange={handleChange('cpf')}
-                    />
-
-                    <InputText
-                        label="Nome"
-                        maxLength="140"
-                        value={employee.name}
-                        handleChange={handleChange('name')}
-                    />
-                </div>
+                <Data
+                    employee={employee}
+                    handleChange={handleChange}
+                />
             )}
         </FormCustom>
     );

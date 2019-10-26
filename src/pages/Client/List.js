@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { SearchCustom, TableCustom } from '../../components';
-import { maskCpf } from '../../commons/useful';
+import { maskCnpj } from '../../commons/useful';
 import { getList, remove, setTitle } from './store/ducks';
 
 
@@ -12,8 +12,8 @@ export const List = ({ data, page, pageSize, getList, remove, setTitle, history 
     let search = '';
     
     const columns = [
-        { field: 'cpf', label: 'CPF', is_edit: true, mask: maskCpf },
-        { field: 'name', label: 'Nome' },
+        { field: 'cnpj', label: 'CNPJ', is_edit: true, mask: maskCnpj },
+        { field: 'business_name', label: 'Razão social' },
         { field: 'actions', label: 'Ações' }
     ];
 
@@ -22,7 +22,7 @@ export const List = ({ data, page, pageSize, getList, remove, setTitle, history 
     }, [page, pageSize, getList])
 
     useEffect(() => {
-        setTitle({ title: 'Listagem de funcionários' });
+        setTitle({ title: 'Listagem de clientes' });
 
         return () => {
             setTitle({ title: '', subTitle: '' });
@@ -37,7 +37,7 @@ export const List = ({ data, page, pageSize, getList, remove, setTitle, history 
         timer = setTimeout(() => getList(page, pageSize, search), 1500);
     };
 
-    const clickAdd = () => history.push('/registration/employee/new');
+    const clickAdd = () => history.push('/registration/client/new');
 
     const clickDelete = id => remove(id, 0, pageSize);
 
@@ -51,15 +51,15 @@ export const List = ({ data, page, pageSize, getList, remove, setTitle, history 
                 columns={columns}
                 data={data}
                 actions={[clickDelete]}
-                path='/registration/employee'
+                path='/registration/client'
             />
         </>
     )
 };
 
 
-const mapStateToProps = ({ employee, pagination }) => ({
-    data: employee.data, 
+const mapStateToProps = ({ client, pagination }) => ({
+    data: client.data, 
     page: pagination.page, 
     pageSize: pagination.pageSize
 });

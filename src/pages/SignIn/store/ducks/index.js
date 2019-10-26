@@ -1,5 +1,6 @@
 import { apiNotToken } from '../../../../services/api';
 import { loadUser } from '../../../../auth/store/ducks';
+import { showMessage } from '../../../../components/Message/store/ducks';
 
 
 const Types = {
@@ -13,10 +14,18 @@ export const login = (values, history) => dispatch => {
             localStorage.setItem('refresh', res.data.refresh);
 
             dispatch(loadUser(history));
-            console.log('Login success;');
+            dispatch(showMessage({
+                open: true,
+                message: 'Login realizado com sucesso..',
+                variant: 'success'
+            }));
         }, err => {
             // TODO: Kayo Riccelo - Tratar erros;
-            console.log('Login error;');
+            dispatch(showMessage({
+                open: true,
+                message: 'Não foi possível realizar o login.',
+                variant: 'error'
+            }));
         });
 };
 

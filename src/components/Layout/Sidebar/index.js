@@ -10,7 +10,7 @@ import useStyles from './styles';
 
 export default function Sidebar({ screen, history }) {
     const { menu, subMenu } = useStyles();
-    const [openMenu, setOpenMenu] = useState(false);
+    const [openMenu, setOpenMenu] = useState(true);
     const [openDrawer, setOpenDrawer] = useState(false);
 
     useEffect(() => {
@@ -36,10 +36,10 @@ export default function Sidebar({ screen, history }) {
                     {openDrawer && (
                         <>
                             <div>
-                                Nome do Sistema
+                                Controle de Rotas 
                             </div>
                             <div>
-                                Nome da Software House
+                                KRAS Softwares
                             </div>
                         </>
                     )}

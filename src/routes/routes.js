@@ -1,6 +1,7 @@
 import Dashboard from '../pages/Dashboard';
 import { Company } from '../pages/Company';
 import { AddEmployee, EditEmployee, ListEmployee } from '../pages/Employee';
+import { AddClient, EditClient, ListClient } from '../pages/Client';
 
 
 export default [
@@ -37,6 +38,27 @@ export default [
         exact: true,
         path: '/registration/employee',
         component: ListEmployee,
+        roles: ['guest', 'admin']
+    },
+    {
+        key: 'registration-client-new',
+        exact: true,
+        path: '/registration/client/new',
+        component: AddClient,
+        roles: ['guest', 'admin']
+    },
+    {
+        key: 'registration-client-edit',
+        exact: true,
+        path: '/registration/client/:id',
+        component: EditClient,
+        roles: ['guest', 'admin']
+    },
+    {
+        key: 'registration-client',
+        exact: true,
+        path: '/registration/client',
+        component: ListClient,
         roles: ['guest', 'admin']
     },
 ];

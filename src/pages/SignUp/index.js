@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import {
-    ContainerSign as Container, BannerSign as Banner
+    ContainerSign as Container, BannerSign as Banner, Message
 } from '../../components';
 import { updateDimensions } from '../../commons/useful';
 import Form from './Form';
@@ -21,6 +21,7 @@ const SignUp = ({ history }) => {
         <Container>
             {screen.width >= 750 && <Banner />}
             <Form history={history} />
+            <Message />
         </Container>
     );
 };

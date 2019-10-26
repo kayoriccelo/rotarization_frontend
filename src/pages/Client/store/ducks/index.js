@@ -6,32 +6,32 @@ import { setPages } from '../../../../components/List/Pagination/store/ducks';
 export { setTitle };
 
 export const Types = {
-    LIST: 'employee/LIST',
-    GET: 'employee/GET',
-    PUT: 'employee/PUT',
-    POST: 'employee/POST',
-    DELETE: 'employee/DELETE'
+    LIST: 'client/LIST',
+    GET: 'client/GET',
+    PUT: 'client/PUT',
+    POST: 'client/POST',
+    DELETE: 'client/DELETE'
 };
 
 export function createInstance() {
     return {
-        cpf: '',
-        name: '',
+        cnpj: '',
+        business_name: '',
         email: '',
         phone: ''
     };
 };
 
 export const getList = (page, pageSize, search = '') =>
-    getListDefault(search, page, pageSize, 'employee', Types.LIST);
+    getListDefault(search, page, pageSize, 'client', Types.LIST);
 
-export const load = (id) => loadDefault(id, 'employee', Types.GET)
+export const load = (id) => loadDefault(id, 'client', Types.GET)
 
-export const save = (employee, history) =>
-    saveDefault(employee, 'employee', Types.POST, history, '/registration/employee');
+export const save = (client, history) =>
+    saveDefault(client, 'client', Types.POST, history, '/registration/client');
 
 export const remove = (id, page, pageSize) =>
-    removeDefault(id, 'employee', [getList(page, pageSize), setPages(page, pageSize)])
+    removeDefault(id, 'client', [getList(page, pageSize), setPages(page, pageSize)])
 
 export const initialState = {
     data: { itens: [], count: 0 },

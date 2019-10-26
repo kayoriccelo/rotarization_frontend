@@ -29,6 +29,10 @@ const EditCompany = ({ instance, load, save, setTitle, history }) => {
             subTitle: `${company.cnpj} - ${event.target.value}`
         });
 
+        if (['cnpj', 'phone'].indexOf(name) > -1) {
+            event.target.value = event.target.value.replace(/\D/g, '');
+        };
+
         setCompany({ ...company, [name]: event.target.value });
     };
 

@@ -7,44 +7,44 @@ import Data from './Data';
 import { createInstance, save, setTitle } from './store/ducks';
 
 
-const AddEmployee = ({ save, setTitle, history }) => {
-    const [employee, setEmployee] = useState(null);
+const AddClient = ({ save, setTitle, history }) => {
+    const [client, setClient] = useState(null);
 
     useEffect(() => {
-        setTitle({ title: 'Funcionário' });
+        setTitle({ title: 'Cliente' });
 
         return () => setTitle({ title: '', subTitle: '' });
     }, [setTitle]);
 
     useEffect(() => {
-        setEmployee(createInstance());
+        setClient(createInstance());
     }, []);
 
-    const handleSubmit = () => save(employee, history);
+    const handleSubmit = () => save(client, history);
 
-    const handleCancel = () => history.push('/registration/employee');
+    const handleCancel = () => history.push('/registration/client');
 
     const handleChange = (name) => event => {
-        name === 'name' && setTitle({
-            subTitle: `${employee.cpf} - ${event.target.value}`
+        name === 'business_name' && setTitle({
+            subTitle: `${client.cnpj} - ${event.target.value}`
         });
 
-        setEmployee({ ...employee, [name]: event.target.value });
+        setClient({ ...client, [name]: event.target.value });
     };
 
     return (
         <FormCustom
-            object={employee}
-            setObject={setEmployee}
+            object={client}
+            setObject={setClient}
             handleSubmit={handleSubmit}
             handleCancel={handleCancel}
-            setSubTitle={employee => employee && setTitle({
-                subTitle: `${employee.cpf} - ${employee.name}`
+            setSubTitle={client => client && setTitle({
+                subTitle: `${client.cnpj} - ${client.business_name}`
             })}
         >
-            {employee && (
+            {client && (
                 <Data
-                    employee={employee}
+                    client={client}
                     handleChange={handleChange}
                 />
             )}
@@ -54,4 +54,4 @@ const AddEmployee = ({ save, setTitle, history }) => {
 
 
 const mapDispatchToProps = dispatch => bindActionCreators({ save, setTitle }, dispatch);
-export default connect(null, mapDispatchToProps)(AddEmployee);
+export default connect(null, mapDispatchToProps)(AddClient);

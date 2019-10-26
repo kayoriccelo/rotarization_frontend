@@ -35,6 +35,7 @@ axios.interceptors.response.use(
             });
         } else if (status === 401) {
             localStorage.clear();
+            window.location.href = window.location.origin + '/signin'
             return Promise.reject(error);
         };
 

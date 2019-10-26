@@ -1,4 +1,6 @@
 import { apiNotToken } from '../../../../services/api';
+import { showMessage } from '../../../../components/Message/store/ducks';
+
 
 const Types = {
     REGISTER: 'signup/Register'
@@ -8,9 +10,18 @@ export const register = (values, history) => dispatch => {
     return apiNotToken.post('api/v1/usercreate/', values)
         .then(res => {
             history.push('/signin');
+            dispatch(showMessage({
+                open: true,
+                message: 'Usuário cadastrado com sucesso..',
+                variant: 'success'
+            }));
         }, err => {
             // TODO: Kayo Riccelo - Tratar erros;
-            console.log('Register error;');
+            dispatch(showMessage({
+                open: true,
+                message: 'Não foi possível cadastrar usuário.',
+                variant: 'error'
+            }));
         });
 };
 
