@@ -17,8 +17,9 @@ export function createInstance() {
     return {
         code: '',
         description: '',
-        longitude: 1,
-        latitude: 1,
+        longitude: null,
+        latitude: null,
+        address: '-',
         client: null
     };
 };

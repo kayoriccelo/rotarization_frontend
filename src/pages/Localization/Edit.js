@@ -31,7 +31,9 @@ const Edit = ({ instance, load, save, setTitle, id, history }) => {
             subTitle: `${localization.code} - ${event.target.value}`
         });
 
-        setLocalization({ ...localization, [name]: event.target.value });
+        setLocalization({
+            ...localization, [name]: event.target.value
+        });
     };
 
     return (

@@ -14,6 +14,7 @@ import TableCustom from './List/Table';
 import PaginationCustom from './List/Pagination';
 import SelectCustom from './Selects/Select';
 import SelectAsyncCustom from './Selects/SelectAsync';
+import { SearchMarkerMap } from './Maps';
 
 
 export {
@@ -33,5 +34,6 @@ export {
     TableCustom,
     PaginationCustom,
     SelectCustom,
-    SelectAsyncCustom
+    SelectAsyncCustom,
+    SearchMarkerMap
 };

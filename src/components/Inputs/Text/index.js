@@ -4,11 +4,12 @@ import { TextField } from '@material-ui/core';
 import useStyles from './styles';
 
 
-export default function InputText({ label, value, maxLength, handleChange }) {
+export default function InputText({ label, value, maxLength, disabled, handleChange }) {
     const { inputText } = useStyles();
 
     return (
         <TextField
+            disabled={disabled}
             className={inputText}
             value={value}
             variant="outlined"
