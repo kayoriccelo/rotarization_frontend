@@ -45,7 +45,7 @@ export default [
     },
     {
         title: 'Roteirização',
-        path: '/rotarization',
+        path: '/scripting',
         icon: (<MapIcon style={{ color: '#24292e' }} />),
         roles: ['guest', 'admin']
     },

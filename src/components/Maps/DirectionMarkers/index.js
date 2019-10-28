@@ -1,20 +1,16 @@
 /* global google */
 import React from 'react';
+import { compose, withProps, lifecycle } from "recompose";
+import {
+    withScriptjs, withGoogleMap, GoogleMap, DirectionsRenderer, TrafficLayer
+} from "react-google-maps";
 
-const chave = 'AIzaSyBPzDv2LqJDpi25hygHnhPwErwdNqM2RmY'
+import key from '../key';
 
-const { compose, withProps, lifecycle } = require("recompose");
-const {
-    withScriptjs,
-    withGoogleMap,
-    GoogleMap,
-    DirectionsRenderer,
-    Marker
-} = require("react-google-maps");
 
 const MapWithADirectionsRenderer = compose(
     withProps({
-        googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyBPzDv2LqJDpi25hygHnhPwErwdNqM2RmY&v=3.exp&libraries=geometry,drawing,places",
+        googleMapURL: "https://maps.googleapis.com/maps/api/js?key=" + key.apiKey + "&v=3.exp&libraries=geometry,drawing,places",
         loadingElement: <div style={{ height: `100%` }} />,
         containerElement: <div style={{ height: `400px` }} />,
         mapElement: <div style={{ height: `100%` }} />,
@@ -27,7 +23,7 @@ const MapWithADirectionsRenderer = compose(
 
             DirectionsService.route({
                 origin: new google.maps.LatLng(-3.8217147, -38.5125515),
-                destination: new google.maps.LatLng(-3.7771465, -38.5671367),
+                destination:new google.maps.LatLng(-3.8217147, -38.5125515),
                 travelMode: google.maps.TravelMode.DRIVING,
                 waypoints: [
                     {
@@ -54,12 +50,12 @@ const MapWithADirectionsRenderer = compose(
         defaultCenter={new google.maps.LatLng(41.8507300, -87.6512600)}
     >
         {props.directions && <DirectionsRenderer directions={props.directions} />}
+        <TrafficLayer />
     </GoogleMap>
 );
 
-export default function Maps() {
+export default function DirectionMarkerMap() {
     return (
-
         <MapWithADirectionsRenderer />
     )
 }

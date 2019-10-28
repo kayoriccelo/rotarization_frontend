@@ -3,6 +3,7 @@ import { Company } from '../pages/Company';
 import { AddEmployee, EditEmployee, ListEmployee } from '../pages/Employee';
 import { AddClient, EditClient, ListClient } from '../pages/Client';
 import { AddLocalization, EditLocalization, ListLocalization } from '../pages/Localization';
+import Scripting from '../pages/Scripting';
 
 
 
@@ -82,6 +83,13 @@ export default [
         exact: true,
         path: '/registration/localization',
         component: ListLocalization,
+        roles: ['guest', 'admin']
+    },
+    {
+        key: 'scripting',
+        exact: true,
+        path: '/scripting',
+        component: Scripting,
         roles: ['guest', 'admin']
     },
 ];
