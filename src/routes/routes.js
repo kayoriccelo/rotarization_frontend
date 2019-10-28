@@ -3,7 +3,7 @@ import { Company } from '../pages/Company';
 import { AddEmployee, EditEmployee, ListEmployee } from '../pages/Employee';
 import { AddClient, EditClient, ListClient } from '../pages/Client';
 import { AddLocalization, EditLocalization, ListLocalization } from '../pages/Localization';
-import Scripting from '../pages/Scripting';
+import { AddScripting, EditScripting, ListScripting } from '../pages/Scripting';
 
 
 
@@ -86,10 +86,24 @@ export default [
         roles: ['guest', 'admin']
     },
     {
-        key: 'scripting',
+        key: 'registration-scripting-new',
         exact: true,
-        path: '/scripting',
-        component: Scripting,
+        path: '/registration/scripting/new',
+        component: AddScripting,
+        roles: ['guest', 'admin']
+    },
+    {
+        key: 'registration-scripting-edit',
+        exact: true,
+        path: '/registration/scripting/:id',
+        component: EditScripting,
+        roles: ['guest', 'admin']
+    },
+    {
+        key: 'registration-scripting',
+        exact: true,
+        path: '/registration/scripting',
+        component: ListScripting,
         roles: ['guest', 'admin']
     },
 ];

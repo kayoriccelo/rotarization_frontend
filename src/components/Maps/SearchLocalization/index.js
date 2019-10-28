@@ -1,4 +1,3 @@
-/* global google */
 import React from 'react';
 import { compose, withProps, lifecycle } from "recompose";
 import { withScriptjs } from "react-google-maps";
@@ -29,9 +28,9 @@ const PlacesWithStandaloneSearchBox = compose(
                         places: places,
                     });
 
-                    props.handleChangeLatitude(places[0].geometry.location.lat())
-                    props.handleChangeLongitude(places[0].geometry.location.lng())
-                    props.handleChangeAddress(places[0].formatted_address)
+                    this.props.handleChangeLatitude(places[0].geometry.location.lat())
+                    this.props.handleChangeLongitude(places[0].geometry.location.lng())
+                    this.props.handleChangeAddress(places[0].formatted_address)
                 },
             })
         },

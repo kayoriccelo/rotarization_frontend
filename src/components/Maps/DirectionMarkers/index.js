@@ -22,10 +22,10 @@ const MapWithADirectionsRenderer = compose(
             const DirectionsService = new google.maps.DirectionsService();
 
             DirectionsService.route({
-                origin: props.origin,
+                origin: this.props.origin,
                 destination: this.props.distiny,
                 travelMode: google.maps.TravelMode.DRIVING,
-                waypoints: [props.waypoints.map(item => {
+                waypoints: [this.props.waypoints.map(item => {
                     return { location: `${item.latitude}, ${item.longitude}`, stopover: true }
                 })]
             }, (result, status) => {

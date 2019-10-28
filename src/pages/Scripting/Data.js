@@ -1,3 +1,4 @@
+/* global google */
 import React from 'react';
 
 import { InputText, SearchLocalizationMap, DirectionMarkerMap } from '../../components';
