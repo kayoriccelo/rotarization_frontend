@@ -22,17 +22,12 @@ const MapWithADirectionsRenderer = compose(
             const DirectionsService = new google.maps.DirectionsService();
 
             DirectionsService.route({
-                origin: new google.maps.LatLng(-3.8217147, -38.5125515),
-                destination:new google.maps.LatLng(-3.8217147, -38.5125515),
+                origin: props.origin,
+                destination: this.props.distiny,
                 travelMode: google.maps.TravelMode.DRIVING,
-                waypoints: [
-                    {
-                        location: 'Passaré, Fortaleza, CE',
-                        stopover: true
-                    }, {
-                        location: 'Serrinha, Fortaleza, CE',
-                        stopover: true
-                    }],
+                waypoints: [props.waypoints.map(item => {
+                    return { location: `${item.latitude}, ${item.longitude}`, stopover: true }
+                })]
             }, (result, status) => {
                 if (status === google.maps.DirectionsStatus.OK) {
                     this.setState({
@@ -40,22 +35,22 @@ const MapWithADirectionsRenderer = compose(
                     });
                 } else {
                     console.error(`error fetching directions ${result}`);
-                }
+                };
             });
         }
     })
 )(props =>
     <GoogleMap
         defaultZoom={7}
-        defaultCenter={new google.maps.LatLng(41.8507300, -87.6512600)}
+        defaultCenter={props.center}
     >
         {props.directions && <DirectionsRenderer directions={props.directions} />}
         <TrafficLayer />
     </GoogleMap>
 );
 
-export default function DirectionMarkerMap() {
+export default function DirectionMarkerMap(props) {
     return (
-        <MapWithADirectionsRenderer />
-    )
-}
+        <MapWithADirectionsRenderer {...props} />
+    );
+};

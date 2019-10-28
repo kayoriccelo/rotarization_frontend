@@ -26,8 +26,12 @@ const PlacesWithStandaloneSearchBox = compose(
                     const places = refs.searchBox.getPlaces();
 
                     this.setState({
-                        places,
+                        places: places,
                     });
+
+                    props.handleChangeLatitude(places[0].geometry.location.lat())
+                    props.handleChangeLongitude(places[0].geometry.location.lng())
+                    props.handleChangeAddress(places[0].formatted_address)
                 },
             })
         },
@@ -42,7 +46,7 @@ const PlacesWithStandaloneSearchBox = compose(
         >
             <input
                 type="text"
-                placeholder="Customized your placeholder"
+                placeholder={props.label}
                 style={{
                     boxSizing: `border-box`,
                     border: `1px solid transparent`,
@@ -55,9 +59,10 @@ const PlacesWithStandaloneSearchBox = compose(
                     outline: `none`,
                     textOverflow: `ellipses`,
                 }}
+                value={props.valueInput ? props.valueInput : props.places[0].formatted_address}
             />
         </StandaloneSearchBox>
-        <ol>
+        {/* <ol>
             {props.places.map(({ place_id, formatted_address, geometry: { location } }) =>
                 <li key={place_id}>
                     {formatted_address}
@@ -65,7 +70,7 @@ const PlacesWithStandaloneSearchBox = compose(
                     ({location.lat()}, {location.lng()})
         </li>
             )}
-        </ol>
+        </ol> */}
     </div>
 );
 
