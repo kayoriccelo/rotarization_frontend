@@ -58,7 +58,7 @@ const PlacesWithStandaloneSearchBox = compose(
                     outline: `none`,
                     textOverflow: `ellipses`,
                 }}
-                value={props.valueInput ? props.valueInput : props.places[0].formatted_address}
+                // value={props.valueInput ? props.valueInput : props.places[0].formatted_address}
             />
         </StandaloneSearchBox>
         {/* <ol>

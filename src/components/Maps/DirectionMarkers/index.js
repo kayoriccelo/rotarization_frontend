@@ -22,8 +22,8 @@ const MapWithADirectionsRenderer = compose(
             const DirectionsService = new google.maps.DirectionsService();
 
             DirectionsService.route({
-                origin: this.props.origin,
-                destination: this.props.distiny,
+                origin: new google.maps.LatLng(this.props.origin),
+                destination: new google.maps.LatLng(this.props.distiny),
                 travelMode: google.maps.TravelMode.DRIVING,
                 waypoints: [this.props.waypoints.map(item => {
                     return { location: `${item.latitude}, ${item.longitude}`, stopover: true }

@@ -39,7 +39,7 @@ export const List = ({ data, page, pageSize, getList, remove, setTitle, history 
         timer = setTimeout(() => getList(page, pageSize, search), 1500);
     };
 
-    const clickAdd = () => history.push('/registration/localization/new');
+    const clickAdd = () => history.push('/scripting/new');
 
     const clickDelete = id => remove(id, 0, pageSize);
 
@@ -53,15 +53,15 @@ export const List = ({ data, page, pageSize, getList, remove, setTitle, history 
                 columns={columns}
                 data={data}
                 actions={[clickDelete]}
-                path='/registration/localization'
+                path='/scripting'
             />
         </>
     )
 };
 
 
-const mapStateToProps = ({ localization, pagination }) => ({
-    data: localization.data, 
+const mapStateToProps = ({ scripting, pagination }) => ({
+    data: scripting.data, 
     page: pagination.page, 
     pageSize: pagination.pageSize
 });

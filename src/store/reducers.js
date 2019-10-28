@@ -15,6 +15,8 @@ import employeeReducer from '../pages/Employee/store/ducks';
 import clientReducer from '../pages/Client/store/ducks';
 import localizationReducer from '../pages/Localization/store/ducks';
 
+import scriptingReducer from '../pages/Scripting/store/ducks';
+
 
 const reducers = combineReducers({
     router: routerReducer,
@@ -31,7 +33,9 @@ const reducers = combineReducers({
     company: companyReducer,
     employee: employeeReducer,
     client: clientReducer,
-    localization: localizationReducer
+    localization: localizationReducer,
+
+    scripting: scriptingReducer
 });
 
 export default reducers;

@@ -24,7 +24,7 @@ const Edit = ({ instance, load, save, setTitle, id, history }) => {
 
     const handleSubmit = () => save(scripting, history);
 
-    const handleCancel = () => history.push('/registration/scripting');
+    const handleCancel = () => history.push('/scripting');
 
     const handleChange = name => event => {
         // name === 'description' && setTitle({

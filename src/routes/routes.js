@@ -88,21 +88,21 @@ export default [
     {
         key: 'registration-scripting-new',
         exact: true,
-        path: '/registration/scripting/new',
+        path: '/scripting/new',
         component: AddScripting,
         roles: ['guest', 'admin']
     },
     {
         key: 'registration-scripting-edit',
         exact: true,
-        path: '/registration/scripting/:id',
+        path: '/scripting/:id',
         component: EditScripting,
         roles: ['guest', 'admin']
     },
     {
         key: 'registration-scripting',
         exact: true,
-        path: '/registration/scripting',
+        path: '/scripting',
         component: ListScripting,
         roles: ['guest', 'admin']
     },
