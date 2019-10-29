@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
 		width: '90%',
 		boxSizing: `border-box`,
 		border: `1px solid transparent`,
-		height: `calc(80vh - 220px)`,
+		height: `calc(75vh - 240px)`,
 		marginTop: 10,
 		padding: `0 12px`,
 		borderRadius: `3px`,
@@ -27,46 +27,60 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-export default function ListLocalizations() {
+export default function ListLocalizations({ localizations, handleLocalizationChange }) {
 	const classes = useStyles();
-	const [checked, setChecked] = useState([]);
+	const [checkeds, setCheckeds] = useState([]);
 	const [options, setOptions] = useState([]);
 
 	useEffect(() => {
 		api.get('api/v1/localization').then(res => {
 			setOptions(res.data.results);
 		});
-	})
 
-	const handleToggle = value => () => {
-		const currentIndex = checked.indexOf(value);
-		const newChecked = [...checked];
+		localizations && setCheckeds(localizations);
+	}, [localizations, setCheckeds])
 
-		if (currentIndex === -1) {
-			newChecked.push(value);
+	const getItemInList = (item, listItems) => {
+		let itemChecked = null;
+
+		listItems.map(itemList => {
+			itemChecked = itemList.id === item.id && itemList;
+		});
+
+		return itemChecked;
+	};
+
+	const handleToggle = valueItem => () => {
+		const currentIndex = getItemInList(valueItem, checkeds)
+
+		const newChecked = [...checkeds];
+
+		if (!currentIndex) {
+			newChecked.push(valueItem);
 		} else {
 			newChecked.splice(currentIndex, 1);
-		}
+		};
 
-		setChecked(newChecked);
+		setCheckeds(newChecked);
+		handleLocalizationChange(newChecked);
 	};
 
 	return (
 		<List dense className={classes.root}>
-			{options.map(value => {
-				const labelId = `checkbox-list-secondary-label-${value}`;
+			{options.map(option => {
+				const labelId = `checkbox-list-secondary-label-${option.id}`;
 
 				return (
-					<ListItem key={value}>
+					<ListItem key={option.id}>
 						<ListItemText
 							id={labelId}
-							primary={`${value.code} - ${value.description} / ${value.address}`}
+							primary={<div style={{ fontSize: 11 }}>{option.code} - {option.description} / {option.address}</div>}
 						/>
 						<ListItemSecondaryAction>
 							<Checkbox
 								edge="end"
-								onChange={handleToggle(value)}
-								checked={checked.indexOf(value) !== -1}
+								onChange={handleToggle(option)}
+								checked={getItemInList(option, checkeds) !== null}
 								inputProps={{ 'aria-labelledby': labelId }}
 							/>
 						</ListItemSecondaryAction>

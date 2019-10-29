@@ -33,8 +33,8 @@ export default function Data(props) {
                     />
 
                     <ListLocalizations
-                        value={props.scripting.localizations}
-                        handleChange={props.handleLocalizationChange('localizations')}
+                        localizations={props.scripting.localizations}
+                        handleLocalizationChange={props.handleLocalizationChange}
                     />
                 </div>
 
