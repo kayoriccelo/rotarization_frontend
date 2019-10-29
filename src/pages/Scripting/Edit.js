@@ -36,6 +36,10 @@ const Edit = ({ instance, load, save, setTitle, id, history }) => {
         });
     };
 
+    const handleLocalizationChange = value => {
+
+    };
+
     return (
         <FormCustom
             object={scripting}

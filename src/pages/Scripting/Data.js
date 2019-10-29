@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { InputText, SearchLocalizationMap, DirectionMarkerMap } from '../../components';
+import ListLocalizations from './ListLocalizations';
 
 
 export default function Data(props) {
@@ -31,15 +32,27 @@ export default function Data(props) {
                         handleChangeAddress={props.handleChange('destiny_address')}
                     />
 
-                    {/* Localizations */}
+                    <ListLocalizations
+                        value={props.scripting.localizations}
+                        handleChange={props.handleLocalizationChange('localizations')}
+                    />
                 </div>
 
                 <div style={{ flex: 5 }}>
                     <DirectionMarkerMap
                         waypoints={props.scripting.localizations}
-                        origin={-3.8217147, -38.5125515}
-                        distiny={-3.8217147, -38.5125515}
-                        center={-3.8217147, -38.5125515}
+                        origin={{
+                            lat: props.scripting.origin_latitude,
+                            lng: props.scripting.origin_longitude
+                        }}
+                        distiny={{
+                            lat: props.scripting.destiny_latitude,
+                            lng: props.scripting.destiny_longitude
+                        }}
+                        center={{
+                            lat: props.scripting.origin_latitude,
+                            lng: props.scripting.origin_longitude
+                        }}
                     />
                 </div>
             </div>

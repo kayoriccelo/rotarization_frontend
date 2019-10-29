@@ -28,10 +28,18 @@ const PlacesWithStandaloneSearchBox = compose(
                         places: places,
                     });
 
-                    this.props.handleChangeLatitude(places[0].geometry.location.lat())
-                    this.props.handleChangeLongitude(places[0].geometry.location.lng())
-                    this.props.handleChangeAddress(places[0].formatted_address)
-                },
+                    this.props.handleChangeLatitude({
+                        target: { value: places[0].geometry.location.lat() }
+                    })
+                    
+                    this.props.handleChangeLongitude({
+                        target: { value: places[0].geometry.location.lng() }
+                    })
+
+                    this.props.handleChangeAddress({
+                        target: { value: places[0].formatted_address }
+                    })
+                }
             })
         },
     }),
@@ -49,7 +57,7 @@ const PlacesWithStandaloneSearchBox = compose(
                 style={{
                     boxSizing: `border-box`,
                     border: `1px solid transparent`,
-                    width: `240px`,
+                    width: `90%`,
                     height: `32px`,
                     padding: `0 12px`,
                     borderRadius: `3px`,
@@ -57,8 +65,9 @@ const PlacesWithStandaloneSearchBox = compose(
                     fontSize: `14px`,
                     outline: `none`,
                     textOverflow: `ellipses`,
+                    margin: '4px 20px 4px 0px'
                 }}
-                // value={props.valueInput ? props.valueInput : props.places[0].formatted_address}
+            // value={props.valueInput ? props.valueInput : props.places[0].formatted_address}
             />
         </StandaloneSearchBox>
         {/* <ol>
@@ -73,8 +82,8 @@ const PlacesWithStandaloneSearchBox = compose(
     </div>
 );
 
-export default function SearchLocalizationMap() {
+export default function SearchLocalizationMap(props) {
     return (
-        <PlacesWithStandaloneSearchBox />
+        <PlacesWithStandaloneSearchBox {...props} />
     )
 }

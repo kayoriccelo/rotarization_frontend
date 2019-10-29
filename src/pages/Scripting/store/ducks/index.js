@@ -21,8 +21,7 @@ export function createInstance() {
         origin_address: null,
         destiny_longitude: null,
         destiny_latitude: null,
-        destiny_address: null,
-        localizations: []
+        destiny_address: null
     };
 };
 

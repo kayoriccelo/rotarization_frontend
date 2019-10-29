@@ -24,12 +24,16 @@ const Add = ({ save, setTitle, history }) => {
 
     const handleCancel = () => history.push('/scripting');
 
-    const handleChange = (name) => event => {
+    const handleChange = name => event => {
         // name === 'description' && setTitle({
         //     subTitle: `${scripting.code} - ${event.target.value}`
         // });
 
         setScripting({ ...scripting, [name]: event.target.value });
+    };
+
+    const handleLocalizationChange = value => {
+
     };
 
     return (
@@ -46,6 +50,7 @@ const Add = ({ save, setTitle, history }) => {
                 <Data
                     scripting={scripting}
                     handleChange={handleChange}
+                    handleLocalizationChange={handleLocalizationChange}
                 />
             )}
         </FormCustom>

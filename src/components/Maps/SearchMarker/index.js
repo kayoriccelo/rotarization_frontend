@@ -96,9 +96,9 @@ const MapWithASearchBox = compose(
             <Marker
                 key={index}
                 position={marker.position}
-                // draggable={true}
-                // animation={google.maps.Animation.DROP}
-                // onDragEnd={value => props.setNewPosition(value)}
+            // draggable={true}
+            // animation={google.maps.Animation.DROP}
+            // onDragEnd={value => props.setNewPosition(value)}
             />
         )}
     </GoogleMap>
@@ -107,10 +107,22 @@ const MapWithASearchBox = compose(
 export default function SearchMarkerMap(props) {
     const { handleLatitude, handleLongitude, handleAddress, values } = props;
 
+    const markers = !values.latitude ? [] : [{
+        position: {
+            lat: parseFloat(values.latitude),
+            lng: parseFloat(values.longitude)
+        }
+    }];
+
+    const center = !values.latitude ? {lat: -3.71839, lng: -38.5434 } : {
+        lat: parseFloat(values.latitude),
+        lng: parseFloat(values.longitude)
+    };
+
     return (
         <MapWithASearchBox
-            markers={[{ position: { lat: parseFloat(values.latitude), lng: parseFloat(values.longitude) } }]}
-            center={{ lat: parseFloat(values.latitude), lng: parseFloat(values.longitude) }}
+            markers={markers}
+            center={center}
             handleLatitude={handleLatitude}
             handleLongitude={handleLongitude}
             handleAddress={handleAddress}
