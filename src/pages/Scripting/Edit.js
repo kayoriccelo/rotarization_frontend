@@ -37,7 +37,9 @@ const Edit = ({ instance, load, save, setTitle, id, history }) => {
     };
 
     const handleLocalizationChange = value => {
-
+        setScripting({
+            ...scripting, localizations: value
+        });
     };
 
     return (
@@ -55,6 +57,7 @@ const Edit = ({ instance, load, save, setTitle, id, history }) => {
                 <Data
                     scripting={scripting}
                     handleChange={handleChange}
+                    handleLocalizationChange={handleLocalizationChange}
                 />
             )}
         </FormCustom>

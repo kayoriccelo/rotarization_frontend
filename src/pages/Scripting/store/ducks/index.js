@@ -30,8 +30,16 @@ export const getList = (page, pageSize, search = '') =>
 
 export const load = (id) => loadDefault(id, 'scripting', Types.GET)
 
-export const save = (scripting, history) =>
-    saveDefault(scripting, 'scripting', Types.POST, history, '/registration/scripting');
+export const save = (scripting, history) => {
+    if (Object.keys(scripting).indexOf('localizations') > -1)
+        if (scripting.localizations.length === 0) {
+            delete scripting.localizations;
+        } else {
+            scripting.localizations = scripting.localizations.map(item => item.id);
+        };            
+
+    return saveDefault(scripting, 'scripting', Types.POST, history, '/scripting');
+};
 
 export const remove = (id, page, pageSize) =>
     removeDefault(id, 'scripting', [getList(page, pageSize), setPages(page, pageSize)])

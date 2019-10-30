@@ -11,7 +11,7 @@ export const List = ({ data, page, pageSize, getList, remove, setTitle, history 
     let search = '';
     
     const columns = [
-        { field: 'description', label: 'Descrição' },
+        { field: 'description', label: 'Descrição', is_edit: true},
         { field: 'date_registred', label: 'Criado' },
         { field: 'date_initial', label: 'Início' },
         { field: 'date_final', label: 'Conclusão' },

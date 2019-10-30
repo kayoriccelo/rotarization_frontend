@@ -1,10 +1,11 @@
 /* global google */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { compose, withProps, lifecycle } from "recompose";
 import {
     withScriptjs, withGoogleMap, GoogleMap, DirectionsRenderer, TrafficLayer
 } from "react-google-maps";
 
+import api from '../../../services/api';
 import key from '../key';
 
 
@@ -36,7 +37,7 @@ const MapWithADirectionsRenderer = compose(
                     this.props.distiny.lng
                 ),
                 travelMode: google.maps.TravelMode.DRIVING,
-                waypoints: []
+                waypoints: this.props.waypoints
             }, (result, status) => {
                 if (status === google.maps.DirectionsStatus.OK) {
                     this.setState({
@@ -48,7 +49,7 @@ const MapWithADirectionsRenderer = compose(
             });
         },
         componentDidUpdate(prevProps, prevState) {
-            if (prevProps.origin !== this.props.origin) {
+            if (prevProps.origin !== this.props.origin || prevProps.waypoints !== this.props.waypoints) {
                 const DirectionsService = new google.maps.DirectionsService();
 
                 DirectionsService.route({
@@ -61,7 +62,7 @@ const MapWithADirectionsRenderer = compose(
                         this.props.distiny.lng
                     ),
                     travelMode: google.maps.TravelMode.DRIVING,
-                    waypoints: []
+                    waypoints: this.props.waypoints
                 }, (result, status) => {
                     if (status === google.maps.DirectionsStatus.OK) {
                         this.setState({
@@ -85,7 +86,9 @@ const MapWithADirectionsRenderer = compose(
 );
 
 export default function DirectionMarkerMap(props) {
-    const { center, origin, distiny } = props;
+    const { center, origin, distiny, localizations } = props;
+
+    const [waypoints, setWaypoints] = useState([]);
 
     const newCenter = !center.lat ? { lat: -3.71839, lng: -38.5434 } : center
 
@@ -93,12 +96,29 @@ export default function DirectionMarkerMap(props) {
 
     const newDistiny = !distiny.lat ? { lat: -3.71839, lng: -38.5434 } : distiny
 
-    return (
-        <MapWithADirectionsRenderer
-            waypoints={props.waypoints}
-            center={newCenter}
-            origin={newOrigin}
-            distiny={newDistiny}
-        />
-    );
+    useEffect(() => {
+        if (localizations) {
+            if (localizations.length !== waypoints.length) {
+                localizations.map(item => {
+                    localizations.length > 0 && api.get(`api/v1/localization/?id=${item}`).then(res => {
+                        waypoints.push({
+                            location: res.data.results[0].address,
+                            stopover: true
+                        });
+                        
+                        setWaypoints(waypoints);
+                    });
+                });
+            };
+        };
+}, [waypoints, localizations]);
+
+return (
+    <MapWithADirectionsRenderer
+        waypoints={waypoints}
+        center={newCenter}
+        origin={newOrigin}
+        distiny={newDistiny}
+    />
+);
 };

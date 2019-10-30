@@ -40,7 +40,7 @@ export default function Data(props) {
 
                 <div style={{ flex: 5 }}>
                     <DirectionMarkerMap
-                        waypoints={props.scripting.localizations}
+                        localizations={props.scripting.localizations}
                         origin={{
                             lat: props.scripting.origin_latitude,
                             lng: props.scripting.origin_longitude

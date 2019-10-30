@@ -18,6 +18,7 @@ const PlacesWithStandaloneSearchBox = compose(
 
             this.setState({
                 places: [],
+                value: this.props.valueInput,
                 onSearchBoxMounted: ref => {
                     refs.searchBox = ref;
                 },
@@ -26,6 +27,7 @@ const PlacesWithStandaloneSearchBox = compose(
 
                     this.setState({
                         places: places,
+                        value: places[0].formatted_address
                     });
 
                     this.props.handleChangeLatitude({
@@ -38,6 +40,11 @@ const PlacesWithStandaloneSearchBox = compose(
 
                     this.props.handleChangeAddress({
                         target: { value: places[0].formatted_address }
+                    })
+                },
+                onChangeSearch: event => {
+                    this.setState({
+                        value: event.target.value
                     })
                 }
             })
@@ -67,7 +74,8 @@ const PlacesWithStandaloneSearchBox = compose(
                     textOverflow: `ellipses`,
                     margin: '4px 20px 4px 0px'
                 }}
-            // value={props.valueInput ? props.valueInput : props.places[0].formatted_address}
+                value={props.value}
+                onChange={props.onChangeSearch}
             />
         </StandaloneSearchBox>
         {/* <ol>
