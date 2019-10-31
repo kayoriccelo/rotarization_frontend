@@ -35,7 +35,7 @@ export const save = (scripting, history) => {
         if (scripting.localizations.length === 0) {
             delete scripting.localizations;
         } else {
-            scripting.localizations = scripting.localizations.map(item => item.id);
+            scripting.localizations = scripting.localizations.map(item => item.id ? item.id : item);
         };            
 
     return saveDefault(scripting, 'scripting', Types.POST, history, '/scripting');

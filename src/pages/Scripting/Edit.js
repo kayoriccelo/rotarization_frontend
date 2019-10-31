@@ -31,15 +31,11 @@ const Edit = ({ instance, load, save, setTitle, id, history }) => {
         //     subTitle: `${scripting.code} - ${event.target.value}`
         // });
 
-        setScripting({
-            ...scripting, [name]: event.target.value
-        });
+        setScripting({ ...scripting, [name]: event.target.value });
     };
 
     const handleLocalizationChange = value => {
-        setScripting({
-            ...scripting, localizations: value
-        });
+        setScripting({ ...scripting, localizations: value });
     };
 
     return (

@@ -37,20 +37,19 @@ export default function ListLocalizations({ localizations, handleLocalizationCha
 			setOptions(res.data.results);
 		});
 
-		localizations && setCheckeds(localizations);
+		localizations && setCheckeds(localizations.map(item => item.id));
 	}, [localizations, setCheckeds])
 
-	const getItemInList = (item, listItems) => {
-		return listItems.indexOf(item) > -1;
-	};
+	const getItemInList = (item, listItems) => listItems.indexOf(item);
 
 	const handleToggle = valueItem => () => {
-		const currentIndex = getItemInList(valueItem, checkeds)
+		const item = valueItem.id ? valueItem.id : valueItem;
+		const currentIndex = getItemInList(item, checkeds)
 
 		let newChecked = [...checkeds];
 
-		if (!currentIndex) {
-			newChecked.push(valueItem);
+		if (currentIndex === -1) {
+			newChecked.push(item);
 		} else {
 			newChecked.splice(currentIndex, 1);
 		};
@@ -89,7 +88,7 @@ export default function ListLocalizations({ localizations, handleLocalizationCha
 							<Checkbox
 								edge="end"
 								onChange={handleToggle(option.id)}
-								checked={getItemInList(option.id, checkeds)}
+								checked={getItemInList(option.id, checkeds) > -1}
 								inputProps={{ 'aria-labelledby': labelId }}
 							/>
 						</ListItemSecondaryAction>

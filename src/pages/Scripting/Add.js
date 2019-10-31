@@ -33,7 +33,7 @@ const Add = ({ save, setTitle, history }) => {
     };
 
     const handleLocalizationChange = value => {
-
+        setScripting({ ...scripting, localizations: value });
     };
 
     return (

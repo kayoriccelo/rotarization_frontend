@@ -48,32 +48,6 @@ const MapWithADirectionsRenderer = compose(
                 };
             });
         },
-        componentDidUpdate(prevProps, prevState) {
-            if (prevProps.origin !== this.props.origin || prevProps.waypoints !== this.props.waypoints) {
-                const DirectionsService = new google.maps.DirectionsService();
-
-                DirectionsService.route({
-                    origin: new google.maps.LatLng(
-                        this.props.origin.lat,
-                        this.props.origin.lng
-                    ),
-                    destination: new google.maps.LatLng(
-                        this.props.distiny.lat,
-                        this.props.distiny.lng
-                    ),
-                    travelMode: google.maps.TravelMode.DRIVING,
-                    waypoints: this.props.waypoints
-                }, (result, status) => {
-                    if (status === google.maps.DirectionsStatus.OK) {
-                        this.setState({
-                            directions: result,
-                        });
-                    } else {
-                        console.error(`error fetching directions ${result}`);
-                    };
-                });
-            }
-        }
     })
 )(props =>
     <GoogleMap
@@ -91,16 +65,14 @@ export default function DirectionMarkerMap(props) {
     const [waypoints, setWaypoints] = useState([]);
 
     const newCenter = !center.lat ? { lat: -3.71839, lng: -38.5434 } : center
-
     const newOrigin = !origin.lat ? { lat: -3.71839, lng: -38.5434 } : origin
-
     const newDistiny = !distiny.lat ? { lat: -3.71839, lng: -38.5434 } : distiny
 
     useEffect(() => {
         if (localizations) {
             if (localizations.length !== waypoints.length) {
                 localizations.map(item => {
-                    localizations.length > 0 && api.get(`api/v1/localization/?id=${item}`).then(res => {
+                    localizations.length > 0 && api.get(`api/v1/localization/?id=${item.id ? item.id : item}`).then(res => {
                         waypoints.push({
                             location: res.data.results[0].address,
                             stopover: true
