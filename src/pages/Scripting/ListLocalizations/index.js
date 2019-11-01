@@ -11,14 +11,12 @@ import api from '../../../services/api';
 
 const useStyles = makeStyles(theme => ({
 	root: {
-		width: '90%',
+		width: '100%',
 		boxSizing: `border-box`,
 		border: `1px solid transparent`,
-		height: `calc(75vh - 240px)`,
-		marginTop: 10,
-		padding: `0 12px`,
+		height: `100%`,
 		borderRadius: `3px`,
-		boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
+		// boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
 		fontSize: `14px`,
 		outline: `none`,
 		textOverflow: `ellipses`,
@@ -33,9 +31,8 @@ export default function ListLocalizations({ localizations, handleLocalizationCha
 	const [options, setOptions] = useState([]);
 
 	useEffect(() => {
-		api.get('api/v1/localization').then(res => {
-			setOptions(res.data.results);
-		});
+		api.get('api/v1/localization')
+			.then(res => setOptions(res.data.results));
 
 		localizations && setCheckeds(localizations.map(item => item.id));
 	}, [localizations, setCheckeds])
@@ -57,7 +54,7 @@ export default function ListLocalizations({ localizations, handleLocalizationCha
 		setCheckeds(newChecked);
 
 		let newLocalizations = [];
-		
+
 		options.map(item_option => {
 			newChecked.map(item_checked => {
 				if (item_option.id === item_checked) {
@@ -74,7 +71,7 @@ export default function ListLocalizations({ localizations, handleLocalizationCha
 	};
 
 	return (
-		<List dense className={classes.root}>
+		<List dense className={classes.root} subheader={<b>Localizações</b>}>
 			{options.map(option => {
 				const labelId = `checkbox-list-secondary-label-${option.id}`;
 

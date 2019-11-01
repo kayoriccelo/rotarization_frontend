@@ -7,7 +7,7 @@ import { FormCustom, InputText } from '../../components';
 import { load, save, setTitle } from './store/ducks';
 
 
-const EditCompany = ({ instance, load, save, setTitle, history }) => {
+const EditCompany = ({ load, save, setTitle, history }) => {
     const [company, setCompany] = useState(null);
 
     useEffect(() => {
@@ -17,8 +17,11 @@ const EditCompany = ({ instance, load, save, setTitle, history }) => {
     }, [setTitle]);
 
     useEffect(() => {
-        load();
-    }, [load]);
+        !company && load()
+            .then(res => company !== res && setCompany(res));
+
+        company && setTitle({ subTitle: `${company.cnpj} - ${company.business_name}` });
+    }, [company, load, setTitle]);
 
     const handleSubmit = () => save(company, history);
 
@@ -37,47 +40,41 @@ const EditCompany = ({ instance, load, save, setTitle, history }) => {
     };
 
     return (
-        <FormCustom
+        company && <FormCustom
             object={company}
-            setObject={setCompany}
             handleSubmit={handleSubmit}
             handleCancel={handleCancel}
-            instance={instance}
             setSubTitle={company => setTitle({
                 subTitle: `${company.cnpj} - ${company.business_name}`
             })}
         >
-            {company && (
-                <div>
-                    <InputText
-                        label="Cnpj"
-                        maxLength="18"
-                        value={maskCnpj(company.cnpj)}
-                        handleChange={handleChange('cnpj')}
-                    />
+            <InputText
+                label="Cnpj"
+                maxLength="18"
+                value={maskCnpj(company.cnpj)}
+                handleChange={handleChange('cnpj')}
+            />
 
-                    <InputText
-                        label="Razão social"
-                        maxLength="140"
-                        value={company.business_name}
-                        handleChange={handleChange('business_name')}
-                    />
+            <InputText
+                label="Razão social"
+                maxLength="140"
+                value={company.business_name}
+                handleChange={handleChange('business_name')}
+            />
 
-                    <InputText
-                        label="Email"
-                        maxLength="100"
-                        value={company.email}
-                        handleChange={handleChange('email')}
-                    />
+            <InputText
+                label="Email"
+                maxLength="100"
+                value={company.email}
+                handleChange={handleChange('email')}
+            />
 
-                    <InputText
-                        label="Telefone"
-                        maxLength="15"
-                        value={maskPhone(company.phone)}
-                        handleChange={handleChange('phone')}
-                    />
-                </div>
-            )}
+            <InputText
+                label="Telefone"
+                maxLength="15"
+                value={maskPhone(company.phone)}
+                handleChange={handleChange('phone')}
+            />
         </FormCustom>
     );
 };

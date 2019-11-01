@@ -7,14 +7,11 @@ import useStyles from './styles';
 export default function FormCustom(props) {
     const { card, cardContent, actions, button } = useStyles();
 
-    const { object, instance, setSubTitle, setObject } = props;
+    const { object, setSubTitle } = props;
 
     useEffect(() => {
-        if (!object && object !== instance) {
-            setObject(instance);
-            setSubTitle(instance);
-        };
-    }, [object, instance, setObject, setSubTitle]);
+        !object && setSubTitle(object);
+    }, [object, setSubTitle]);
 
     return (
         object &&

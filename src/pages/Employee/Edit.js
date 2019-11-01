@@ -17,7 +17,8 @@ const EditEmployee = ({ instance, load, save, setTitle, id, history }) => {
     }, [setTitle]);
 
     useEffect(() => {
-        !employee && load(id);
+        !employee && load(id)
+            .then(res => employee !== res && setEmployee(res));
 
         employee && setTitle({ subTitle: `${employee.cpf} - ${employee.name}` });
     }, [employee, id, load, setTitle]);
@@ -39,22 +40,18 @@ const EditEmployee = ({ instance, load, save, setTitle, id, history }) => {
     };
 
     return (
-        <FormCustom
+        employee && <FormCustom
             object={employee}
-            setObject={setEmployee}
             handleSubmit={handleSubmit}
             handleCancel={handleCancel}
-            instance={instance}
             setSubTitle={employee => setTitle({
                 subTitle: `${employee.cnpj} - ${employee.business_name}`
             })}
         >
-            {employee && (
-                <Data
-                    employee={employee}
-                    handleChange={handleChange}
-                />
-            )}
+            <Data
+                employee={employee}
+                handleChange={handleChange}
+            />
         </FormCustom>
     );
 };

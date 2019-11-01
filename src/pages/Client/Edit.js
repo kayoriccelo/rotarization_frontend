@@ -17,7 +17,8 @@ const EditClient = ({ instance, load, save, setTitle, id, history }) => {
     }, [setTitle]);
 
     useEffect(() => {
-        !client && load(id);
+        !client && load(id)
+            .then(res => client !== res && setClient(res));
 
         client && setTitle({ subTitle: `${client.cnpj} - ${client.business_name}` });
     }, [client, id, load, setTitle]);
@@ -39,22 +40,18 @@ const EditClient = ({ instance, load, save, setTitle, id, history }) => {
     };
 
     return (
-        <FormCustom
+        client && <FormCustom
             object={client}
-            setObject={setClient}
             handleSubmit={handleSubmit}
             handleCancel={handleCancel}
-            instance={instance}
             setSubTitle={client => setTitle({
                 subTitle: `${client.cnpj} - ${client.business_name}`
             })}
         >
-            {client && (
-                <Data
-                    client={client}
-                    handleChange={handleChange}
-                />
-            )}
+            <Data
+                client={client}
+                handleChange={handleChange}
+            />
         </FormCustom>
     );
 };

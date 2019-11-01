@@ -20,10 +20,11 @@ export const getListDefault = (search, page, pageSize, model, type) => dispatch 
 export const loadDefault = (id, model, type) => dispatch => {
     return api.get(`api/v1/${model}?id=${id}`)
         .then(res => {
-            dispatch({
-                type,
-                payload: res.data.results ? res.data.results[0] : res.data
-            });
+            const payload = res.data.results ? res.data.results[0] : res.data
+            
+            dispatch({ type, payload });
+
+            return payload
         }, err => {
             dispatch(showMessage({
                 open: true,

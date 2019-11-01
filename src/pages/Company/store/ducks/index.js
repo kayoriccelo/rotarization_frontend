@@ -14,10 +14,11 @@ export { setTitle };
 export const load = () => dispatch => {
     return api.get('api/v1/company')
         .then(res => {
-            dispatch({
-                type: Types.LOAD,
-                payload: res.data.results[0]
-            })
+            const payload = res.data.results[0];
+
+            dispatch({ type: Types.LOAD, payload });
+
+            return payload; 
         }, err => {
             dispatch(showMessage({
                 open: true,

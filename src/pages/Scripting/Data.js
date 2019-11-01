@@ -5,6 +5,8 @@ import ListLocalizations from './ListLocalizations';
 
 
 export default function Data(props) {
+
+
     return (
         <>
             <InputText
@@ -13,9 +15,8 @@ export default function Data(props) {
                 value={props.scripting.description}
                 handleChange={props.handleChange('description')}
             />
-
-            <div style={{ display: 'flex', }}>
-                <div style={{ flex: 2 }}>
+            <div style={{ display: 'flex' }}>
+                <div style={{ flex: 1, padding: '0px 8px 8px 0px', alignItems: 'flex-end' }}>
                     <SearchLocalizationMap
                         label="Origem"
                         valueInput={props.scripting.origin_address}
@@ -23,7 +24,8 @@ export default function Data(props) {
                         handleChangeLongitude={props.handleChange('origin_longitude')}
                         handleChangeAddress={props.handleChange('origin_address')}
                     />
-
+                </div>
+                <div style={{ flex: 1, padding: '0px 0px 8px 8px', alignItems: 'flex-start' }}>
                     <SearchLocalizationMap
                         label="Destino"
                         valueInput={props.scripting.destiny_address}
@@ -31,21 +33,17 @@ export default function Data(props) {
                         handleChangeLongitude={props.handleChange('destiny_longitude')}
                         handleChangeAddress={props.handleChange('destiny_address')}
                     />
-
-                    <ListLocalizations
-                        localizations={props.scripting.localizations}
-                        handleLocalizationChange={props.handleLocalizationChange}
-                    />
                 </div>
-
-                <div style={{ flex: 5 }}>
+            </div>
+            <div style={{ display: 'flex' }}>
+                <div style={{ flex: 5, height: 'calc(78vh - 180px)' }}>
                     <DirectionMarkerMap
-                        localizations={props.scripting.localizations}
+                        waypoints={props.waypoints}
                         origin={{
                             lat: props.scripting.origin_latitude,
                             lng: props.scripting.origin_longitude
                         }}
-                        distiny={{
+                        destiny={{
                             lat: props.scripting.destiny_latitude,
                             lng: props.scripting.destiny_longitude
                         }}
@@ -53,6 +51,12 @@ export default function Data(props) {
                             lat: props.scripting.origin_latitude,
                             lng: props.scripting.origin_longitude
                         }}
+                    />
+                </div>
+                <div style={{ flex: 2, padding: 8 }}>
+                    <ListLocalizations
+                        localizations={props.scripting.localizations}
+                        handleLocalizationChange={props.handleLocalizationChange}
                     />
                 </div>
             </div>

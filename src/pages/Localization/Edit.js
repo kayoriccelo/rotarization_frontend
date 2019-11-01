@@ -17,7 +17,8 @@ const Edit = ({ instance, load, save, setTitle, id, history }) => {
     }, [setTitle]);
 
     useEffect(() => {
-        !localization && load(id);
+        !localization && load(id)
+            .then(res => localization !== res && setLocalization(res));
 
         localization && setTitle({ subTitle: `${localization.code} - ${localization.description}` });
     }, [localization, id, load, setTitle]);
@@ -37,22 +38,18 @@ const Edit = ({ instance, load, save, setTitle, id, history }) => {
     };
 
     return (
-        <FormCustom
+        localization && <FormCustom
             object={localization}
-            setObject={setLocalization}
             handleSubmit={handleSubmit}
             handleCancel={handleCancel}
-            instance={instance}
             setSubTitle={localization => setTitle({
                 subTitle: `${localization.code} - ${localization.description}`
             })}
         >
-            {localization && (
-                <Data
-                    localization={localization}
-                    handleChange={handleChange}
-                />
-            )}
+            <Data
+                localization={localization}
+                handleChange={handleChange}
+            />
         </FormCustom>
     );
 };

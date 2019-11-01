@@ -64,29 +64,19 @@ const PlacesWithStandaloneSearchBox = compose(
                 style={{
                     boxSizing: `border-box`,
                     border: `1px solid transparent`,
-                    width: `90%`,
+                    width: `100%`,
                     height: `32px`,
                     padding: `0 12px`,
                     borderRadius: `3px`,
                     boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
                     fontSize: `14px`,
                     outline: `none`,
-                    textOverflow: `ellipses`,
-                    margin: '4px 20px 4px 0px'
+                    textOverflow: `ellipses`
                 }}
                 value={props.value}
                 onChange={props.onChangeSearch}
             />
         </StandaloneSearchBox>
-        {/* <ol>
-            {props.places.map(({ place_id, formatted_address, geometry: { location } }) =>
-                <li key={place_id}>
-                    {formatted_address}
-                    {" at "}
-                    ({location.lat()}, {location.lng()})
-        </li>
-            )}
-        </ol> */}
     </div>
 );
 
