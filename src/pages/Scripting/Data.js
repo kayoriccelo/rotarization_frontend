@@ -37,7 +37,7 @@ export default function Data(props) {
             </div>
             <div style={{ display: 'flex' }}>
                 <div style={{ flex: 5, height: 'calc(78vh - 180px)' }}>
-                    <DirectionMarkerMap
+                    {props.waypoints && <DirectionMarkerMap
                         waypoints={props.waypoints}
                         origin={{
                             lat: props.scripting.origin_latitude,
@@ -51,7 +51,7 @@ export default function Data(props) {
                             lat: props.scripting.origin_latitude,
                             lng: props.scripting.origin_longitude
                         }}
-                    />
+                    />}
                 </div>
                 <div style={{ flex: 2, padding: 8 }}>
                     <ListLocalizations

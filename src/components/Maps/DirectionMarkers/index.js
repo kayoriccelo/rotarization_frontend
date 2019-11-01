@@ -10,14 +10,13 @@ import key from '../key';
 
 const DirectionMarkerMap = (props) => {
     const [directions, setDirections] = useState(null);
-    const { center, origin, destiny, waypoints } = props;
-    const newCenter = !center.lat ? { lat: -3.71839, lng: -38.5434 } : center;
+    const newCenter = !props.center.lat ? { lat: -3.71839, lng: -38.5434 } : props.center;
     
-    console.log(waypoints)
+    console.log(props.waypoints)
     
     useEffect(() => {
-        const newOrigin = !origin.lat ? { lat: -3.71839, lng: -38.5434 } : origin;
-        const newDistiny = !destiny.lat ? { lat: -3.71839, lng: -38.5434 } : destiny;
+        const newOrigin = !props.origin.lat ? { lat: -3.71839, lng: -38.5434 } : props.origin;
+        const newDistiny = !props.destiny.lat ? { lat: -3.71839, lng: -38.5434 } : props.destiny;
     
         const directionsService = new google.maps.DirectionsService();
 
@@ -25,7 +24,7 @@ const DirectionMarkerMap = (props) => {
             origin: new google.maps.LatLng(newOrigin.lat, newOrigin.lng),
             destination: new google.maps.LatLng(newDistiny.lat, newDistiny.lng),
             travelMode: google.maps.TravelMode.DRIVING,
-            waypoints: waypoints
+            waypoints: props.waypoints
         }, (result, status) => {
             if (status === google.maps.DirectionsStatus.OK) {
                 setDirections(result);
@@ -33,7 +32,7 @@ const DirectionMarkerMap = (props) => {
                 console.error(`error fetching directions ${result}`);
             };
         });
-    }, [origin, destiny, waypoints, setDirections]);
+    }, [props]);
 
     return (
         directions && <GoogleMap

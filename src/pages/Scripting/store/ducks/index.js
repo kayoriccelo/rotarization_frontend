@@ -32,9 +32,7 @@ export const load = (id) => loadDefault(id, 'scripting', Types.GET)
 
 export const save = (scripting, history) => {
     if (Object.keys(scripting).indexOf('localizations') > -1)
-        if (scripting.localizations.length === 0) {
-            delete scripting.localizations;
-        } else {
+        if (scripting.localizations.length !== 0) {
             scripting.localizations = scripting.localizations.map(item => item.id ? item.id : item);
         };            
 

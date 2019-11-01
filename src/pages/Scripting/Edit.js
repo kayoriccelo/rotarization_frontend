@@ -13,51 +13,66 @@ const Edit = ({ instance, load, save, setTitle, id, history }) => {
     const [waypoints, setWaypoints] = useState([]);
 
     useEffect(() => {
-        if (scripting && waypoints.length === 0) {
-            if (scripting.localizations) {
-                scripting.localizations.map(item => {
-                    api.get(`api/v1/localization/?id=${item.id ? item.id : item}`)
-                        .then(res => {
-                            handleLocalizationChange(res.data.results)
-                            
-                            setWaypoints(
-                                res.data.results.map(item => ({
-                                    location: item.address,
-                                    stopover: true
-                                }))
-                            );
-                        });
-                });
-            };
-        };
-    }, [scripting]);
-
-    useEffect(() => {
         setTitle({ title: 'Roteirização' });
 
         return () => setTitle({ title: '', subTitle: '' });
     }, [setTitle]);
 
     useEffect(() => {
-        scripting === null && load(id)
-            .then(res => scripting !== res && setScripting(res));
+        scripting === null && load(id).then(res => setScripting(instance));
 
-        // scripting && setTitle({ subTitle: `${scripting.code} - ${scripting.description}` });
+        scripting && setTitle({ subTitle: `${scripting.description}` });
     }, [scripting, instance, id, load, setTitle]);
+
+    useEffect(() => {
+        if (instance)
+            if (instance.localizations)
+                if (instance.localizations.length > 0) {
+                    let ids = '';
+                    instance.localizations.map(item => {
+                        let itemCount = instance.localizations[instance.localizations.length - 1];
+                        itemCount = itemCount.id ? itemCount.id : itemCount;
+                        item = item.id ? item.id : item;
+
+                        ids += item;
+                        ids += itemCount !== item ? ',' : '';
+                    });
+
+                    api.get(`api/v1/localization/?ids=${ids}`)
+                        .then(res => {
+                            setWaypoints(
+                                res.data.results.map(item => ({
+                                    location: item.address,
+                                    stopover: true
+                                }))
+                            );
+
+                            setScripting({ ...instance, localizations: res.data.results });
+                        });
+                };
+    }, [instance]);
+
 
     const handleSubmit = () => save(scripting, history);
 
     const handleCancel = () => history.push('/scripting');
 
     const handleChange = name => event => {
-        // name === 'description' && setTitle({
-        //     subTitle: `${scripting.code} - ${event.target.value}`
-        // });
+        name === 'description' && setTitle({
+            subTitle: `${event.target.value}`
+        });
 
         setScripting({ ...scripting, [name]: event.target.value });
     };
 
     const handleLocalizationChange = value => {
+        setWaypoints(
+            value.map(item => ({
+                location: item.address,
+                stopover: true
+            }))
+        );
+
         setScripting({ ...scripting, localizations: value });
     };
 
@@ -67,7 +82,7 @@ const Edit = ({ instance, load, save, setTitle, id, history }) => {
             handleSubmit={handleSubmit}
             handleCancel={handleCancel}
             setSubTitle={scripting => setTitle({
-                // subTitle: `${scripting.code} - ${scripting.description}`
+                subTitle: `${scripting.description}`
             })}
         >
             <Data

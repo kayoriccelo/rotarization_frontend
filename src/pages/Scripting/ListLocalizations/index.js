@@ -34,8 +34,8 @@ export default function ListLocalizations({ localizations, handleLocalizationCha
 		api.get('api/v1/localization')
 			.then(res => setOptions(res.data.results));
 
-		localizations && setCheckeds(localizations.map(item => item.id));
-	}, [localizations, setCheckeds])
+		localizations && setCheckeds(localizations.map(item => item.id ? item.id : item));
+	}, [])
 
 	const getItemInList = (item, listItems) => listItems.indexOf(item);
 
