@@ -1,5 +1,4 @@
 import axios from 'axios';
-import axios2 from 'axios';
 // import { rota } from '../env';
 
 const api = axios.create({

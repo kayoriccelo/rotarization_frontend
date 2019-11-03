@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Menu, MenuItem } from '@material-ui/core';
+import { Button, ClickAwayListener, Grow, Paper, Popper, MenuItem, MenuList } from '@material-ui/core';
 import { ExitToApp, AccountBox, ArrowDropDown } from '@material-ui/icons';
 import Avatar from '@material-ui/core/Avatar';
 import { logout, loadUser } from '../../../auth/store/ducks';
@@ -10,43 +10,77 @@ import useStyles from './styles';
 
 const Header = ({ user, logout, loadUser, history }) => {
     const { root, toolBar, menu, avatar } = useStyles();
-    const [anchorEl, setAnchorEl] = useState(null);
+    const [open, setOpen] = useState(false);
+    const anchorRef = useRef(null);
+    const prevOpen = useRef(open);
 
     useEffect(() => {
         !user.isAuthenticated && loadUser();
     }, [user, loadUser]);
 
-    const handleClick = event => setAnchorEl(event.currentTarget);
+    useEffect(() => {
+        if (prevOpen.current === true && open === false) anchorRef.current.focus();
 
-    const handleClose = () => setAnchorEl(null);
+        prevOpen.current = open;
+    }, [open]);
+
+    const handleClick = event => setOpen(prevOpen => !prevOpen);
+
+    const handleClose = event => {
+        console.log(event)
+        if (anchorRef.current && anchorRef.current.contains(event.target)) {
+            return;
+        }
+
+        setOpen(false);
+    };
+
+    const handleListKeyDown = event => {
+        if (event.key === 'Tab') {
+            event.preventDefault();
+            setOpen(false);
+        };
+    };
 
     return (
         <div className={root}>
             <div className={toolBar}>
             </div>
-
-            <div className={menu} onClick={handleClick}>
+            <Button
+                className={menu}
+                ref={anchorRef}
+                aria-controls="menu-list-grow"
+                aria-haspopup="true"
+                onClick={handleClick}
+            >
                 <Avatar alt="R" src={`https://pickaface.net/assets/images/slides/slide4.png`} className={avatar} />
                 <div style={{ color: 'white', fontSize: 14 }}>
                     {`${user.first_name} ${user.last_name}`}
                 </div>
                 <ArrowDropDown />
-            </div>
 
-            <Menu
-                    id="simple-menu"
-                    anchorEl={anchorEl}
-                    keepMounted
-                    open={Boolean(anchorEl)}
-                    onClose={handleClose}
-                >
-                    <MenuItem onClick={() => { history.push('/profile'); handleClose() }}>
-                        <AccountBox /> <div style={{ fontSize: 14, paddingLeft: 6 }}>Profile</div>
-                    </MenuItem>
-                    <MenuItem onClick={() => { logout(); handleClose() }}>
-                        <ExitToApp /><div style={{ fontSize: 14, paddingLeft: 6 }}>Logout</div>
-                    </MenuItem>
-                </Menu>
+            </Button>
+            <Popper open={open} anchorEl={anchorRef.current} transition disablePortal>
+                {({ TransitionProps, placement }) => (
+                    <Grow
+                        {...TransitionProps}
+                        style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
+                    >
+                        <Paper id="menu-list-grow">
+                            <ClickAwayListener onClickAway={handleClose}>
+                                <MenuList autoFocusItem={open} onKeyDown={handleListKeyDown} style={{ width: 200 }}>
+                                    <MenuItem onClick={event => { history.push('/profile'); handleClose(event)}}>
+                                        <AccountBox /> <div style={{ fontSize: 14, paddingLeft: 6 }}>Profile</div>
+                                    </MenuItem>
+                                    <MenuItem onClick={() => logout()}>
+                                        <ExitToApp /> <div style={{ fontSize: 14, paddingLeft: 6 }}>Sair</div>
+                                    </MenuItem>
+                                </MenuList>
+                            </ClickAwayListener>
+                        </Paper>
+                    </Grow>
+                )}
+            </Popper>
         </div >
     );
 };
