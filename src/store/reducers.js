@@ -14,6 +14,7 @@ import companyReducer from '../pages/Company/store/ducks';
 import employeeReducer from '../pages/Employee/store/ducks';
 import clientReducer from '../pages/Client/store/ducks';
 import localizationReducer from '../pages/Localization/store/ducks';
+import profileReducer from '../pages/Profile/store/ducks';
 
 import scriptingReducer from '../pages/Scripting/store/ducks';
 
@@ -34,6 +35,7 @@ const reducers = combineReducers({
     employee: employeeReducer,
     client: clientReducer,
     localization: localizationReducer,
+    profile: profileReducer,
 
     scripting: scriptingReducer
 });

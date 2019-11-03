@@ -1,4 +1,5 @@
 import Dashboard from '../pages/Dashboard';
+import { Profile } from '../pages/Profile';
 import { Company } from '../pages/Company';
 import { AddEmployee, EditEmployee, ListEmployee } from '../pages/Employee';
 import { AddClient, EditClient, ListClient } from '../pages/Client';
@@ -13,6 +14,13 @@ export default [
         exact: true,
         path: '/dashboard',
         component: Dashboard,
+        roles: ['guest', 'admin']
+    },
+    {
+        key: 'profile',
+        exact: true,
+        path: '/profile',
+        component: Profile,
         roles: ['guest', 'admin']
     },
     {

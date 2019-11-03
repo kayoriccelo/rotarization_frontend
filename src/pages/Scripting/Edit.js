@@ -44,7 +44,7 @@ const Edit = ({ instance, load, save, setTitle, id, history }) => {
                             setWaypoints(
                                 res.data.results.map(item => ({
                                     location: item.address,
-                                    stopover: true
+                                    stopover: false
                                 }))
                             );
 

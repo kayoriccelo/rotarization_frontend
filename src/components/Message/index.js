@@ -27,7 +27,7 @@ export const Message = ({ message, showMessage }) => {
         <Snackbar
             anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
             open={message.open}
-            autoHideDuration={3000}
+            autoHideDuration={2000}
             onClose={handleClose}
         >
             <MySnackbarContentWrapper

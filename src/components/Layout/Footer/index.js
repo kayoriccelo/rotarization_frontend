@@ -18,7 +18,7 @@ export default function Header() {
                     {'Copyright © '}
                     <a
                         href="https://www.linkedin.com/in/kayoriccelo/"
-                        style={{ color: '#3385ff' }}
+                        style={{ color: 'white', fontWeight: 'bold' }}
                         target="_blank"
                         rel="noopener noreferrer"
                     >
