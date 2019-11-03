@@ -22,9 +22,9 @@ export default makeStyles({
         },
     },
     avatar: {
-        height: 30,
-        width: 30,
-        margin: 10,
+        height: 40,
+        width: 40,
+        margin: '5px 10px 5px 0px',
         backgroundColor: '#8c8c8c'
     }
 });

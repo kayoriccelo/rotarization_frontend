@@ -36,6 +36,7 @@ const Edit = ({ instance, load, save, setTitle, id, history }) => {
 
                         ids += item;
                         ids += itemCount !== item ? ',' : '';
+                        return ids;
                     });
 
                     api.get(`api/v1/localization/?ids=${ids}`)

@@ -20,6 +20,22 @@ const Form = ({ history, login }) => {
 
     return (
         <div className={form}>
+            <img
+                width="60px"
+                src={require('../../assets/images/logo.png')}
+                alt="logo"
+                style={{ paddingBottom: 10 }}
+            />
+
+            <div style={{
+                display: 'block',
+                fontSize: '100%',
+                fontWeight: 'bold',
+                paddingBottom: 20
+            }}>
+                Entrar no Controle de Rotas
+            </div>
+
             <div className={formContent}>
                 <InputText
                     label="Usuário"

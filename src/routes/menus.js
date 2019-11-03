@@ -6,7 +6,7 @@ import EmojiTransportationIcon from '@material-ui/icons/EmojiTransportation';
 import LocationCityIcon from '@material-ui/icons/LocationCity';
 import EditLocationIcon from '@material-ui/icons/EditLocation';
 import MapIcon from '@material-ui/icons/Map';
-import SettingsApplicationsIcon from '@material-ui/icons/SettingsApplications';
+// import SettingsApplicationsIcon from '@material-ui/icons/SettingsApplications';
 
 
 export default [

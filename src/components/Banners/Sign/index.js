@@ -8,7 +8,11 @@ export default function Banner() {
 
     return (
         <div className={banner}>
-            Área Banner Sign In
+            <img
+                style={{ width: '100%', height: '100%' }}
+                src={require('../../../assets/images/banner.jpg')}
+                alt="banner"
+            />
         </div>
     );
 };
