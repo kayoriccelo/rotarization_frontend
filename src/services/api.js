@@ -2,10 +2,11 @@ import axios from 'axios';
 import axios2 from 'axios';
 // import { rota } from '../env';
 
-axios.interceptors.request.use(config => {
-    // config.baseURL = rota;
-    config.baseURL = 'http://127.0.0.1:8000'
+const api = axios.create({
+    baseURL: 'http://127.0.0.1:8000'
+})
 
+api.interceptors.request.use(config => {
     if (localStorage.getItem('access')) {
         config.headers.common['Authorization'] = `Bearer ${localStorage.getItem('access')}`;
     };
@@ -16,7 +17,7 @@ axios.interceptors.request.use(config => {
 });
 
 
-axios.interceptors.response.use(
+api.interceptors.response.use(
     response => {
         return response;
     },
@@ -25,7 +26,7 @@ axios.interceptors.response.use(
         const originalRequest = config;
 
         if (status === 401 && config && !config.__isRetryRequest && localStorage.getItem('refresh')) {
-            return axios.post('token-refresh/', { refresh: localStorage.getItem('refresh') }).then(res => {
+            return apiNotToken.post('token-refresh/', { refresh: localStorage.getItem('refresh') }).then(res => {
                 localStorage.setItem('access', res.data.access);
                 originalRequest.headers['Authorization'] = `Bearer ${res.data.access}`;
                 return Promise.resolve(axios.request(originalRequest));
@@ -35,7 +36,7 @@ axios.interceptors.response.use(
             });
         } else if (status === 401) {
             localStorage.clear();
-            window.location.href = window.location.origin + '/signin'
+            window.location.href = window.location.origin + '/signin';
             return Promise.reject(error);
         };
 
@@ -43,16 +44,8 @@ axios.interceptors.response.use(
     }
 );
 
-
-axios2.interceptors.request.use(config => {
-    // config.baseURL = rota;
-    config.baseURL = 'http://127.0.0.1:8000'
-    return config;
-}, error => {
-    return Promise.reject(error);
+export const apiNotToken = axios.create({
+    baseURL: 'http://127.0.0.1:8000'
 });
 
-
-export { axios2 as apiNotToken };
-
-export default axios;
+export default api;

@@ -9,6 +9,7 @@ import { createInstance, save, setTitle } from './store/ducks';
 
 const Add = ({ save, setTitle, history }) => {
     const [scripting, setScripting] = useState(null);
+    const [waypoints, setWaypoints] = useState([]);
 
     useEffect(() => {
         setTitle({ title: 'Roteirização' });
@@ -25,34 +26,39 @@ const Add = ({ save, setTitle, history }) => {
     const handleCancel = () => history.push('/scripting');
 
     const handleChange = name => event => {
-        // name === 'description' && setTitle({
-        //     subTitle: `${scripting.code} - ${event.target.value}`
-        // });
+        name === 'description' && setTitle({
+            subTitle: `${event.target.value}`
+        });
 
         setScripting({ ...scripting, [name]: event.target.value });
     };
 
     const handleLocalizationChange = value => {
+        setWaypoints(
+            value.map(item => ({
+                location: item.address,
+                stopover: true
+            }))
+        );
+
         setScripting({ ...scripting, localizations: value });
     };
 
     return (
-        <FormCustom
+        scripting && <FormCustom
             object={scripting}
-            setObject={setScripting}
             handleSubmit={handleSubmit}
             handleCancel={handleCancel}
-            setSubTitle={scripting => scripting && setTitle({
-                // subTitle: `${scripting.code} - ${scripting.description}`
+            setSubTitle={scripting => setTitle({
+                subTitle: `${scripting.description}`
             })}
         >
-            {scripting && (
-                <Data
-                    scripting={scripting}
-                    handleChange={handleChange}
-                    handleLocalizationChange={handleLocalizationChange}
-                />
-            )}
+            <Data
+                scripting={scripting}
+                waypoints={waypoints}
+                handleChange={handleChange}
+                handleLocalizationChange={handleLocalizationChange}
+            />
         </FormCustom>
     );
 };
