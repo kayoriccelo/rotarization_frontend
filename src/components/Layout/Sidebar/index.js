@@ -83,8 +83,6 @@ export default function Sidebar({ screen, history }) {
                                                     )
                                                 })
                                             }
-
-                                            <Divider />
                                         </Collapse>
                                     </>
                                 )

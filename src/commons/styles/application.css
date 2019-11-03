@@ -39,7 +39,7 @@ body {
 }
 
 .MuiListItemIcon-root {
-    min-width: 32px!important;
+    min-width: 40px!important;
 }
 
 .MuiListItemText-root>span {

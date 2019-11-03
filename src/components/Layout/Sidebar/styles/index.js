@@ -7,7 +7,7 @@ export default makeStyles({
         height: 35
     },
     subMenu: {
-        paddingLeft: 25,
+        paddingLeft: 20,
         height: 35
     }
 });

@@ -17,9 +17,9 @@ const useStyles = makeStyles(theme => ({
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
         }),
-        width: theme.spacing(7),
+        width: 50,
         [theme.breakpoints.up('sm')]: {
-            width: theme.spacing(9),
+            width: 55,
         },
         '&:hover': {
             width: 280,
