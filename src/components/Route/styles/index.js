@@ -10,14 +10,15 @@ export default makeStyles({
         width: '100%'
     },
     main: {
-        padding: '15px 25px 0px 25px',
+        padding: '15px 28px 0px 28px',
     },
     titleContent: {
         height: 40
     },
     title: {
         color: commonStyles.primaryColor,
-        fontSize: 15,
+        fontSize: 16,
+        fontFamily: 'Arial',
         maxHeight: 25
     },
     subTitle:{

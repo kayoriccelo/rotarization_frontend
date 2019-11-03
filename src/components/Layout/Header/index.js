@@ -53,11 +53,10 @@ const Header = ({ user, logout, loadUser, history }) => {
                 onClick={handleClick}
             >
                 <Avatar alt="R" src={`https://pickaface.net/assets/images/slides/slide4.png`} className={avatar} />
-                <div style={{ color: '#8c8c8c', fontSize: 11, fontWeight: 'bold' }}>
+                <div style={{ color: '#404040', fontSize: 10, fontWeight: 'bold' }}>
                     {`${user.first_name} ${user.last_name}`}
                 </div>
-                <ArrowDropDown />
-
+                <ArrowDropDown fontSize="small"/>
             </Button>
             <Popper open={open} anchorEl={anchorRef.current} transition disablePortal>
                 {({ TransitionProps, placement }) => (
@@ -69,10 +68,10 @@ const Header = ({ user, logout, loadUser, history }) => {
                             <ClickAwayListener onClickAway={handleClose}>
                                 <MenuList autoFocusItem={open} onKeyDown={handleListKeyDown} style={{ width: 200 }}>
                                     <MenuItem onClick={event => { history.push('/profile'); handleClose(event)}}>
-                                        <AccountBox /> <div style={{ fontSize: 14, paddingLeft: 6 }}>Profile</div>
+                                        <AccountBox fontSize="small"/> <div style={{ fontSize: 14, paddingLeft: 6 }}>Profile</div>
                                     </MenuItem>
                                     <MenuItem onClick={() => logout()}>
-                                        <ExitToApp /> <div style={{ fontSize: 14, paddingLeft: 6 }}>Sair</div>
+                                        <ExitToApp fontSize="small"/> <div style={{ fontSize: 14, paddingLeft: 6 }}>Sair</div>
                                     </MenuItem>
                                 </MenuList>
                             </ClickAwayListener>

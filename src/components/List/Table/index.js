@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Table, TableBody, TableRow, TableCell, Card, IconButton } from '@material-ui/core';
+import { HighlightOff, RadioButtonUnchecked, Adjust, CheckCircleOutline } from '@material-ui/icons';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 import useStyles from './styles';
@@ -83,6 +84,15 @@ export default function TableList({ columns, data, actions, path, is_pagination 
                                                             <IconButton aria-label="delete" onClick={() => actions[0](item.id)}>
                                                                 <DeleteIcon fontSize="small" color="secondary" />
                                                             </IconButton>
+                                                        </TableCell>
+                                                    )
+                                                } else if (column.is_status) {
+                                                    return (
+                                                        <TableCell key="statusItem">
+                                                            {item[column.field] === 'D' && <HighlightOff style={{ color: '#ff9800' }} fontSize="small" />}
+                                                            {item[column.field] === 'P' && <RadioButtonUnchecked style={{ color: '#ff9800' }} fontSize="small" />}
+                                                            {item[column.field] === 'I' && <Adjust style={{ color: '#ff9800' }} fontSize="small" />}
+                                                            {item[column.field] === 'C' && <CheckCircleOutline style={{ color: '#4caf50' }} fontSize="small" />}
                                                         </TableCell>
                                                     )
                                                 } else {

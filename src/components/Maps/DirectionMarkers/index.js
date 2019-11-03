@@ -11,9 +11,7 @@ import key from '../key';
 const DirectionMarkerMap = (props) => {
     const [directions, setDirections] = useState(null);
     const newCenter = !props.center.lat ? { lat: -3.71839, lng: -38.5434 } : props.center;
-    
-    console.log(props.waypoints)
-    
+        
     useEffect(() => {
         const newOrigin = !props.origin.lat ? { lat: -3.71839, lng: -38.5434 } : props.origin;
         const newDistiny = !props.destiny.lat ? { lat: -3.71839, lng: -38.5434 } : props.destiny;
@@ -36,7 +34,7 @@ const DirectionMarkerMap = (props) => {
 
     return (
         directions && <GoogleMap
-            defaultZoom={15}
+            defaultZoom={8}
             defaultCenter={newCenter}
         >
             <DirectionsRenderer directions={directions} />

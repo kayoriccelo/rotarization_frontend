@@ -24,7 +24,6 @@ export const TablePagination = ({ count, page, pageSize, setPages }) => {
             <TableRow>
                 <TablePaginationUI
                     rowsPerPageOptions={[10, 20, 50]}
-                    colSpan={3}
                     count={count}
                     rowsPerPage={pageSize}
                     page={page}

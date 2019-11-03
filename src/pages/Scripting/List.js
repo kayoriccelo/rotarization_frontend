@@ -12,10 +12,10 @@ export const List = ({ data, page, pageSize, getList, remove, setTitle, history 
     
     const columns = [
         { field: 'description', label: 'Descrição', is_edit: true},
-        { field: 'date_registred', label: 'Criado' },
         { field: 'date_initial', label: 'Início' },
         { field: 'date_final', label: 'Conclusão' },
-        { field: 'status', label: 'Situação' },
+        { field: 'localizations_count', label: 'Localizações' },
+        { field: 'status', label: 'Situação', is_status: true},
         { field: 'actions', label: 'Ações' }
     ];
 

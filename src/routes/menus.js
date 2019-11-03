@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    Dashboard, ViewList,  SupervisorAccount
+    Dashboard, ViewList, SupervisorAccount
 } from "@material-ui/icons";
 import EmojiTransportationIcon from '@material-ui/icons/EmojiTransportation';
 import LocationCityIcon from '@material-ui/icons/LocationCity';
@@ -13,46 +13,46 @@ export default [
     {
         title: 'Início',
         path: '/',
-        icon: (<Dashboard style={{ color: '#24292e' }} />),
+        icon: (<Dashboard style={{ color: '#24292e' }} fontSize="small" />),
         roles: ['guest', 'admin']
     },
     {
         title: 'Cadastros',
-        icon: (<ViewList style={{ color: '#24292e' }} />),
+        icon: (<ViewList style={{ color: '#24292e' }} fontSize="small" />),
         roles: ['admin'],
         menus: [
             {
                 title: 'Empresa',
                 path: '/registration/company',
-                icon: (<LocationCityIcon />),
+                icon: (<LocationCityIcon fontSize="small" />),
             },
             {
                 title: 'Funcionários',
                 path: '/registration/employee',
-                icon: (<SupervisorAccount />),
+                icon: (<SupervisorAccount fontSize="small" />),
             },
             {
                 title: 'Clientes',
                 path: '/registration/client',
-                icon: (<EmojiTransportationIcon />),
+                icon: (<EmojiTransportationIcon fontSize="small" />),
             },
             {
                 title: 'Localizações',
                 path: '/registration/localization',
-                icon: (<EditLocationIcon />),
+                icon: (<EditLocationIcon fontSize="small" />),
             },
         ],
     },
     {
         title: 'Roteirização',
         path: '/scripting',
-        icon: (<MapIcon style={{ color: '#24292e' }} />),
+        icon: (<MapIcon style={{ color: '#24292e' }} fontSize="small" />),
         roles: ['guest', 'admin']
     },
     {
         title: 'Configurações',
         path: '/configuration',
-        icon: (<SettingsApplicationsIcon style={{ color: '#24292e' }} />),
+        icon: (<SettingsApplicationsIcon style={{ color: '#24292e' }} fontSize="small" />),
         roles: ['guest', 'admin']
     },
 ];

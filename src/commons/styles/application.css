@@ -37,3 +37,11 @@ body {
 .MuiSelect-selectMenu {
     padding: 12px 14px!important;
 }
+
+.MuiListItemIcon-root {
+    min-width: 32px!important;
+}
+
+.MuiListItemText-root>span {
+    font-size: 12px!important;
+}

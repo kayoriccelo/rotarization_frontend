@@ -63,7 +63,7 @@ const MapWithASearchBox = compose(
 )(props =>
     <GoogleMap
         ref={props.onMapMounted}
-        defaultZoom={15}
+        defaultZoom={8}
         center={props.centerMap}
     >
         <SearchBox
