@@ -10,19 +10,21 @@ import routes from './routes';
 export { routes };
 
 
-const PrivateRoute = ({ user, component: Component, history, loadUser, ...rest }) => {
+const PrivateRoute = ({ user, component: Component, path, history, loadUser, ...rest }) => {
     useEffect(() => {
         (localStorage.getItem('access') && !user.isAuthenticated) && loadUser(history)
     }, [user, history, loadUser]);
 
     return (
         <Route {...rest} render={props =>
-            user.isAuthenticated
-                ? (
+            user.isAuthenticated ?
+                (path !== '/' && path !== '/dashboard') ? (
                     <RouteCustom>
                         <Component {...props} />
                     </RouteCustom>
-                )
+                ) : (
+                        <Component {...props} />
+                    )
                 : (<Redirect
                     to={{
                         pathname: "/signin",

@@ -17,6 +17,7 @@ import localizationReducer from '../pages/Localization/store/ducks';
 import profileReducer from '../pages/Profile/store/ducks';
 
 import scriptingReducer from '../pages/Scripting/store/ducks';
+import dashboardReducer from '../pages/Dashboard/store/ducks';
 
 
 const reducers = combineReducers({
@@ -37,7 +38,8 @@ const reducers = combineReducers({
     localization: localizationReducer,
     profile: profileReducer,
 
-    scripting: scriptingReducer
+    scripting: scriptingReducer,
+    dashboard: dashboardReducer
 });
 
 export default reducers;
