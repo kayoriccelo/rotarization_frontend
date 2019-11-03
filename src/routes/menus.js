@@ -49,10 +49,10 @@ export default [
         icon: (<MapIcon style={{ color: '#24292e' }} fontSize="small" />),
         roles: ['guest', 'admin']
     },
-    {
-        title: 'Configurações',
-        path: '/configuration',
-        icon: (<SettingsApplicationsIcon style={{ color: '#24292e' }} fontSize="small" />),
-        roles: ['guest', 'admin']
-    },
+    // {
+    //     title: 'Configurações',
+    //     path: '/configuration',
+    //     icon: (<SettingsApplicationsIcon style={{ color: '#24292e' }} fontSize="small" />),
+    //     roles: ['guest', 'admin']
+    // },
 ];

@@ -1,7 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-import commonStyles from '../../../../commons/styles';
-
 export default makeStyles({
     root: {
         height: 60,

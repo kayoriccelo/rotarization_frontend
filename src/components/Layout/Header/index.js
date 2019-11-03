@@ -68,7 +68,7 @@ const Header = ({ user, logout, loadUser, history }) => {
                             <ClickAwayListener onClickAway={handleClose}>
                                 <MenuList autoFocusItem={open} onKeyDown={handleListKeyDown} style={{ width: 200 }}>
                                     <MenuItem onClick={event => { history.push('/profile'); handleClose(event)}}>
-                                        <AccountBox fontSize="small"/> <div style={{ fontSize: 14, paddingLeft: 6 }}>Profile</div>
+                                        <AccountBox fontSize="small"/> <div style={{ fontSize: 14, paddingLeft: 6 }}>Perfil</div>
                                     </MenuItem>
                                     <MenuItem onClick={() => logout()}>
                                         <ExitToApp fontSize="small"/> <div style={{ fontSize: 14, paddingLeft: 6 }}>Sair</div>

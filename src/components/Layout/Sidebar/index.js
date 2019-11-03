@@ -19,7 +19,7 @@ export default function Sidebar({ screen, history }) {
 
     return (
         <>
-            <DrawerCustom 
+            <DrawerCustom
                 setOpenDrawer={setOpenDrawer}
                 openDrawer={openDrawer}
             >
@@ -30,16 +30,17 @@ export default function Sidebar({ screen, history }) {
                     justifyContent: 'center',
                     height: 150
                 }}>
-                    <div>
-                        LOGO
-                    </div>
+                    <img
+                        width="60px"
+                        src={require('../../../assets/images/logo.png')}
+                        alt="logo"
+                        style={{paddingBottom: 10}}
+                    />
+
                     {openDrawer && (
                         <>
-                            <div>
-                                Controle de Rotas 
-                            </div>
-                            <div>
-                                KRAS Softwares
+                            <div style={{ display: 'block', fontSize: '100%', fontWeight: 'bold' }}>
+                                Controle de Rotas
                             </div>
                         </>
                     )}
