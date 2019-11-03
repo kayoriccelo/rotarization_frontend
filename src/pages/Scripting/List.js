@@ -24,7 +24,7 @@ export const List = ({ data, page, pageSize, getList, remove, setTitle, history 
     }, [page, pageSize, getList])
 
     useEffect(() => {
-        setTitle({ title: 'Listagem de localizações' });
+        setTitle({ title: 'Listagem de Roteirizaçõees' });
 
         return () => {
             setTitle({ title: '', subTitle: '' });

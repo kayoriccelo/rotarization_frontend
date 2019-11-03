@@ -6,7 +6,7 @@ export default makeStyles({
     root: {
         height: 60,
         width: '100%',
-        background: commonStyles.backgroundColor,
+        background: '#f5f5f5',
         display: 'flex'
     },
     toolBar: {
@@ -17,9 +17,9 @@ export default makeStyles({
         alignItems: 'center',
         justifyContent: 'center',
         padding: '0px 20px 0px 20px',
-        color: 'white',
+        color: '#8c8c8c',
         '&:hover': {
-            backgroundColor: '#384047',
+            backgroundColor: '#d9d9d9',
             cursor: 'pointer'
         },
     },
@@ -27,6 +27,6 @@ export default makeStyles({
         height: 30,
         width: 30,
         margin: 10,
-        backgroundColor: 'white'
+        backgroundColor: '#8c8c8c'
     }
 });

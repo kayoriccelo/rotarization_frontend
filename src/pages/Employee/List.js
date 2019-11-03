@@ -22,7 +22,7 @@ export const List = ({ data, page, pageSize, getList, remove, setTitle, history 
     }, [page, pageSize, getList])
 
     useEffect(() => {
-        setTitle({ title: 'Listagem de funcionários' });
+        setTitle({ title: 'Listagem de Funcionários' });
 
         return () => {
             setTitle({ title: '', subTitle: '' });

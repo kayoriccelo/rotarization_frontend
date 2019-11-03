@@ -27,7 +27,6 @@ const Header = ({ user, logout, loadUser, history }) => {
     const handleClick = event => setOpen(prevOpen => !prevOpen);
 
     const handleClose = event => {
-        console.log(event)
         if (anchorRef.current && anchorRef.current.contains(event.target)) {
             return;
         }
@@ -54,7 +53,7 @@ const Header = ({ user, logout, loadUser, history }) => {
                 onClick={handleClick}
             >
                 <Avatar alt="R" src={`https://pickaface.net/assets/images/slides/slide4.png`} className={avatar} />
-                <div style={{ color: 'white', fontSize: 14 }}>
+                <div style={{ color: '#8c8c8c', fontSize: 11, fontWeight: 'bold' }}>
                     {`${user.first_name} ${user.last_name}`}
                 </div>
                 <ArrowDropDown />
