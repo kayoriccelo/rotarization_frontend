@@ -45,3 +45,10 @@ body {
 .MuiListItemText-root>span {
     font-size: 12px!important;
 }
+
+.MuiAppBar-colorDefault {
+    background-color: white!important;
+    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.2), 
+    0px 0px 0px 0px rgba(0,0,0,0.14), 
+    0px 0px 0px 0px rgba(0,0,0,0.12)!important;
+}

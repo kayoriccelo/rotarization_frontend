@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles({
     content: {
-        display: 'flex'
+        display: 'flex',
     },
     searchOrigin: {
         flex: 1,

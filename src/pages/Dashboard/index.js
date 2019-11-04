@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Card, CardHeader, CircularProgress } from '@material-ui/core';
+import { Card, CircularProgress } from '@material-ui/core';
 import Chart from "react-google-charts";
 
 import { load, setTitle } from './store/ducks';

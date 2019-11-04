@@ -1,21 +1,29 @@
 import React from 'react';
-import { FormControlLabel, Checkbox } from '@material-ui/core';
+import { Grid, FormControlLabel, Checkbox } from '@material-ui/core';
+
+import useStyles from './styles';
 
 
-export default function CheckboxCustom({ fieldName, value, label, handleChange }) {
+export default function CheckboxCustom({ fieldName, value, label, colums, handleChange }) {
+    const { grid } = useStyles();
+
     return (
-        <FormControlLabel
-            control={
-                <Checkbox
-                    checked={value}
-                    onChange={(e) => {
-                        handleChange({ target: { value: e.target.checked } }, fieldName)
-                    }}
-                    value={fieldName}
-                    color="primary"
+        <Grid {...colums}>
+            <div className={grid}>
+                <FormControlLabel
+                    control={
+                        <Checkbox
+                            checked={value}
+                            onChange={(e) => {
+                                handleChange({ target: { value: e.target.checked } }, fieldName)
+                            }}
+                            value={fieldName}
+                            color="primary"
+                        />
+                    }
+                    label={label}
                 />
-            }
-            label={label}
-        />
+            </div>
+        </Grid>
     );
 };

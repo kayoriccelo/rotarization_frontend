@@ -2,11 +2,11 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 
-const useStyles = makeStyles({
-    dateField: {
-        width: 220,
-        paddingRight: 10
+export default makeStyles(theme => ({
+    grid: {
+        padding: theme.spacing(1)
     },
-});
-
-export default useStyles;
+    input: {
+        width: '100%'
+    },
+}));

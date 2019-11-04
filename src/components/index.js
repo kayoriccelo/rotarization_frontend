@@ -16,6 +16,7 @@ import PaginationCustom from './List/Pagination';
 import SelectCustom from './Selects/Select';
 import SelectAsyncCustom from './Selects/SelectAsync';
 import { SearchMarkerMap, DirectionMarkerMap, SearchLocalizationMap } from './Maps';
+import TabCustom from './Tab';
 
 
 export {
@@ -39,5 +40,6 @@ export {
     SelectAsyncCustom,
     SearchMarkerMap,
     DirectionMarkerMap,
-    SearchLocalizationMap
+    SearchLocalizationMap,
+    TabCustom
 };

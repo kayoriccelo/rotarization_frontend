@@ -19,7 +19,8 @@ const Edit = ({ instance, load, save, setTitle, id, history }) => {
     }, [setTitle]);
 
     useEffect(() => {
-        scripting === null && load(id).then(res => setScripting(instance));
+        scripting === null && load(id)
+            .then(res => setScripting(instance));
 
         scripting && setTitle({ subTitle: `${scripting.description}` });
     }, [scripting, instance, id, load, setTitle]);
@@ -48,7 +49,10 @@ const Edit = ({ instance, load, save, setTitle, id, history }) => {
                                 }))
                             );
 
-                            setScripting({ ...instance, localizations: res.data.results });
+                            setScripting({
+                                ...instance,
+                                localizations: res.data.results
+                            });
                         });
                 };
     }, [instance]);
@@ -63,7 +67,10 @@ const Edit = ({ instance, load, save, setTitle, id, history }) => {
             subTitle: `${event.target.value}`
         });
 
-        setScripting({ ...scripting, [name]: event.target.value });
+        setScripting({
+            ...scripting,
+            [name]: event.target.value
+        });
     };
 
     const handleLocalizationChange = value => {

@@ -19,7 +19,9 @@ export default function ListLocalizations({ localizations, handleLocalizationCha
 		api.get('api/v1/localization')
 			.then(res => setOptions(res.data.results));
 
-		localizations && setCheckeds(localizations.map(item => item.id ? item.id : item));
+		localizations && setCheckeds(
+			localizations.map(item => item.id ? item.id : item)
+		);
 	}, [])
 
 	const getItemInList = (item, listItems) => listItems.indexOf(item);
@@ -64,7 +66,11 @@ export default function ListLocalizations({ localizations, handleLocalizationCha
 					<ListItem key={option.id}>
 						<ListItemText
 							id={labelId}
-							primary={<div style={{ fontSize: 11 }}>{option.code} - {option.description} / {option.address}</div>}
+							primary={
+								<div style={{ fontSize: 11 }}>
+									{option.code} - {option.description} / {option.address}
+								</div>
+							}
 						/>
 						<ListItemSecondaryAction>
 							<Checkbox

@@ -1,22 +1,26 @@
 import React from 'react';
-import { TextField } from '@material-ui/core';
+import { Grid, TextField } from '@material-ui/core';
 
 import useStyles from './styles';
 
 
-export default function InputDate({ value, label, handleChange }) {
-    const { dateField } = useStyles();
+export default function InputDate({ value, label, colums, handleChange }) {
+    const { grid, input } = useStyles();
 
     return (
-        <TextField
-            label={label}
-            variant="outlined"
-            type="date"
-            margin="dense"
-            className={dateField}
-            value={value}
-            onChange={handleChange}
-            InputLabelProps={{ shrink: true, }}
-        />
+        <Grid {...colums}>
+            <div className={grid}>
+                <TextField
+                    label={label}
+                    className={input}
+                    variant="outlined"
+                    type="date"
+                    margin="dense"
+                    value={value}
+                    onChange={handleChange}
+                    InputLabelProps={{ shrink: true, }}
+                />
+            </div>
+        </Grid>
     );
 };
