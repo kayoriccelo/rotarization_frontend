@@ -10,7 +10,9 @@ export default function InputDate({ value, label, handleChange }) {
     return (
         <TextField
             label={label}
+            variant="outlined"
             type="date"
+            margin="dense"
             className={dateField}
             value={value}
             onChange={handleChange}

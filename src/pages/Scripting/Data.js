@@ -1,11 +1,16 @@
 import React from 'react';
 
-import { InputText, SearchLocalizationMap, DirectionMarkerMap } from '../../components';
+import {
+    InputText, InputDate, SearchLocalizationMap, DirectionMarkerMap,
+    InputTime, Checkbox
+} from '../../components';
 import ListLocalizations from './ListLocalizations';
+
+import useStyles from './styles';
 
 
 export default function Data(props) {
-
+    const { content, searchOrigin, searchDestiny, map, list } = useStyles();
 
     return (
         <>
@@ -15,8 +20,28 @@ export default function Data(props) {
                 value={props.scripting.description}
                 handleChange={props.handleChange('description')}
             />
-            <div style={{ display: 'flex' }}>
-                <div style={{ flex: 1, padding: '0px 8px 8px 0px', alignItems: 'flex-end' }}>
+            <div className={content}>
+                <InputDate
+                    label="Início"
+                    value={props.scripting.date_initial}
+                    handleChange={props.handleChange('date_initial')}
+                />
+
+                <InputTime
+                    fieldName="hour_initial"
+                    value={props.scripting.hour_initial}
+                    handleChange={props.handleChange('hour_initial')}
+                />
+
+                <Checkbox
+                    label="Concluido"
+                    fieldName="is_completed"
+                    value={props.scripting.is_completed}
+                    handleChange={props.handleChange('is_completed')}
+                />
+            </div>
+            <div className={content}>
+                <div className={searchOrigin}>
                     <SearchLocalizationMap
                         label="Origem"
                         valueInput={props.scripting.origin_address}
@@ -25,7 +50,7 @@ export default function Data(props) {
                         handleChangeAddress={props.handleChange('origin_address')}
                     />
                 </div>
-                <div style={{ flex: 1, padding: '0px 0px 8px 8px', alignItems: 'flex-start' }}>
+                <div className={searchDestiny}>
                     <SearchLocalizationMap
                         label="Destino"
                         valueInput={props.scripting.destiny_address}
@@ -35,8 +60,8 @@ export default function Data(props) {
                     />
                 </div>
             </div>
-            <div style={{ display: 'flex' }}>
-                <div style={{ flex: 5, height: 'calc(78vh - 180px)' }}>
+            <div className={content}>
+                <div className={map}>
                     {props.waypoints && <DirectionMarkerMap
                         waypoints={props.waypoints}
                         origin={{
@@ -53,7 +78,7 @@ export default function Data(props) {
                         }}
                     />}
                 </div>
-                <div style={{ flex: 2, padding: 8 }}>
+                <div className={list}>
                     <ListLocalizations
                         localizations={props.scripting.localizations}
                         handleLocalizationChange={props.handleLocalizationChange}

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
@@ -7,26 +6,12 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Checkbox from '@material-ui/core/Checkbox';
 
 import api from '../../../services/api';
+import useStyles from '../styles';
 
-
-const useStyles = makeStyles(theme => ({
-	root: {
-		width: '100%',
-		boxSizing: `border-box`,
-		border: `1px solid transparent`,
-		height: `100%`,
-		borderRadius: `3px`,
-		// boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
-		fontSize: `14px`,
-		outline: `none`,
-		textOverflow: `ellipses`,
-		overflow: 'auto',
-	},
-}));
 
 
 export default function ListLocalizations({ localizations, handleLocalizationChange }) {
-	const classes = useStyles();
+	const { rootListLocalization } = useStyles();
 	const [checkeds, setCheckeds] = useState([]);
 	const [options, setOptions] = useState([]);
 
@@ -71,7 +56,7 @@ export default function ListLocalizations({ localizations, handleLocalizationCha
 	};
 
 	return (
-		<List dense className={classes.root} subheader={<b>Localizações</b>}>
+		<List dense className={rootListLocalization} subheader={<b>Localizações</b>}>
 			{options.map(option => {
 				const labelId = `checkbox-list-secondary-label-${option.id}`;
 
