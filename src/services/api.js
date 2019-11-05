@@ -2,7 +2,7 @@ import axios from 'axios';
 // import { rota } from '../env';
 
 const api = axios.create({
-    baseURL: 'http://127.0.0.1:8000'
+    baseURL: 'https://apicontrolerotas.herokuapp.com'
 })
 
 api.interceptors.request.use(config => {
@@ -44,7 +44,7 @@ api.interceptors.response.use(
 );
 
 export const apiNotToken = axios.create({
-    baseURL: 'http://127.0.0.1:8000'
+    baseURL: 'https://apicontrolerotas.herokuapp.com'
 });
 
 export default api;
