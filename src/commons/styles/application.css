@@ -4,6 +4,7 @@ body {
 
 /* Alterando ccs dos componentes do Materia UI */
 
+/* Button */
 .MuiListItem-button {
     background: linear-gradient(to right, rgb(247, 247, 247) 0%, rgb(255, 255, 255) 100%);  
 }
@@ -33,7 +34,9 @@ body {
     border-bottom-right-radius: 30px;
     width: 90%;
 }
+/* Button */
 
+/* Menu List */
 .MuiSelect-selectMenu {
     padding: 12px 14px!important;
 }
@@ -52,3 +55,15 @@ body {
     0px 0px 0px 0px rgba(0,0,0,0.14), 
     0px 0px 0px 0px rgba(0,0,0,0.12)!important;
 }
+/* Menu List */
+
+/* Select */
+.makeStyles-formControl-453 > div {
+    margin-left: 8px!important;
+    width: calc(100% - 16px)!important;
+}
+
+.makeStyles-formControl-453 > label {
+    margin-left: 8px!important;
+}
+/* Select */
