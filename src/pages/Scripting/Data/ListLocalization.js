@@ -11,7 +11,7 @@ import useStyles from '../styles';
 
 
 export default function ListLocalizations({ localizations, handleLocalizationChange }) {
-	const { rootListLocalization } = useStyles();
+	const { rootSubList } = useStyles();
 	const [checkeds, setCheckeds] = useState([]);
 	const [options, setOptions] = useState([]);
 
@@ -58,31 +58,40 @@ export default function ListLocalizations({ localizations, handleLocalizationCha
 	};
 
 	return (
-		<List dense className={rootListLocalization} subheader={<b>Localizações</b>}>
-			{options.map(option => {
-				const labelId = `checkbox-list-secondary-label-${option.id}`;
+		<>
+			<div style={{
+				textAlign: 'center',
+				padding: 8,
+				backgroundColor: '#ddd'
+			}}>
+				Localizações
+			</div>
+			<List dense className={rootSubList}>
+				{options.map(option => {
+					const labelId = `checkbox-list-secondary-label-${option.id}`;
 
-				return (
-					<ListItem key={option.id}>
-						<ListItemText
-							id={labelId}
-							primary={
-								<div style={{ fontSize: 11 }}>
-									{option.code} - {option.description} / {option.address}
-								</div>
-							}
-						/>
-						<ListItemSecondaryAction>
-							<Checkbox
-								edge="end"
-								onChange={handleToggle(option.id)}
-								checked={getItemInList(option.id, checkeds) > -1}
-								inputProps={{ 'aria-labelledby': labelId }}
+					return (
+						<ListItem key={option.id}>
+							<ListItemText
+								id={labelId}
+								primary={
+									<div style={{ fontSize: 11 }}>
+										{option.code} - {option.description} / {option.address}
+									</div>
+								}
 							/>
-						</ListItemSecondaryAction>
-					</ListItem>
-				);
-			})}
-		</List>
+							<ListItemSecondaryAction>
+								<Checkbox
+									edge="end"
+									onChange={handleToggle(option.id)}
+									checked={getItemInList(option.id, checkeds) > -1}
+									inputProps={{ 'aria-labelledby': labelId }}
+								/>
+							</ListItemSecondaryAction>
+						</ListItem>
+					);
+				})}
+			</List>
+		</>
 	);
 };

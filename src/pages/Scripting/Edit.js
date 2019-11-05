@@ -45,7 +45,7 @@ const Edit = ({ instance, load, save, setTitle, id, history }) => {
                             setWaypoints(
                                 res.data.results.map(item => ({
                                     location: item.address,
-                                    stopover: false
+                                    // icon: iconUser
                                 }))
                             );
 
@@ -57,6 +57,30 @@ const Edit = ({ instance, load, save, setTitle, id, history }) => {
                 };
     }, [instance]);
 
+    useEffect(() => {
+        if (instance)
+            if (instance.employees)
+                if (instance.employees.length > 0) {
+                    let ids = '';
+                    instance.employees.map(item => {
+                        let itemCount = instance.employees[instance.employees.length - 1];
+                        itemCount = itemCount.id ? itemCount.id : itemCount;
+                        item = item.id ? item.id : item;
+
+                        ids += item;
+                        ids += itemCount !== item ? ',' : '';
+                        return ids;
+                    });
+
+                    api.get(`api/v1/employee/?ids=${ids}`)
+                        .then(res => {
+                            setScripting({
+                                ...instance,
+                                employees: res.data.results
+                            });
+                        });
+                };
+    }, [instance]);
 
     const handleSubmit = () => save(scripting, history);
 
@@ -84,6 +108,10 @@ const Edit = ({ instance, load, save, setTitle, id, history }) => {
         setScripting({ ...scripting, localizations: value });
     };
 
+    const handleEmployeeChange = value => {
+        setScripting({ ...scripting, employees: value });
+    };
+
     return (
         scripting && <FormCustom
             object={scripting}
@@ -98,6 +126,7 @@ const Edit = ({ instance, load, save, setTitle, id, history }) => {
                 waypoints={waypoints}
                 handleChange={handleChange}
                 handleLocalizationChange={handleLocalizationChange}
+                handleEmployeeChange={handleEmployeeChange}
             />
         </FormCustom>
     );

@@ -89,9 +89,9 @@ export default function TableList({ columns, data, actions, path, is_pagination 
                                                 } else if (column.is_status) {
                                                     return (
                                                         <TableCell key="statusItem">
-                                                            {item[column.field] === 'D' && <HighlightOff style={{ color: '#ff9800' }} fontSize="small" />}
+                                                            {item[column.field] === 'D' && <HighlightOff style={{ color: '#f50057' }} fontSize="small" />}
                                                             {item[column.field] === 'P' && <RadioButtonUnchecked style={{ color: '#ff9800' }} fontSize="small" />}
-                                                            {item[column.field] === 'I' && <Adjust style={{ color: '#ff9800' }} fontSize="small" />}
+                                                            {item[column.field] === 'I' && <Adjust style={{ color: '#3f51b5' }} fontSize="small" />}
                                                             {item[column.field] === 'C' && <CheckCircleOutline style={{ color: '#4caf50' }} fontSize="small" />}
                                                         </TableCell>
                                                     )

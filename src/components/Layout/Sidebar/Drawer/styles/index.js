@@ -4,7 +4,7 @@ const useStyles = makeStyles(theme => ({
     drawerPaper: {
         position: 'relative',
         whiteSpace: 'nowrap',
-        width: 280,
+        width: 240,
         height: '100vh',
         transition: theme.transitions.create('width', {
             easing: theme.transitions.easing.sharp,
@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
             width: 55,
         },
         '&:hover': {
-            width: 280,
+            width: 240,
             position: 'absolute'
         }
     },

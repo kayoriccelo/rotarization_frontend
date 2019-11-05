@@ -34,11 +34,11 @@ const DirectionMarkerMap = (props) => {
 
     return (
         directions && <GoogleMap
-            defaultZoom={8}
+            defaultZoom={9}
             defaultCenter={newCenter}
         >
             <DirectionsRenderer directions={directions} />
-            <TrafficLayer />
+            <TrafficLayer autoUpdate/>
         </GoogleMap>
     );
 };

@@ -3,59 +3,68 @@ import { Grid } from '@material-ui/core';
 
 import {
     InputText, InputDate, SearchLocalizationMap, DirectionMarkerMap,
-    InputTime, Checkbox, TabCustom
-} from '../../components';
-import ListLocalizations from './ListLocalizations';
-
-import useStyles from './styles';
+    InputTime, TabCustom
+} from '../../../components';
+import ListLocalization from './ListLocalization';
+import ListEmployee from './ListEmployee';
+import useStyles from '../styles';
 
 
 export default function Data(props) {
-    const { content, searchOrigin, searchDestiny, map, list } = useStyles();
+    const {
+        content, contentLocalization, searchOrigin, searchDestiny,
+        map, listLocalization, listEmployee
+    } = useStyles();
     const { scripting, waypoints, handleChange } = props;
 
     return (
         <TabCustom
             tabsTitle={[
                 { label: 'Geral' },
-                { label: 'Roteirização' },
+                { label: 'Mapa' },
                 { label: 'Funcionários' }
             ]}
         >
-             <Grid container id="geral">
+            <Grid container id="common">
                 <InputText
                     label="Descrição"
-                    colums={{ xs: 7, sm: 7 }}
+                    colums={{ xs: 12, sm: 12 }}
                     maxLength="140"
                     value={scripting.description}
                     handleChange={handleChange('description')}
                 />
 
                 <InputDate
-                    label="Data Início"
-                    colums={{ xs: 3, sm: 3 }}
+                    label="Data do Início"
+                    colums={{ xs: 4, sm: 3 }}
                     value={scripting.date_initial}
                     handleChange={handleChange('date_initial')}
                 />
 
                 <InputTime
-                    label="Hora Início"
+                    label="Hora do Início"
                     fieldName="hour_initial"
-                    colums={{ xs: 2, sm: 2 }}
+                    colums={{ xs: 2, sm: 3 }}
                     value={scripting.hour_initial}
                     handleChange={handleChange('hour_initial')}
                 />
-                
-                <div>
-                    <Checkbox
-                        label="Concluido"
-                        fieldName="is_completed"
-                        value={scripting.is_completed}
-                        handleChange={handleChange('is_completed')}
-                    />
-                </div>
+
+                <InputDate
+                    label="Data da Conclusão"
+                    colums={{ xs: 4, sm: 3 }}
+                    value={scripting.date_final}
+                    handleChange={handleChange('date_final')}
+                />
+
+                <InputTime
+                    label="Hora da Conclusão"
+                    fieldName="hour_final"
+                    colums={{ xs: 2, sm: 3 }}
+                    value={scripting.hour_final}
+                    handleChange={handleChange('hour_final')}
+                />
             </Grid>
-            <div id="localizations">
+            <Grid className={contentLocalization} id="localizations">
                 <div className={content}>
                     <div className={searchOrigin}>
                         <SearchLocalizationMap
@@ -94,17 +103,22 @@ export default function Data(props) {
                             }}
                         />}
                     </div>
-                    <div className={list}>
-                        <ListLocalizations
+                    <div className={listLocalization}>
+                        <ListLocalization
                             localizations={props.scripting.localizations}
                             handleLocalizationChange={props.handleLocalizationChange}
                         />
                     </div>
                 </div>
-            </div>
-            <div id="employees">
-
-            </div>
-        </TabCustom>
+            </Grid>
+            <Grid container id="employees">
+                <div className={listEmployee}>
+                    <ListEmployee
+                        employees={props.scripting.employees}
+                        handleEmployeeChange={props.handleEmployeeChange}
+                    />
+                </div>
+            </Grid>
+        </TabCustom >
     );
 };

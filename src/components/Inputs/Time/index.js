@@ -21,7 +21,7 @@ export default function InputTime({ fieldName, value, label, colums, handleChang
                     variant="outlined"
                     margin="dense"
                     label={label}
-                    onChange={e => handleChange(fieldName)(e)}
+                    onChange={handleChange}
                 />
             </div>
         </Grid>
