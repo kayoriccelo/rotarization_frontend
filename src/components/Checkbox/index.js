@@ -4,11 +4,11 @@ import { Grid, FormControlLabel, Checkbox } from '@material-ui/core';
 import useStyles from './styles';
 
 
-export default function CheckboxCustom({ fieldName, value, label, colums, handleChange }) {
+export default function CheckboxCustom({ fieldName, value, label, columns, handleChange }) {
     const { grid } = useStyles();
 
     return (
-        <Grid {...colums}>
+        <Grid {...columns}>
             <div className={grid}>
                 <FormControlLabel
                     control={
