@@ -4,19 +4,15 @@ import { bindActionCreators } from 'redux';
 import { Button, ClickAwayListener, Grow, Paper, Popper, MenuItem, MenuList } from '@material-ui/core';
 import { ExitToApp, AccountBox, ArrowDropDown } from '@material-ui/icons';
 import Avatar from '@material-ui/core/Avatar';
-import { logout, loadUser } from '../../../auth/store/ducks';
+import { logout } from '../../../auth/store/ducks';
 import useStyles from './styles';
 
 
-const Header = ({ user, logout, loadUser, history }) => {
+const Header = ({ user, logout, history }) => {
     const { root, toolBar, menu, avatar } = useStyles();
     const [open, setOpen] = useState(false);
     const anchorRef = useRef(null);
     const prevOpen = useRef(open);
-
-    useEffect(() => {
-        !user.isAuthenticated && loadUser();
-    }, [user, loadUser]);
 
     useEffect(() => {
         if (prevOpen.current === true && open === false) anchorRef.current.focus();
@@ -84,5 +80,5 @@ const Header = ({ user, logout, loadUser, history }) => {
 };
 
 const mapStateToProps = ({ auth }) => ({ user: auth.user });
-const mapDispatchToProps = (dispatch) => bindActionCreators({ logout, loadUser }, dispatch);
+const mapDispatchToProps = (dispatch) => bindActionCreators({ logout }, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

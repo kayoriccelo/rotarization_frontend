@@ -1,8 +1,9 @@
 import axios from 'axios';
-// import { rota } from '../env';
+import { rota } from './env.js';
+
 
 const api = axios.create({
-    baseURL: 'https://apicontrolerotas.herokuapp.com'
+    baseURL: rota
 })
 
 api.interceptors.request.use(config => {
@@ -44,7 +45,7 @@ api.interceptors.response.use(
 );
 
 export const apiNotToken = axios.create({
-    baseURL: 'https://apicontrolerotas.herokuapp.com'
+    baseURL: rota
 });
 
 export default api;

@@ -32,6 +32,7 @@ export const loadUser = (history) => dispatch => {
                     variant: 'error'
                 }));
             } catch (e) {
+                dispatch(logout());
                 dispatch(showMessage({ open: true, message: 'Not Authorized. ', variant: 'error' }));
             };
         });
