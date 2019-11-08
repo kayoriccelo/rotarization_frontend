@@ -28,7 +28,7 @@ export default function Data(props) {
             <Grid container id="common">
                 <InputText
                     label="Descrição"
-                    colums={{ xs: 12, sm: 12 }}
+                    columns={{ xs: 12, sm: 12 }}
                     maxLength="140"
                     value={scripting.description}
                     handleChange={handleChange('description')}
@@ -36,7 +36,7 @@ export default function Data(props) {
 
                 <InputDate
                     label="Data do Início"
-                    colums={{ xs: 4, sm: 3 }}
+                    columns={{ xs: 4, sm: 3 }}
                     value={scripting.date_initial}
                     handleChange={handleChange('date_initial')}
                 />
@@ -44,14 +44,14 @@ export default function Data(props) {
                 <InputTime
                     label="Hora do Início"
                     fieldName="hour_initial"
-                    colums={{ xs: 2, sm: 3 }}
+                    columns={{ xs: 2, sm: 3 }}
                     value={scripting.hour_initial}
                     handleChange={handleChange('hour_initial')}
                 />
 
                 <InputDate
                     label="Data da Conclusão"
-                    colums={{ xs: 4, sm: 3 }}
+                    columns={{ xs: 4, sm: 3 }}
                     value={scripting.date_final}
                     handleChange={handleChange('date_final')}
                 />
@@ -59,12 +59,12 @@ export default function Data(props) {
                 <InputTime
                     label="Hora da Conclusão"
                     fieldName="hour_final"
-                    colums={{ xs: 2, sm: 3 }}
+                    columns={{ xs: 2, sm: 3 }}
                     value={scripting.hour_final}
                     handleChange={handleChange('hour_final')}
                 />
             </Grid>
-            <Grid className={contentLocalization} id="localizations">
+            <Grid className={contentLocalization} id="map">
                 <div className={content}>
                     <div className={searchOrigin}>
                         <SearchLocalizationMap

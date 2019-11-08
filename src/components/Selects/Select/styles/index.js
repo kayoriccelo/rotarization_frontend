@@ -1,11 +1,11 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 
-const useStyles = makeStyles({
-    selectField: {
-        width: '100%',
-        marginBottom: 10
-    }
-});
-
-export default useStyles;
+export default makeStyles(theme => ({
+    grid: {
+        padding: theme.spacing(1)
+    },
+    select: {
+        width: '100%'
+    },
+}));

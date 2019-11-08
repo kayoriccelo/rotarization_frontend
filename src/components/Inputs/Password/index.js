@@ -6,7 +6,7 @@ import { Grid, TextField, IconButton, InputAdornment } from '@material-ui/core';
 import useStyles from './styles';
 
 
-export default function InputPassword({ label, password, colums, handleChange }) {
+export default function InputPassword({ label, password, columns, handleChange }) {
     const { grid, input } = useStyles();
     const [showPassword, setShowPassword] = useState(false);
 
@@ -14,7 +14,7 @@ export default function InputPassword({ label, password, colums, handleChange })
     const handleMouseDownPassword = event => event.preventDefault();
 
     return (
-        <Grid {...colums} className={grid}>
+        <Grid {...columns} className={grid}>
             <TextField
                 className={input}
                 variant="outlined"

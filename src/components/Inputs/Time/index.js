@@ -4,11 +4,11 @@ import { TextField, Grid } from '@material-ui/core';
 import useStyles from './styles';
 
 
-export default function InputTime({ fieldName, value, label, colums, handleChange }) {
+export default function InputTime({ fieldName, value, label, columns, handleChange }) {
     const { grid, input } = useStyles();
 
     return (
-        <Grid {...colums}>
+        <Grid {...columns}>
             <div className={grid}>
                 <TextField
                     value={value}
