@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Grid } from '@material-ui/core';
 
 import {
     ContainerSign as Container, BannerSign as Banner, Message
@@ -19,8 +20,14 @@ const SignIn = ({ history }) => {
 
     return (
         <Container>
-            {screen.width >= 750 && <Banner />}
-            <Form history={history} />
+            {screen.width >= 750 && (
+                <Grid sm={7} md={8} lg={9}>
+                    <Banner />
+                </Grid>
+            )}
+            <Grid sm={5} md={4} lg={3}>
+                <Form history={history} />
+            </Grid>
             <Message />
         </Container>
     );

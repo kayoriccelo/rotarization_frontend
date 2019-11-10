@@ -16,7 +16,7 @@ export default function Data(props) {
             <Grid container id="common">
                 <InputText
                     label="Código"
-                    columns={{ xs: 4, sm: 4 }}
+                    columns={{ xs: 12, sm: 4 }}
                     maxLength="10"
                     value={props.localization.code}
                     handleChange={props.handleChange('code')}
@@ -24,7 +24,7 @@ export default function Data(props) {
 
                 <InputText
                     label="Descrição"
-                    columns={{ xs: 8, sm: 8 }}
+                    columns={{ xs: 12, sm: 8 }}
                     maxLength="140"
                     value={props.localization.description}
                     handleChange={props.handleChange('description')}
@@ -51,14 +51,14 @@ export default function Data(props) {
 
                     <InputText
                         disabled
-                        columns={{ xs: 6, sm: 6 }}
+                        columns={{ xs: 12, sm: 6 }}
                         label="Latitude"
                         value={props.localization.latitude}
                     />
 
                     <InputText
                         disabled
-                        columns={{ xs: 6, sm: 6 }}
+                        columns={{ xs: 12, sm: 6 }}
                         label="Longitude"
                         value={props.localization.longitude}
                     />

@@ -8,14 +8,13 @@ import menus from '../../../routes/menus';
 import useStyles from './styles';
 
 
-export default function Sidebar({ screen, history }) {
-    const { menu, subMenu } = useStyles();
+export default function Sidebar({ screen, history, openDrawer, setOpenDrawer }) {
+    const { menu, subMenu, contentLogo, labelLogo } = useStyles();
     const [openMenu, setOpenMenu] = useState(true);
-    const [openDrawer, setOpenDrawer] = useState(false);
 
     useEffect(() => {
         setOpenDrawer(screen.width > 500);
-    }, [screen]);
+    }, [screen, setOpenDrawer]);
 
     return (
         <>
@@ -23,26 +22,18 @@ export default function Sidebar({ screen, history }) {
                 setOpenDrawer={setOpenDrawer}
                 openDrawer={openDrawer}
             >
-                <div style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    height: 150
-                }}>
+                <div className={contentLogo}>
                     <img
                         width="60px"
                         src={require('../../../assets/images/logo.png')}
                         alt="logo"
-                        style={{paddingBottom: 10}}
+                        style={{ paddingBottom: 10 }}
                     />
 
                     {openDrawer && (
-                        <>
-                            <div style={{ display: 'block', fontSize: '100%', fontWeight: 'bold' }}>
-                                Controle de Rotas
-                            </div>
-                        </>
+                        <div className={labelLogo}>
+                            Controle de Rotas
+                        </div>
                     )}
                 </div>
                 <ListCustom>

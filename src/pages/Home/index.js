@@ -13,8 +13,8 @@ import useStyles from './styles';
 import { loadUser } from '../../auth/store/ducks';
 
 export function Home({ user, history, loadUser }) {
-    const { root, main } = useStyles();
     const [screen, setScreen] = useState({ width: 0 });
+    const [openDrawer, setOpenDrawer] = useState(false);
 
     useEffect(() => {
         updateDimensions(setScreen)();
@@ -24,9 +24,16 @@ export function Home({ user, history, loadUser }) {
         return () => window.removeEventListener('resize', updateDimensions(setScreen))
     }, [loadUser]);
 
+    const { root, main } = useStyles(openDrawer);
+
     return (
         user.isAuthenticated && <div className={root}>
-            <Sidebar history={history} screen={screen} />
+            <Sidebar 
+                history={history} 
+                screen={screen} 
+                openDrawer={openDrawer}
+                setOpenDrawer={setOpenDrawer}
+            />
 
             <div className={main}>
                 <Header history={history} />

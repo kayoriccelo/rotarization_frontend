@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Grid } from '@material-ui/core';
 
 import { InputText, InputPassword, Submit, ButtonLink } from '../../components';
 import useStyles from './styles';
@@ -42,47 +43,56 @@ const Form = ({ history, register }) => {
             </div>
 
             <div className={formContent}>
-                <InputText
-                    label="Primeiro Nome"
-                    value={values['first_name']}
-                    handleChange={handleChange('first_name')}
-                />
+                <Grid container id="data">
+                    <InputText
+                        label="Primeiro Nome"
+                        columns={{ xs: 6 }}
+                        value={values['first_name']}
+                        handleChange={handleChange('first_name')}
+                    />
 
-                <InputText
-                    label="Último Nome"
-                    value={values['last_name']}
-                    handleChange={handleChange('last_name')}
-                />
+                    <InputText
+                        label="Último Nome"
+                        columns={{ xs: 6 }}
+                        value={values['last_name']}
+                        handleChange={handleChange('last_name')}
+                    />
 
-                <InputText
-                    label="Cpf"
-                    value={values['cpf']}
-                    handleChange={handleChange('cpf')}
-                />
+                    <InputText
+                        label="Cpf"
+                        columns={{ xs: 12 }}
+                        value={values['cpf']}
+                        handleChange={handleChange('cpf')}
+                    />
 
-                <InputText
-                    label="Email"
-                    value={values['email']}
-                    handleChange={handleChange('email')}
-                />
+                    <InputText
+                        label="Email"
+                        columns={{ xs: 12 }}
+                        value={values['email']}
+                        handleChange={handleChange('email')}
+                    />
 
-                <InputText
-                    label="Usuário"
-                    value={values['username']}
-                    handleChange={handleChange('username')}
-                />
+                    <InputText
+                        label="Usuário"
+                        columns={{ xs: 12 }}
+                        value={values['username']}
+                        handleChange={handleChange('username')}
+                    />
 
-                <InputPassword
-                    label="Senha"
-                    password={values['password']}
-                    handleChange={handleChange('password')}
-                />
+                    <InputPassword
+                        label="Senha"
+                        columns={{ xs: 12 }}
+                        password={values['password']}
+                        handleChange={handleChange('password')}
+                    />
 
-                <InputPassword
-                    label="Confirmar Senha"
-                    password={values['confirm_password']}
-                    handleChange={handleChange('confirm_password')}
-                />
+                    <InputPassword
+                        label="Confirmar Senha"
+                        columns={{ xs: 12 }}
+                        password={values['confirm_password']}
+                        handleChange={handleChange('confirm_password')}
+                    />
+                </Grid>
             </div>
 
             <Submit

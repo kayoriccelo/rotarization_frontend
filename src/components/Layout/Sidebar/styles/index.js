@@ -9,5 +9,17 @@ export default makeStyles({
     subMenu: {
         paddingLeft: 20,
         height: 35
+    },
+    contentLogo: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: 150
+    },
+    labelLogo: {
+        display: 'block', 
+        fontSize: '100%', 
+        fontWeight: 'bold' 
     }
 });

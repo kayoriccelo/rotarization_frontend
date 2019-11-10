@@ -36,7 +36,7 @@ export default function Data(props) {
 
                 <InputDate
                     label="Data do Início"
-                    columns={{ xs: 4, sm: 3 }}
+                    columns={{ xs: 12, sm: 6, md: 3 }}
                     value={scripting.date_initial}
                     handleChange={handleChange('date_initial')}
                 />
@@ -44,14 +44,14 @@ export default function Data(props) {
                 <InputTime
                     label="Hora do Início"
                     fieldName="hour_initial"
-                    columns={{ xs: 2, sm: 3 }}
+                    columns={{ xs: 12, sm: 6, md: 3 }}
                     value={scripting.hour_initial}
                     handleChange={handleChange('hour_initial')}
                 />
 
                 <InputDate
                     label="Data da Conclusão"
-                    columns={{ xs: 4, sm: 3 }}
+                    columns={{ xs: 12, sm: 6, md: 3 }}
                     value={scripting.date_final}
                     handleChange={handleChange('date_final')}
                 />
@@ -59,7 +59,7 @@ export default function Data(props) {
                 <InputTime
                     label="Hora da Conclusão"
                     fieldName="hour_final"
-                    columns={{ xs: 2, sm: 3 }}
+                    columns={{ xs: 12, sm: 6, md: 3 }}
                     value={scripting.hour_final}
                     handleChange={handleChange('hour_final')}
                 />

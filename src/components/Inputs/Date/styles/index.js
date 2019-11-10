@@ -2,11 +2,11 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 
-export default makeStyles(theme => ({
+export default makeStyles({
     grid: {
-        padding: theme.spacing(1)
+        padding: '0px 8px'
     },
     input: {
         width: '100%'
     },
-}));
+});

@@ -4,8 +4,10 @@ import { bindActionCreators } from 'redux';
 import { Button, ClickAwayListener, Grow, Paper, Popper, MenuItem, MenuList } from '@material-ui/core';
 import { ExitToApp, AccountBox, ArrowDropDown } from '@material-ui/icons';
 import Avatar from '@material-ui/core/Avatar';
+
 import { logout } from '../../../auth/store/ducks';
 import useStyles from './styles';
+import profile from '../../../assets/images/profile.png';
 
 
 const Header = ({ user, logout, history }) => {
@@ -48,7 +50,7 @@ const Header = ({ user, logout, history }) => {
                 aria-haspopup="true"
                 onClick={handleClick}
             >
-                <Avatar alt="R" src={`https://pickaface.net/assets/images/slides/slide4.png`} className={avatar} />
+                <Avatar alt="R" src={profile} className={avatar} />
                 <div style={{ color: '#404040', fontSize: 10, fontWeight: 'bold' }}>
                     {`${user.first_name} ${user.last_name}`}
                 </div>

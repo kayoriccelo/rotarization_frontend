@@ -1,23 +1,18 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-import commonStyles from '../../../commons/styles';
 
-const useStyles = makeStyles({
+export default makeStyles({
     root: {
         display: 'flex',
         height: '100vh',
         width: '100%'
     },
-    main: {
+    main: openDrawer => ({
         display: 'flex',
         flexDirection: 'column',
         height: '100vh',
-        width: '100%',
-        backgroundColor: commonStyles.primaryColor,
-        '&:hover': {
-            width: 'calc(100% - 51px)',
-        }
-    }
+        width: openDrawer ? 'calc(100% - 241px)' : 'calc(100% - 51px)',
+        marginLeft: openDrawer ? 0 : 51,
+        position: openDrawer ? 'relative' : 'absolute',
+    })
 });
-
-export default useStyles;

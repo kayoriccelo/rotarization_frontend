@@ -2,7 +2,6 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles({
     form: {
-        flex: 3,
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
@@ -10,6 +9,6 @@ export default makeStyles({
         justifyContent: 'center'
     },
     formContent: {
-        width: '80%',
+        width: '90%',
     }
 });

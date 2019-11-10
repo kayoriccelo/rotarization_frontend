@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Grid } from '@material-ui/core';
 
 import { InputText, InputPassword, Submit, ButtonLink } from '../../components';
 import useStyles from './styles';
@@ -37,17 +38,21 @@ const Form = ({ history, login }) => {
             </div>
 
             <div className={formContent}>
-                <InputText
-                    label="Usuário"
-                    value={values['username']}
-                    handleChange={handleChange('username')}
-                />
+                <Grid container id="data">
+                    <InputText
+                        label="Usuário"
+                        columns={{ xs: 12 }}
+                        value={values['username']}
+                        handleChange={handleChange('username')}
+                    />
 
-                <InputPassword
-                    label="Senha"
-                    password={values['password']}
-                    handleChange={handleChange('password')}
-                />
+                    <InputPassword
+                        label="Senha"
+                        columns={{ xs: 12 }}
+                        password={values['password']}
+                        handleChange={handleChange('password')}
+                    />
+                </Grid>
             </div>
 
             <Submit
