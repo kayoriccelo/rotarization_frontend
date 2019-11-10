@@ -18,11 +18,15 @@ export default function ListLocalizations({ localizations, handleLocalizationCha
 	useEffect(() => {
 		api.get('api/v1/localization')
 			.then(res => setOptions(res.data.results));
+	}, []);
 
+	useEffect(() => {
 		localizations && setCheckeds(
 			localizations.map(item => item.id ? item.id : item)
 		);
-	}, [])
+
+		return () => setCheckeds([]);
+	}, [localizations, setCheckeds]);
 
 	const getItemInList = (item, listItems) => listItems.indexOf(item);
 

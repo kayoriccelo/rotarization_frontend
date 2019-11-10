@@ -23,7 +23,7 @@ export const Form = ({ instance, load, update, loadUser, setTitle, showMessage, 
         profile && setTitle({
             subTitle: `${profile.first_name} ${profile.last_name}`
         });
-    }, [profile, instance, load]);
+    }, [profile, instance, load, setTitle]);
 
     const handleChange = name => event => {
         setProfile({ ...profile, [name]: event.target.value });

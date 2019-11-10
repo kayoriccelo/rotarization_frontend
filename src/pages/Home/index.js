@@ -22,7 +22,7 @@ export function Home({ user, history, loadUser }) {
         loadUser();
 
         return () => window.removeEventListener('resize', updateDimensions(setScreen))
-    }, []);
+    }, [loadUser]);
 
     return (
         user.isAuthenticated && <div className={root}>

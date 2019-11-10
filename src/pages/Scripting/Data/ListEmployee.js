@@ -18,11 +18,15 @@ export default function ListEmployee({ employees, handleEmployeeChange }) {
     useEffect(() => {
         api.get('api/v1/employee')
             .then(res => setOptions(res.data.results));
+    }, []);
 
+    useEffect(() => {
         employees && setCheckeds(
             employees.map(item => item.id ? item.id : item)
         );
-    }, [])
+
+        return () => setCheckeds([]);
+    }, [employees, setCheckeds]);
 
     const getItemInList = (item, listItems) => listItems.indexOf(item);
 
