@@ -13,7 +13,10 @@ const useStyles = makeStyles({
         flexDirection: 'column',
         height: '100vh',
         width: '100%',
-        backgroundColor: commonStyles.primaryColor
+        backgroundColor: commonStyles.primaryColor,
+        '&:hover': {
+            width: 'calc(100% - 51px)',
+        }
     }
 });
 

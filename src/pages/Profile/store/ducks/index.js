@@ -1,9 +1,10 @@
 import { setTitle } from '../../../../components/Route/store/ducks';
 import { showMessage } from '../../../../components/Message/store/ducks';
+import { loadUser } from '../../../../auth/store/ducks';
 import { loadDefault, saveDefault } from '../../../../commons/store/ducks/actions';
 
 
-export { setTitle, showMessage };
+export { setTitle, showMessage, loadUser };
 
 export const Types = {
     GET: 'profile/GET',

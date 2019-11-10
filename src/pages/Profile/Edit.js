@@ -3,21 +3,25 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { FormCustom, InputText, InputPassword } from '../../components';
-import { load, update, setTitle, showMessage } from './store/ducks';
+import * as Actions from './store/ducks';
 
 
-export const Form = ({ instance, load, update, setTitle, showMessage, history }) => {
+export const Form = ({ instance, load, update, loadUser, setTitle, showMessage, history }) => {
     const [profile, setProfile] = useState(null);
 
     useEffect(() => {
-        profile && setTitle(`${profile.first_name} ${profile.last_name}`);
+        setTitle({ title: 'Perfil' });
 
         return () => setTitle('');
-    }, [profile, setTitle]);
+    }, [setTitle]);
 
     useEffect(() => {
         profile === null && load().then(res => {
             profile !== instance && setProfile(instance);
+        });
+
+        profile && setTitle({
+            subTitle: `${profile.first_name} ${profile.last_name}`
         });
     }, [profile, instance, load]);
 
@@ -29,8 +33,16 @@ export const Form = ({ instance, load, update, setTitle, showMessage, history })
     const handleSubmit = () => {
         if (profile.new_password && profile.new_password === profile.confirm_password) {
             update(profile, history);
+        } else if (!profile.new_password && !profile.confirm_password) {
+            delete profile.new_password;
+            delete profile.confirm_password;
+            update(profile, history).then(res => loadUser());
         } else {
-            showMessage({ open: true, message: 'Senhas não informadas ou inválidas.', variant: 'error' });
+            showMessage({
+                open: true,
+                message: 'Senhas não informadas ou inválidas.',
+                variant: 'error'
+            });
         };
     };
 
@@ -76,5 +88,5 @@ export const Form = ({ instance, load, update, setTitle, showMessage, history })
 };
 
 const mapStateToProps = ({ profile }) => ({ instance: profile.instance });
-const mapDispatchToProps = (dispatch) => bindActionCreators({ load, update, setTitle, showMessage }, dispatch);
+const mapDispatchToProps = (dispatch) => bindActionCreators(Actions, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(Form);
