@@ -5,19 +5,17 @@ import useStyles from './styles';
 
 
 export default function Submit({ label, onSubmit }) {
-    const { grid, div, button } = useStyles();
+    const { grid, button } = useStyles();
 
     return (
         <Grid className={grid}>
-            <div className={div}>
-                <Button
-                    variant="contained"
-                    className={button}
-                    onClick={() => onSubmit()}
-                >
-                    {label}
-                </Button>
-            </div>
+            <Button
+                variant="contained"
+                className={button}
+                onClick={() => onSubmit()}
+            >
+                {label}
+            </Button>
         </Grid>
     );
 };

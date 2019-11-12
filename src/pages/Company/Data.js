@@ -1,42 +1,43 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
 
-import { maskCpf, maskPhone } from '../../commons/useful';
+
+import { maskCnpj, maskPhone } from '../../commons/useful';
 import { InputText } from '../../components';
 
 
-export default function Data({ employee, handleChange }) {
+export default function Data({ company, handleChange }) {
     return (
         <Grid container id="common">
             <InputText
-                label="Cpf"
+                label="Cnpj"
                 columns={{ md: 4, xs: 12 }}
-                maxLength="14"
-                value={maskCpf(employee.cpf)}
-                handleChange={handleChange('cpf')}
+                maxLength="18"
+                value={maskCnpj(company.cnpj)}
+                handleChange={handleChange('cnpj')}
             />
 
             <InputText
-                label="Nome"
+                label="Razão social"
                 columns={{ md: 8, xs: 12 }}
                 maxLength="140"
-                value={employee.name}
-                handleChange={handleChange('name')}
+                value={company.business_name}
+                handleChange={handleChange('business_name')}
             />
 
             <InputText
                 label="Email"
                 columns={{ md: 8, xs: 12 }}
-                maxLength="140"
-                value={employee.email}
+                maxLength="100"
+                value={company.email}
                 handleChange={handleChange('email')}
             />
 
             <InputText
                 label="Telefone"
                 columns={{ md: 4, xs: 12 }}
-                maxLength="11"
-                value={maskPhone(employee.phone)}
+                maxLength="15"
+                value={maskPhone(company.phone)}
                 handleChange={handleChange('phone')}
             />
         </Grid>

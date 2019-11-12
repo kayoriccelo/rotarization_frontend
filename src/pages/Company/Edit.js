@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { maskCnpj, maskPhone } from '../../commons/useful';
-import { FormCustom, InputText } from '../../components';
+import { FormCustom } from '../../components';
+import Data from './Data';
 import { load, save, setTitle } from './store/ducks';
 
 
@@ -48,32 +48,9 @@ const EditCompany = ({ load, save, setTitle, history }) => {
                 subTitle: `${company.cnpj} - ${company.business_name}`
             })}
         >
-            <InputText
-                label="Cnpj"
-                maxLength="18"
-                value={maskCnpj(company.cnpj)}
-                handleChange={handleChange('cnpj')}
-            />
-
-            <InputText
-                label="Razão social"
-                maxLength="140"
-                value={company.business_name}
-                handleChange={handleChange('business_name')}
-            />
-
-            <InputText
-                label="Email"
-                maxLength="100"
-                value={company.email}
-                handleChange={handleChange('email')}
-            />
-
-            <InputText
-                label="Telefone"
-                maxLength="15"
-                value={maskPhone(company.phone)}
-                handleChange={handleChange('phone')}
+            <Data
+                company={company}
+                handleChange={handleChange}
             />
         </FormCustom>
     );

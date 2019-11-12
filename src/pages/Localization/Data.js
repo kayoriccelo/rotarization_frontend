@@ -13,7 +13,7 @@ export default function Data(props) {
                 { label: 'Mapa' }
             ]}
         >
-            <Grid container id="common">
+            <Grid container id="common" style={{ marginTop: 10 }}>
                 <InputText
                     label="Código"
                     columns={{ xs: 12, sm: 4 }}
@@ -40,7 +40,7 @@ export default function Data(props) {
                     handleChange={props.handleChange("client")}
                 />
             </Grid>
-            <Grid id="map">
+            <Grid id="map" style={{ marginTop: 10 }}>
                 <Grid container id="map-information">
                     <InputText
                         disabled
@@ -63,7 +63,7 @@ export default function Data(props) {
                         value={props.localization.longitude}
                     />
                 </Grid>
-                <div style={{ padding: 8}}>
+                <div style={{ padding: '8px 4px' }}>
                     <SearchMarkerMap
                         values={props.localization}
                         handleLatitude={value => {

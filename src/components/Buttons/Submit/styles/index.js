@@ -5,10 +5,8 @@ import commonStyles from '../../../../commons/styles';
 
 export default makeStyles(theme => ({
     grid: {
-        width: '90%'
-    },
-    div: {
-        margin: theme.spacing(1)
+        width: '88%',
+        margin: '0px 4px'
     },
     button: {
         marginTop: 20,

@@ -25,7 +25,7 @@ export default function Data(props) {
                 { label: 'Funcionários' }
             ]}
         >
-            <Grid container id="common">
+            <Grid container id="common" style={{ marginTop: 10 }}>
                 <InputText
                     label="Descrição"
                     columns={{ xs: 12, sm: 12 }}
@@ -64,7 +64,7 @@ export default function Data(props) {
                     handleChange={handleChange('hour_final')}
                 />
             </Grid>
-            <Grid className={contentLocalization} id="map">
+            <Grid className={contentLocalization} id="map" style={{ marginTop: 10 }}>
                 <div className={content}>
                     <div className={searchOrigin}>
                         <SearchLocalizationMap
@@ -111,7 +111,7 @@ export default function Data(props) {
                     </div>
                 </div>
             </Grid>
-            <Grid container id="employees">
+            <Grid container id="employees" style={{ marginTop: 10 }}>
                 <div className={listEmployee}>
                     <ListEmployee
                         employees={props.scripting.employees}
