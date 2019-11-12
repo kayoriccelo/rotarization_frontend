@@ -2,20 +2,21 @@
 import React, { useState, useEffect } from 'react';
 import { withProps } from "recompose";
 import {
-    withScriptjs, withGoogleMap, GoogleMap, DirectionsRenderer, TrafficLayer
+    withScriptjs, withGoogleMap, GoogleMap, DirectionsRenderer, TrafficLayer, Marker
 } from "react-google-maps";
 
 import key from '../key';
+import api from '../../../services/api';
 
 
 const DirectionMarkerMap = (props) => {
     const [directions, setDirections] = useState(null);
     const newCenter = !props.center.lat ? { lat: -3.71839, lng: -38.5434 } : props.center;
-        
+
     useEffect(() => {
         const newOrigin = !props.origin.lat ? { lat: -3.71839, lng: -38.5434 } : props.origin;
         const newDistiny = !props.destiny.lat ? { lat: -3.71839, lng: -38.5434 } : props.destiny;
-    
+
         const directionsService = new google.maps.DirectionsService();
 
         directionsService.route({
@@ -32,13 +33,42 @@ const DirectionMarkerMap = (props) => {
         });
     }, [props]);
 
+    const [localizations, setLocalizations] = useState([]);
+
+    useEffect(() => {
+        api.get('api/v1/localization')
+            .then(res => setLocalizations(res.data.results));
+    }, []);
+
+
     return (
         directions && <GoogleMap
             defaultZoom={9}
             defaultCenter={newCenter}
         >
             <DirectionsRenderer directions={directions} />
-            <TrafficLayer autoUpdate/>
+            <TrafficLayer autoUpdate />
+            {localizations.map(localization => {
+                let is_exist = false;
+
+                props.waypoints.map(waypoint => {
+                    if (localization.address === waypoint.location) {
+                        is_exist = true;
+                    }
+
+                    return is_exist;
+                })
+
+                if (!is_exist)
+                    return (
+                        <Marker
+                            style={{background: '#ddd'}}
+                            position={{ lat: parseFloat(localization.latitude), lng: parseFloat(localization.longitude) }}
+                        />
+                    )
+
+                return <></>;
+            })}
         </GoogleMap>
     );
 };
