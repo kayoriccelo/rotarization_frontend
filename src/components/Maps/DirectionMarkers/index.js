@@ -7,6 +7,7 @@ import {
 
 import key from '../key';
 import api from '../../../services/api';
+import markerPedding from '../../../assets/images/marker-pedding-p.png'
 
 
 const DirectionMarkerMap = (props) => {
@@ -36,7 +37,7 @@ const DirectionMarkerMap = (props) => {
     const [localizations, setLocalizations] = useState([]);
 
     useEffect(() => {
-        api.get('api/v1/localization')
+        api.get('v1/localization')
             .then(res => setLocalizations(res.data.results));
     }, []);
 
@@ -62,6 +63,7 @@ const DirectionMarkerMap = (props) => {
                 if (!is_exist)
                     return (
                         <Marker
+                            icon={markerPedding}
                             style={{background: '#ddd'}}
                             position={{ lat: parseFloat(localization.latitude), lng: parseFloat(localization.longitude) }}
                         />

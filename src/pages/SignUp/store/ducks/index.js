@@ -7,7 +7,7 @@ const Types = {
 };
 
 export const register = (values, history) => dispatch => {
-    return apiNotToken.post('api/v1/usercreate/', values)
+    return apiNotToken.post('v1/usercreate/', values)
         .then(res => {
             history.push('/signin');
             dispatch(showMessage({

@@ -6,7 +6,7 @@ export const getListDefault = (search, page, pageSize, model, type) => dispatch 
     search = search !== '' ? `?search=${search}&` : `?`;
     search += `page=${page + 1}&page_size=${pageSize}`
 
-    return api.get(`api/v1/${model}${search}`)
+    return api.get(`v1/${model}${search}`)
         .then(res => {
             dispatch({
                 type,
@@ -18,7 +18,7 @@ export const getListDefault = (search, page, pageSize, model, type) => dispatch 
 };
 
 export const loadDefault = (id, model, type) => dispatch => {
-    return api.get(`api/v1/${model}?id=${id}`)
+    return api.get(`v1/${model}?id=${id}`)
         .then(res => {
             const payload = res.data.results ? res.data.results[0] : res.data
             
@@ -39,7 +39,7 @@ export const saveDefault = (instance, model, type, history, path) => dispatch =>
         ? { method: api.put, url: `${instance.id}/` } 
         : { method: api.post, url: '' };
 
-    return crud.method(`api/v1/${model}/${crud['url']}`, instance)
+    return crud.method(`v1/${model}/${crud['url']}`, instance)
         .then(res => {
             dispatch({
                 type,
@@ -71,7 +71,7 @@ export const saveDefault = (instance, model, type, history, path) => dispatch =>
 };
 
 export const removeDefault = (id, model, dispatchs) => dispatch => {
-    return api.delete(`api/v1/${model}/${id}`).then(res => {
+    return api.delete(`v1/${model}/${id}`).then(res => {
         dispatchs.map(item => dispatch(item));
         dispatch(showMessage({
             open: true,

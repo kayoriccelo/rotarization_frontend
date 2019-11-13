@@ -33,7 +33,7 @@ export default function Data(props) {
                 <SelectAsyncCustom
                     label="Cliente"
                     columns={{ xs: 12, sm: 12 }}
-                    url="/api/v1/client"
+                    url="v1/client"
                     values={props.localization}
                     fieldName="client"
                     displayName="business_name"

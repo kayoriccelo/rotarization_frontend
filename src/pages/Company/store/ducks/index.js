@@ -12,7 +12,7 @@ const Types = {
 export { setTitle };
 
 export const load = () => dispatch => {
-    return api.get('api/v1/company')
+    return api.get('v1/company')
         .then(res => {
             const payload = res.data.results[0];
 

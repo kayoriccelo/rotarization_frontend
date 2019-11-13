@@ -16,7 +16,7 @@ export default function ListLocalizations({ localizations, handleLocalizationCha
 	const [options, setOptions] = useState([]);
 
 	useEffect(() => {
-		api.get('api/v1/localization')
+		api.get('v1/localization')
 			.then(res => setOptions(res.data.results));
 	}, []);
 

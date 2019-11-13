@@ -16,7 +16,7 @@ export default function ListEmployee({ employees, handleEmployeeChange }) {
     const [options, setOptions] = useState([]);
 
     useEffect(() => {
-        api.get('api/v1/employee')
+        api.get('v1/employee')
             .then(res => setOptions(res.data.results));
     }, []);
 

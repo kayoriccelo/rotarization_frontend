@@ -11,7 +11,7 @@ export const Types = {
 
 export function load() {
     return dispatch => {
-        return api.get('/api/v1/dashboard/').then(res => {
+        return api.get('v1/dashboard/').then(res => {
             dispatch({ type: Types.LOAD, payload: res.data })
         }, error => {
             try {

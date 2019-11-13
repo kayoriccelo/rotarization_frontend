@@ -10,7 +10,7 @@ export const Types = {
 };
 
 export const loadUser = (history) => dispatch => {
-    return api.get('/api/v1/user/')
+    return api.get('v1/user/')
         .then(res => {
             const user = res.data.results[0];
 

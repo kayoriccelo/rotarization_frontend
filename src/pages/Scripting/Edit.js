@@ -40,7 +40,7 @@ const Edit = ({ instance, load, save, setTitle, id, history }) => {
                         return ids;
                     });
 
-                    api.get(`api/v1/localization/?ids=${ids}`)
+                    api.get(`v1/localization/?ids=${ids}`)
                         .then(res => {
                             setWaypoints(
                                 res.data.results.map(item => ({
@@ -72,7 +72,7 @@ const Edit = ({ instance, load, save, setTitle, id, history }) => {
                         return ids;
                     });
 
-                    api.get(`api/v1/employee/?ids=${ids}`)
+                    api.get(`v1/employee/?ids=${ids}`)
                         .then(res => {
                             setScripting({
                                 ...instance,
