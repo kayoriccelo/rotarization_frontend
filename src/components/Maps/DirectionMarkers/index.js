@@ -7,7 +7,7 @@ import {
 
 import key from '../key';
 import api from '../../../services/api';
-import markerPedding from '../../../assets/images/marker-pedding-p.png'
+import markerPedding from '../../../assets/images/marker-inative-p.png'
 
 
 const DirectionMarkerMap = (props) => {
