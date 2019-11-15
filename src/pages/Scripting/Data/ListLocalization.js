@@ -11,7 +11,7 @@ import useStyles from '../styles';
 
 
 export default function ListLocalizations({ localizations, handleLocalizationChange }) {
-	const { rootSubList } = useStyles();
+	const styles = useStyles();
 	const [checkeds, setCheckeds] = useState([]);
 	const [options, setOptions] = useState([]);
 
@@ -70,7 +70,7 @@ export default function ListLocalizations({ localizations, handleLocalizationCha
 			}}>
 				Localizações
 			</div>
-			<List dense className={rootSubList}>
+			<List dense className={styles.rootSubList}>
 				{options.map(option => {
 					const labelId = `checkbox-list-secondary-label-${option.id}`;
 
@@ -80,7 +80,7 @@ export default function ListLocalizations({ localizations, handleLocalizationCha
 								id={labelId}
 								primary={
 									<div style={{ fontSize: 11 }}>
-										{option.code} - {option.description} / {option.address}
+										{option.code} - {option.description}
 									</div>
 								}
 							/>

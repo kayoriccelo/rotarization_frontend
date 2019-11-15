@@ -7,13 +7,13 @@ const useStyles = makeStyles({
         margin: 2
     },
     card: {
-        height: window.innerWidth <= 780 ? `calc(60vh - 100px)` : `calc(100vh - 280px)`,
-        minWidth:  window.innerWidth <= 780 ? 100 : 450,
+        height: 'calc(100vh - 280px)',
+        minWidth:  'calc(100vh - 180px)',
         overflow: 'auto'
     },
     cardNotPagination: {
-        height: window.innerWidth <= 780 ? `calc(60vh - 220px)` : `calc(100vh - 280px)`,
-        minWidth: window.innerWidth <= 780 ? 100 : 450,
+        height: 'calc(100vh - 280px)',
+        minWidth: 'calc(100vh - 180px)',
         overflowX: 'auto',
         overflowY: 'visible'
     },

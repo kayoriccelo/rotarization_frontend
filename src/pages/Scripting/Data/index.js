@@ -11,10 +11,7 @@ import useStyles from '../styles';
 
 
 export default function Data(props) {
-    const {
-        content, contentLocalization, searchOrigin, searchDestiny,
-        map, listLocalization, listEmployee
-    } = useStyles();
+    const styles = useStyles();
     const { scripting, waypoints, handleChange } = props;
 
     return (
@@ -25,7 +22,7 @@ export default function Data(props) {
                 { label: 'Funcionários' }
             ]}
         >
-            <Grid container id="common" style={{ marginTop: 10 }}>
+            <Grid container id="common" className={styles.container}>
                 <InputText
                     label="Descrição"
                     columns={{ xs: 12, sm: 12 }}
@@ -64,9 +61,9 @@ export default function Data(props) {
                     handleChange={handleChange('hour_final')}
                 />
             </Grid>
-            <Grid className={contentLocalization} id="map" style={{ marginTop: 10 }}>
-                <div className={content}>
-                    <div className={searchOrigin}>
+            <Grid className={styles.container} id="map">
+                <div className={styles.content}>
+                    <div className={styles.searchOrigin}>
                         <SearchLocalizationMap
                             label="Origem"
                             valueInput={scripting.origin_address}
@@ -75,7 +72,7 @@ export default function Data(props) {
                             handleChangeAddress={handleChange('origin_address')}
                         />
                     </div>
-                    <div className={searchDestiny}>
+                    <div className={styles.searchDestiny}>
                         <SearchLocalizationMap
                             label="Destino"
                             valueInput={scripting.destiny_address}
@@ -85,8 +82,8 @@ export default function Data(props) {
                         />
                     </div>
                 </div>
-                <div className={content}>
-                    <div className={map}>
+                <div className={styles.content}>
+                    <div className={styles.map}>
                         {waypoints && <DirectionMarkerMap
                             waypoints={waypoints}
                             origin={{
@@ -103,7 +100,7 @@ export default function Data(props) {
                             }}
                         />}
                     </div>
-                    <div className={listLocalization}>
+                    <div className={styles.listLocalization}>
                         <ListLocalization
                             localizations={props.scripting.localizations}
                             handleLocalizationChange={props.handleLocalizationChange}
@@ -111,8 +108,8 @@ export default function Data(props) {
                     </div>
                 </div>
             </Grid>
-            <Grid container id="employees" style={{ marginTop: 10 }}>
-                <div className={listEmployee}>
+            <Grid container id="employees" className={styles.container}>
+                <div className={styles.listEmployee}>
                     <ListEmployee
                         employees={props.scripting.employees}
                         handleEmployeeChange={props.handleEmployeeChange}

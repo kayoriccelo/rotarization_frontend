@@ -20,7 +20,7 @@ const SignIn = ({ history }) => {
 
     return (
         <Container>
-            {screen.width >= 750 && (
+            {screen.width >= 800 && (
                 <Grid sm={7} md={8} lg={9}>
                     <Banner />
                 </Grid>

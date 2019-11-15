@@ -56,7 +56,7 @@ const Header = ({ user, logout, history }) => {
                 </div>
                 <ArrowDropDown fontSize="small"/>
             </Button>
-            <Popper open={open} anchorEl={anchorRef.current} transition disablePortal>
+            <Popper open={open} anchorEl={anchorRef.current} transition>
                 {({ TransitionProps, placement }) => (
                     <Grow
                         {...TransitionProps}

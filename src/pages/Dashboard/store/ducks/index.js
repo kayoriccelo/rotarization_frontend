@@ -24,7 +24,22 @@ export function load() {
 };
 
 export const initialState = {
-    data: {}
+    data: {
+        quantidades:
+            [
+                ["Element", "Quantidade", { "role": "style" }, { "role": "style" }],
+                ["TESTE 01", 100, "fill-color: rgb(124, 181, 236); fill-opacity: 0.6;", "opacity: 0.2"],
+                ["TESTE 02", 90, "fill-color: rgb(0, 134, 64); fill-opacity: 0.6;", "opacity: 0.2"],
+                ["TESTE 03", 80, "fill-color: rgb(247, 163, 92); fill-opacity: 0.6;", "opacity: 0.2"],
+                ["TESTE 04", 60, "fill-color: rgb(144, 237, 125); fill-opacity: 0.6;", "opacity: 0.2"],
+                ["TESTE 05", 50, "fill-color: rgb(128, 133, 233); fill-opacity: 0.6;", "opacity: 0.2"],
+                ["TESTE 06", 40, "fill-color: rgb(241, 92, 128); fill-opacity: 0.6;", "opacity: 0.2"],
+                ["TESTE 07", 60, "fill-color: rgb(228, 211, 84); fill-opacity: 0.6;", "opacity: 0.2"],
+                ["TESTE 08", 80, "fill-color: rgb(247, 163, 92); fill-opacity: 0.6;", "opacity: 0.2"],
+                ["TESTE 09", 100, "fill-color: rgb(0, 134, 64); fill-opacity: 0.6;", "opacity: 0.2"],
+                ["TESTE 10", 120, "fill-color: rgb(124, 181, 236); fill-opacity: 0.6;", "opacity: 0.2"],
+            ]
+    }
 };
 
 export default function reducer(state = initialState, action) {

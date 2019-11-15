@@ -2,11 +2,11 @@ import { makeStyles } from '@material-ui/core/styles';
 
 
 export default makeStyles({
+    container: {
+        marginTop: 10
+    },
     content: {
         display: 'flex',
-    },
-    contentLocalization: {
-        marginTop: 10
     },
     searchOrigin: {
         flex: 1,
@@ -19,12 +19,13 @@ export default makeStyles({
         alignItems: 'flex-start'
     },
     map: {
-        flex: 5,
-        height: 'calc(80vh - 240px)',
+        flex: 4,
+        height: 'calc(80vh - 250px)',
         marginTop: '8px'
     },
     listLocalization: {
-        flex: 2,
+        flex: 1,
+        height: 'calc(80vh - 250px)',
         margin: '8px 0px 0px 8px',
         display: 'flex',
         flexDirection: 'column',
@@ -39,7 +40,6 @@ export default makeStyles({
         width: '100%',
         boxSizing: `border-box`,
         border: `1px solid transparent`,
-        height: `100%`,
         borderRadius: `3px`,
         fontSize: `14px`,
         outline: `none`,

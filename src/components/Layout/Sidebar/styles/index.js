@@ -20,6 +20,19 @@ export default makeStyles({
     labelLogo: {
         display: 'block', 
         fontSize: '100%', 
-        fontWeight: 'bold' 
+        fontWeight: 'bold',
+        marginTop: 10
+    },
+    contentLogoClose: {
+        display: 'flex',
+        alignItems: 'center',
+        height: 80,
+    },
+    labelLogoClose: {
+        paddingLeft: 20,
+        display: 'block', 
+        fontSize: '100%', 
+        fontWeight: 'bold',
+        marginTop: 10
     }
 });

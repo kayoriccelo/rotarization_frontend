@@ -9,11 +9,11 @@ import useStyles from './styles';
 
 
 export default function Sidebar({ screen, history, openDrawer, setOpenDrawer }) {
-    const { menu, subMenu, contentLogo, labelLogo } = useStyles();
+    const styles = useStyles();
     const [openMenu, setOpenMenu] = useState(true);
 
     useEffect(() => {
-        setOpenDrawer(screen.width > 500);
+        setOpenDrawer(screen.width > 800);
     }, [screen, setOpenDrawer]);
 
     return (
@@ -22,19 +22,15 @@ export default function Sidebar({ screen, history, openDrawer, setOpenDrawer }) 
                 setOpenDrawer={setOpenDrawer}
                 openDrawer={openDrawer}
             >
-                <div className={contentLogo}>
+                <div className={openDrawer ? styles.contentLogo : styles.contentLogoClose}>
                     <img
-                        width="60px"
+                        width="50px"
                         src={require('../../../assets/images/logo.png')}
                         alt="logo"
-                        style={{ paddingBottom: 10 }}
                     />
-
-                    {openDrawer && (
-                        <div className={labelLogo}>
+                        <div className={openDrawer ? styles.labelLogo : styles.labelLogoClose}>
                             Controle de Rotas
                         </div>
-                    )}
                 </div>
                 <ListCustom>
                     {
@@ -44,7 +40,7 @@ export default function Sidebar({ screen, history, openDrawer, setOpenDrawer }) 
                                     key={index}
                                     label={item.title}
                                     icon={item.icon}
-                                    className={menu}
+                                    className={styles.menu}
                                     onClick={() => history.push(item.path)}
                                 />
                             ) : (
@@ -53,7 +49,7 @@ export default function Sidebar({ screen, history, openDrawer, setOpenDrawer }) 
                                             key={index}
                                             label={item.title}
                                             icon={item.icon}
-                                            className={menu}
+                                            className={styles.menu}
                                             isSubMenu={true}
                                             onClick={() => setOpenMenu(!openMenu)}
                                         />
@@ -69,7 +65,7 @@ export default function Sidebar({ screen, history, openDrawer, setOpenDrawer }) 
                                                             icon={sub_item.icon}
                                                             isItemSubMenu={true}
                                                             openMenu={openMenu}
-                                                            className={subMenu}
+                                                            className={styles.subMenu}
                                                             onClick={() => history.push(sub_item.path)}
                                                         />
                                                     )
