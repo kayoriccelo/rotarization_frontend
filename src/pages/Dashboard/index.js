@@ -35,17 +35,13 @@ export const Dashboard = ({ data, load, setTitle }) => {
                 overflowY: 'auto'
             }}>
                 <div style={{ padding: 15 }}>
-                    {/* <Card
-                        noHovering
-                        style={{ border: 0 }}
-                    > */}
                     <div style={{ marginBottom: 10 }}>
                         <div style={{ fontSize: 14, textAlign: 'center' }}>
                             Quantidade de roteirização por cliente
                         </div>
 
                         <Chart
-                            chartType="SteppedAreaChart"
+                            chartType="AreaChart"
                             width="100%"
                             height='calc(100vh - 240px)'
                             data={data['quantidades']}
@@ -58,7 +54,6 @@ export const Dashboard = ({ data, load, setTitle }) => {
                         />
                         {/* <div style={{ textAlign: 'center' }}>*The graph is limited to the top 10 values.</div> */}
                     </div>
-                    {/* </Card> */}
                     <div style={{ border: 0, borderBottom: '1px dashed #ccc', background: '#999', marginBottom: 10 }}></div>
                 </div>
             </div>

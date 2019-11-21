@@ -10,7 +10,7 @@ export default makeStyles({
         width: '100%'
     },
     main: {
-        padding: '15px 28px 0px 28px',
+        padding: '15px 22px 0px 22px',
     },
     titleContent: {
         height: 40

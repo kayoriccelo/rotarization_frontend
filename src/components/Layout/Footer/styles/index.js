@@ -5,8 +5,8 @@ import commonStyles from '../../../../commons/styles';
 
 export default makeStyles({
     root: {
-        height: 40,
-        paddingTop: 15,
+        height: 30,
+        paddingTop: 10,
         background: commonStyles.backgroundColor
     },
     textSecondary: {

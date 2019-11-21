@@ -25,7 +25,7 @@ export const List = ({ data, page, pageSize, getList, remove, setTitle, history 
     }, [page, pageSize, getList])
 
     useEffect(() => {
-        setTitle({ title: 'Listagem de Roteirizaçõees' });
+        setTitle({ title: 'Listagem de Roteirizaçõ es' });
 
         return () => {
             setTitle({ title: '', subTitle: '' });
