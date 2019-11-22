@@ -1,21 +1,17 @@
 import React from 'react';
-import { Grid, Button } from '@material-ui/core';
 
-import useStyles from './styles';
+import { StyledGrid, StyledButton } from './styled';
 
 
 export default function Submit({ label, onSubmit }) {
-    const { grid, button } = useStyles();
-
     return (
-        <Grid className={grid}>
-            <Button
+        <StyledGrid>
+            <StyledButton
                 variant="contained"
-                className={button}
                 onClick={() => onSubmit()}
             >
                 {label}
-            </Button>
-        </Grid>
+            </StyledButton>
+        </StyledGrid>
     );
 };

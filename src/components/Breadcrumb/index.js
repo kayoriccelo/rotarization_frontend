@@ -1,13 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
-import Dashboard from '@material-ui/icons/Dashboard';
-import WhatshotIcon from '@material-ui/icons/Whatshot';
-import GrainIcon from '@material-ui/icons/Grain';
 
-import useStyles from './styles';
+import { 
+    StyledPaper, StyledLink, StyledTypography, StyledDashboard, StyledWhatshot, StyledGrain
+} from './styled';
 
 
 function handleClick(event) {
@@ -16,29 +12,23 @@ function handleClick(event) {
 }
 
 export default function () {
-    const classes = useStyles();
-
     return (
-        <Paper elevation={0} className={classes.root}>
+        <StyledPaper elevation={0}>
             <Breadcrumbs aria-label="breadcrumb">
-                <Link to="/" className={classes.link}>
-                    <Dashboard className={classes.icon} />
-                    Início
-                </Link>
-                <Link
+                <StyledLink to="/">
+                    <StyledDashboard /> Início
+                </StyledLink>
+                <StyledLink
                     color="inherit"
                     href="/getting-started/installation/"
                     onClick={handleClick}
-                    className={classes.link}
                 >
-                    <WhatshotIcon className={classes.icon} />
-                    Core
-                </Link>
-                <Typography color="textPrimary" className={classes.link}>
-                    <GrainIcon className={classes.icon} />
-                    Breadcrumb
-                </Typography>
+                    <StyledWhatshot /> Core
+                </StyledLink>
+                <StyledTypography color="textPrimary">
+                    <StyledGrain /> Breadcrumb
+                </StyledTypography>
             </Breadcrumbs>
-        </Paper>
+        </StyledPaper>
     );
 };

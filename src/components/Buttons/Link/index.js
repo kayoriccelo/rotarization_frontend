@@ -1,15 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import useStyles from './styles';
+import { StyledContentLink } from './styled';
 
 
 export default function ButtonLink({ labelPrimary, labelSecundary, toLink }) {
-    const { link } = useStyles();
-
     return (
-        <div className={link}>
+        <StyledContentLink>
             {labelSecundary} <Link to={toLink}>{labelPrimary}</Link>
-        </div>
+        </StyledContentLink>
     );
 };

@@ -1,18 +1,15 @@
 import React from 'react';
 
-import useStyles from './styles';
+import { StyledBanner, StyledImageBanner } from './styled';
 
 
 export default function Banner() {
-    const { banner } = useStyles();
-
     return (
-        <div className={banner}>
-            <img
-                style={{ width: '100%', height: '100%' }}
+        <StyledBanner>
+            <StyledImageBanner
                 src={require('../../../assets/images/banner.jpg')}
                 alt="banner"
             />
-        </div>
+        </StyledBanner>
     );
 };
