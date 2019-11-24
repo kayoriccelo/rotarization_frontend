@@ -1,5 +1,3 @@
-import ContainerSign from './Layout/Containers/Sign';
-import BannerSign from './Banners/Sign';
 import Message from './Message';
 import Submit from './Buttons/Submit';
 import ButtonLink from './Buttons/Link';
@@ -20,8 +18,6 @@ import TabCustom from './Tab';
 
 
 export {
-    ContainerSign,
-    BannerSign,
     ListCustom,
     FormCustom,
     Message,

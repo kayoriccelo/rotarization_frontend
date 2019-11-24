@@ -4,12 +4,11 @@ import { connect } from 'react-redux';
 import { Grid } from '@material-ui/core';
 
 import { InputText, InputPassword, Submit, ButtonLink } from '../../components';
-import useStyles from './styles';
+import { StyledForm, StyledContent, StyledImage, StyledTitle } from './styled';
 import { register } from './store/ducks';
 
 
-const Form = ({ history, register }) => {
-    const { form, formContent } = useStyles();
+const Form = ({ screen, history, register }) => {
     const [values, setValues] = useState({
         first_name: null,
         last_name: null,
@@ -25,24 +24,17 @@ const Form = ({ history, register }) => {
     const submit = () => register(values, history);
 
     return (
-        <div className={form}>
-            <img
-                width="60px"
+        <StyledForm  screen={screen}>
+            <StyledImage
                 src={require('../../assets/images/logo.png')}
                 alt="logo"
-                style={{ paddingBottom: 10 }}
             />
 
-            <div style={{
-                display: 'block',
-                fontSize: '100%',
-                fontWeight: 'bold',
-                paddingBottom: 20
-            }}>
+            <StyledTitle>
                 Inscreva-se no Controle de Rotas
-            </div>
+            </StyledTitle>
 
-            <div className={formContent}>
+            <StyledContent>
                 <Grid container id="data">
                     <InputText
                         label="Primeiro Nome"
@@ -81,31 +73,31 @@ const Form = ({ history, register }) => {
 
                     <InputPassword
                         label="Senha"
-                        columns={{ xs: 12 }}
+                        columns={{ xs: 6 }}
                         password={values['password']}
                         handleChange={handleChange('password')}
                     />
 
                     <InputPassword
                         label="Confirmar Senha"
-                        columns={{ xs: 12 }}
+                        columns={{ xs: 6 }}
                         password={values['confirm_password']}
                         handleChange={handleChange('confirm_password')}
                     />
+
+                    <Submit
+                        label="Cadastrar"
+                        onSubmit={submit}
+                    />
+
+                    <ButtonLink
+                        labelPrimary="Entrar!"
+                        labelSecundary="Já tem uma conta?"
+                        toLink="/signin"
+                    />
                 </Grid>
-            </div>
-
-            <Submit
-                label="Cadastrar"
-                onSubmit={submit}
-            />
-
-            <ButtonLink
-                labelPrimary="Entrar!"
-                labelSecundary="Já tem uma conta?"
-                toLink="/signin"
-            />
-        </div>
+            </StyledContent>
+        </StyledForm>
     );
 };
 

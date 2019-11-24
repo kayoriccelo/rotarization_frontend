@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Grid } from '@material-ui/core';
 
-import {
-    ContainerSign as Container, BannerSign as Banner, Message
-} from '../../components';
+import { Message } from '../../components';
 import { updateDimensions } from '../../commons/useful';
 import Form from './Form';
+import { StyledContainer, StyledImageBanner } from './styled'
 
 
 const SignIn = ({ history }) => {
@@ -19,17 +17,20 @@ const SignIn = ({ history }) => {
     }, []);
 
     return (
-        <Container>
-            {screen.width >= 800 && (
-                <Grid sm={7} md={8} lg={9}>
-                    <Banner />
-                </Grid>
-            )}
-            <Grid sm={5} md={4} lg={3}>
-                <Form history={history} />
-            </Grid>
+        <StyledContainer>
+            <StyledImageBanner
+                screen={screen}
+                src={require('../../assets/images/banner.jpg')}
+                alt="banner"
+            />
+            
+            <Form
+                screen={screen}
+                history={history}
+            />
+
             <Message />
-        </Container>
+        </StyledContainer>
     );
 };
 

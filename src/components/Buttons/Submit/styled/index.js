@@ -5,8 +5,8 @@ import commonStyles from '../../../../commons/styles';
 
 
 export const StyledGrid = styled(Grid)`
-    width: 88%!important;
-    margin: 0px 4px!important;
+    width: 100%;
+    padding: 0px 4px;
 `;
 
 export const StyledButton = styled(Button)`

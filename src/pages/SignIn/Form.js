@@ -4,12 +4,11 @@ import { connect } from 'react-redux';
 import { Grid } from '@material-ui/core';
 
 import { InputText, InputPassword, Submit, ButtonLink } from '../../components';
-import useStyles from './styles';
+import { StyledForm, StyledContent, StyledImage, StyledTitle } from './styled';
 import { login } from './store/ducks';
 
 
-const Form = ({ history, login }) => {
-    const { form, formContent } = useStyles();
+const Form = ({ screen, history, login }) => {
     const [values, setValues] = useState({
         username: null,
         password: null
@@ -20,24 +19,17 @@ const Form = ({ history, login }) => {
     const submit = () => login(values, history);
 
     return (
-        <div className={form}>
-            <img
-                width="60px"
+        <StyledForm screen={screen}>
+            <StyledImage
                 src={require('../../assets/images/logo.png')}
                 alt="logo"
-                style={{ paddingBottom: 10 }}
             />
 
-            <div style={{
-                display: 'block',
-                fontSize: '100%',
-                fontWeight: 'bold',
-                paddingBottom: 20
-            }}>
+            <StyledTitle>
                 Entrar no Controle de Rotas
-            </div>
+            </StyledTitle>
 
-            <div className={formContent}>
+            <StyledContent>
                 <Grid container id="data">
                     <InputText
                         label="Usuário"
@@ -52,20 +44,20 @@ const Form = ({ history, login }) => {
                         password={values['password']}
                         handleChange={handleChange('password')}
                     />
+                    
+                    <Submit
+                        label="Entrar"
+                        onSubmit={submit}
+                    />
+
+                    <ButtonLink
+                        labelPrimary="Crie uma!"
+                        labelSecundary="Não tem uma conta?"
+                        toLink="/signup"
+                    />
                 </Grid>
-            </div>
-
-            <Submit
-                label="Entrar"
-                onSubmit={submit}
-            />
-
-            <ButtonLink
-                labelPrimary="Crie uma!"
-                labelSecundary="Não tem uma conta?"
-                toLink="/signup"
-            />
-        </div>
+            </StyledContent>
+        </StyledForm>
     );
 };
 

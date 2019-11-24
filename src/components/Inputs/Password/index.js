@@ -14,31 +14,33 @@ export default function InputPassword({ label, password, columns, handleChange }
     const handleMouseDownPassword = event => event.preventDefault();
 
     return (
-        <Grid {...columns} className={grid}>
-            <TextField
-                className={input}
-                variant="outlined"
-                type={showPassword ? 'text' : 'password'}
-                margin="dense"
-                label={label ? label : "Password"}
-                value={password}
-                onChange={handleChange}
+        <Grid {...columns}>
+            <div className={grid}>
+                <TextField
+                    className={input}
+                    variant="outlined"
+                    type={showPassword ? 'text' : 'password'}
+                    margin="dense"
+                    label={label ? label : "Password"}
+                    value={password}
+                    onChange={handleChange}
 
-                InputProps={{
-                    endAdornment: (
-                        <InputAdornment position="end">
-                            <IconButton
-                                edge="end"
-                                aria-label="toggle password visibility"
-                                onClick={handleClickShowPassword}
-                                onMouseDown={handleMouseDownPassword}
-                            >
-                                {showPassword ? <VisibilityOff /> : <Visibility />}
-                            </IconButton>
-                        </InputAdornment>
-                    ),
-                }}
-            />
+                    InputProps={{
+                        endAdornment: (
+                            <InputAdornment position="end">
+                                <IconButton
+                                    edge="end"
+                                    aria-label="toggle password visibility"
+                                    onClick={handleClickShowPassword}
+                                    onMouseDown={handleMouseDownPassword}
+                                >
+                                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                                </IconButton>
+                            </InputAdornment>
+                        ),
+                    }}
+                />
+            </div>
         </Grid>
     );
 };
