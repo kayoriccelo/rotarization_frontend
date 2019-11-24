@@ -11,8 +11,8 @@ export default makeStyles({
         display: 'flex',
         flexDirection: 'column',
         height: '100vh',
-        width: openDrawer ? 'calc(100% - 241px)' : 'calc(100% - 51px)',
-        marginLeft: openDrawer ? 0 : 51,
+        width: openDrawer ? 'calc(100% - 281px)' : 'calc(100% - 61px)',
+        marginLeft: openDrawer ? 0 : 61,
         position: openDrawer ? 'relative' : 'absolute',
     })
 });

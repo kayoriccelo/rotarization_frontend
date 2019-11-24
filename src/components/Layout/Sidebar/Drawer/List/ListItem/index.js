@@ -1,22 +1,22 @@
 import React from 'react';
-import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+import { ListItemIcon, ListItemText } from '@material-ui/core';
 import { ExpandLess, ExpandMore } from '@material-ui/icons';
+
+import { StyledListItem } from '../styled';
 
 
 export default function ListItemCustom(props) {
     return (
-        <ListItem
+        <StyledListItem
             button
             key={props.key + 1}
             onClick={props.onClick}
-            className={props.className}
         >
-
             {props.icon && <ListItemIcon> {props.icon} </ListItemIcon>}
 
-            <ListItemText primary={!props.open && props.label} />
+            <ListItemText primary={props.label} />
 
             {props.isSubMenu && (props.open ? <ExpandLess /> : <ExpandMore />)}
-        </ListItem >
+        </StyledListItem >
     );
 };

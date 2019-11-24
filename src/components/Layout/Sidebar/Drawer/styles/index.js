@@ -4,7 +4,7 @@ const useStyles = makeStyles(theme => ({
     drawerPaper: {
         position: 'relative',
         whiteSpace: 'nowrap',
-        width: 240,
+        width: 280,
         height: '100vh',
         transition: theme.transitions.create('width', {
             easing: theme.transitions.easing.sharp,
@@ -17,19 +17,14 @@ const useStyles = makeStyles(theme => ({
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
         }),
-        width: 50,
+        width: 60,
         [theme.breakpoints.up('sm')]: {
-            width: 55,
+            width: 60,
         },
         '&:hover': {
-            width: 240,
+            width: 280,
             position: 'absolute'
         }
-    },
-    openSideBar: {
-        marginBottom: 'auto',
-        display: 'flex',
-        justifyContent: 'center'
     }
 }));
 

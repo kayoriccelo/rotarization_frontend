@@ -1,23 +1,21 @@
 import React from 'react';
-import { List, ListSubheader } from '@material-ui/core';
+import { ListSubheader } from '@material-ui/core';
+
+import { StyledList } from './styled';
 
 
-export default function ListCustom({ children, open, className }) {
+export default function ListCustom({ children, open }) {
     return (
-        <List
-            className={className}
+        <StyledList
             component="nav"
             aria-labelledby="nested-list-subheader"
             subheader={open &&
-                <ListSubheader
-                    component="div"
-                    id="nested-list-subheader"
-                >
+                <ListSubheader>
                     Aplicação
                 </ListSubheader>
             }
         >
             {children}
-        </List>
+        </StyledList>
     );
 };

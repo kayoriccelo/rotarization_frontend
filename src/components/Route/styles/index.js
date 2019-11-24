@@ -34,7 +34,6 @@ export default makeStyles({
         backgroundColor: 'white',
         padding: 5,
         borderRadius: 10,
-        border: '1px solid #DDD',
-        height: 'calc(100vh - 200px)'
+        height: 'calc(100vh - 180px)'
     }
 });

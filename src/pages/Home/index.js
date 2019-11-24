@@ -28,15 +28,18 @@ export function Home({ user, history, loadUser }) {
 
     return (
         user.isAuthenticated && <div className={root}>
-            <Sidebar 
-                history={history} 
-                screen={screen} 
+            <Sidebar
+                history={history}
                 openDrawer={openDrawer}
-                setOpenDrawer={setOpenDrawer}
             />
 
             <div className={main}>
-                <Header history={history} />
+                <Header
+                    screen={screen}
+                    openDrawer={openDrawer}
+                    setOpenDrawer={setOpenDrawer}
+                    history={history}
+                />
 
                 <Content history={history} />
 

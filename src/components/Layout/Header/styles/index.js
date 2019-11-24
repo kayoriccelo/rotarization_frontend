@@ -9,6 +9,13 @@ export default makeStyles({
         display: 'flex'
     },
     toolBar: {
-        flex: 1
+        flex: 1,
+        display: 'flex'
     },
+    openSide: {
+        padding: 15,
+        '&:hover': {
+            backgroundColor: 'rgb(214, 214, 214)', cursor: 'pointer'
+        }
+    }
 });
