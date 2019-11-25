@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import EmojiTransportationIcon from '@material-ui/icons/EmojiTransportation';
 
-import { SearchCustom, TableCustom } from '../../components';
+import { SearchCustom, TableCustom, Title } from '../../components';
 import { maskCnpj } from '../../commons/useful';
 import { getList, remove, setTitle } from './store/ducks';
 
@@ -24,11 +24,7 @@ export const List = ({ data, page, pageSize, getList, remove, setTitle, history 
 
     useEffect(() => {
         setTitle({
-            title: (
-                <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <EmojiTransportationIcon style={{ padding: '0px 8px 4px 0px' }} /> Listagem de Clientes
-                </div>
-            )
+            title: <Title iconTitle={EmojiTransportationIcon} title="Listagem de Clientes" />
         });
 
         return () => {

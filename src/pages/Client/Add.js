@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import EmojiTransportationIcon from '@material-ui/icons/EmojiTransportation';
 
-import { FormCustom } from '../../components';
+import { FormCustom, Title } from '../../components';
 import Data from './Data';
 import { createInstance, save, setTitle } from './store/ducks';
 
@@ -13,11 +13,7 @@ const AddClient = ({ save, setTitle, history }) => {
 
     useEffect(() => {
         setTitle({
-            title: (
-                <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <EmojiTransportationIcon style={{ padding: '0px 8px 4px 0px' }} /> Cliente
-                </div>
-            )
+            title: <Title iconTitle={EmojiTransportationIcon} title="Cliente" />
         });
 
         return () => setTitle({ title: '', subTitle: '' });

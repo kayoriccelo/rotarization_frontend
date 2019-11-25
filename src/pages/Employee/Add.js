@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { SupervisorAccount } from "@material-ui/icons";
 
-import { FormCustom } from '../../components';
+import { FormCustom, Title } from '../../components';
 import Data from './Data';
 import { createInstance, save, setTitle } from './store/ducks';
 
@@ -13,11 +13,7 @@ const AddEmployee = ({ save, setTitle, history }) => {
 
     useEffect(() => {
         setTitle({
-            title: (
-                <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <SupervisorAccount style={{ padding: '0px 8px 4px 0px' }} /> Funcionário
-                </div>
-            )
+            title: <Title iconTitle={SupervisorAccount} title="Funcionário" />
         });
 
         return () => setTitle({ title: '', subTitle: '' });

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import AccountBox from '@material-ui/icons/AccountBox';
 
-import { FormCustom, InputText, InputPassword } from '../../components';
+import { FormCustom, InputText, InputPassword, Title } from '../../components';
 import * as Actions from './store/ducks';
 
 
@@ -12,11 +12,7 @@ export const Form = ({ instance, load, update, loadUser, setTitle, showMessage, 
 
     useEffect(() => {
         setTitle({
-            title: (
-                <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <AccountBox style={{ padding: '0px 8px 4px 0px' }} /> Perfil
-                </div>
-            )
+            title: <Title iconTitle={AccountBox} title="Perfil" />
         });
 
         return () => setTitle('');

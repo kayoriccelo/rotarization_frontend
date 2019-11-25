@@ -30,9 +30,7 @@ const Form = ({ screen, history, register }) => {
                 alt="logo"
             />
 
-            <StyledTitle>
-                Inscreva-se no Controle de Rotas
-            </StyledTitle>
+            <StyledTitle children="Inscreva-se no Controle de Rotas" />
 
             <StyledContent>
                 <Grid container id="data">

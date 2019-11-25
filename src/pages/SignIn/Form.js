@@ -25,9 +25,7 @@ const Form = ({ screen, history, login }) => {
                 alt="logo"
             />
 
-            <StyledTitle>
-                Entrar no Controle de Rotas
-            </StyledTitle>
+            <StyledTitle children="Entrar no Controle de Rotas" />
 
             <StyledContent>
                 <Grid container id="data">

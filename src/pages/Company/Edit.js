@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import LocationCityIcon from '@material-ui/icons/LocationCity';
 
-import { FormCustom } from '../../components';
+import { FormCustom, Title } from '../../components';
 import Data from './Data';
 import { load, save, setTitle } from './store/ducks';
 
@@ -13,11 +13,7 @@ const EditCompany = ({ load, save, setTitle, history }) => {
 
     useEffect(() => {
         setTitle({
-            title: (
-                <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <LocationCityIcon style={{ padding: '0px 8px 4px 0px' }} /> Empresa
-                </div>
-            )
+            title: <Title iconTitle={LocationCityIcon} title="Empresa" />
         });
 
         return () => setTitle({ title: '', subTitle: '' });

@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import MapIcon from '@material-ui/icons/Map';
 
-import { FormCustom } from '../../components';
+import { FormCustom, Title } from '../../components';
 import Data from './Data';
 import { createInstance, save, setTitle } from './store/ducks';
 const iconUser = 'https://cdn0.iconfinder.com/data/icons/user-icons-4/100/user-17-512.png';
@@ -15,11 +15,7 @@ const Add = ({ save, setTitle, history }) => {
 
     useEffect(() => {
         setTitle({
-            title: (
-                <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <MapIcon style={{ padding: '0px 8px 4px 0px' }} /> Roteirização
-                </div>
-            )
+            title: <Title iconTitle={MapIcon} title="Roteirização" />
         });
 
         return () => setTitle({ title: '', subTitle: '' });

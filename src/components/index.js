@@ -15,6 +15,7 @@ import SelectCustom from './Selects/Select';
 import SelectAsyncCustom from './Selects/SelectAsync';
 import { SearchMarkerMap, DirectionMarkerMap, SearchLocalizationMap } from './Maps';
 import TabCustom from './Tab';
+import Title from './Title';
 
 
 export {
@@ -37,5 +38,6 @@ export {
     SearchMarkerMap,
     DirectionMarkerMap,
     SearchLocalizationMap,
-    TabCustom
+    TabCustom,
+    Title
 };

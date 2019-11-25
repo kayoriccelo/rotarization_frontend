@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import MapIcon from '@material-ui/icons/Map';
 
-import { SearchCustom, TableCustom } from '../../components';
+import { SearchCustom, TableCustom, Title } from '../../components';
 import { getList, remove, setTitle } from './store/ducks';
 
 
@@ -27,11 +27,7 @@ export const List = ({ data, page, pageSize, getList, remove, setTitle, history 
 
     useEffect(() => {
         setTitle({
-            title: (
-                <div style={{ display: 'flex', alignItems: 'center'  }}>
-                    <MapIcon style={{ padding: '0px 8px 4px 0px' }} /> Listagem de Roteirizações
-                </div>
-            )
+            title: <Title iconTitle={MapIcon} title="Listagem de Roteirizações" />
         });
 
         return () => {

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import MapIcon from '@material-ui/icons/Map';
 
 import api from '../../services/api';
-import { FormCustom } from '../../components';
+import { FormCustom, Title } from '../../components';
 import Data from './Data';
 import { load, save, setTitle } from './store/ducks';
 
@@ -15,11 +15,7 @@ const Edit = ({ instance, load, save, setTitle, id, history }) => {
 
     useEffect(() => {
         setTitle({
-            title: (
-                <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <MapIcon style={{ padding: '0px 8px 4px 0px' }} /> Roteirização
-                </div>
-            )
+            title: <Title iconTitle={MapIcon} title="Roteirização" />
         });
 
         return () => setTitle({ title: '', subTitle: '' });

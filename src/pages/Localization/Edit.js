@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import EditLocationIcon from '@material-ui/icons/EditLocation';
 
-import { FormCustom } from '../../components';
+import { FormCustom, Title } from '../../components';
 import Data from './Data';
 import { load, save, setTitle } from './store/ducks';
 
@@ -13,11 +13,7 @@ const Edit = ({ load, save, setTitle, id, history }) => {
 
     useEffect(() => {
         setTitle({
-            title: (
-                <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <EditLocationIcon style={{ padding: '0px 8px 4px 0px' }} /> Localização
-                </div>
-            )
+            title: <Title iconTitle={EditLocationIcon} title="Localização" />
         });
 
         return () => setTitle({ title: '', subTitle: '' });
