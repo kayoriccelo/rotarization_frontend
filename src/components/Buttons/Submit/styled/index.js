@@ -13,8 +13,8 @@ export const StyledButton = styled(Button)`
     margin-top: 20px!important;
     width: 100%!important;
     color: ${commonStyles.primaryColor}!important;
-    background-color: ${commonStyles.buttonPrimary}!important;
-    &:hover fieldset{
-        background-color: ${commonStyles.buttonPrimaryHover};
+    background: ${commonStyles.buttonPrimary}!important;
+    &:hover {
+        background: ${commonStyles.buttonPrimaryHover}!important;
     },
 `;

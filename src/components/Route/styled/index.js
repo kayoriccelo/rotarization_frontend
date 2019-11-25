@@ -22,6 +22,7 @@ export const StyledTitle = styled.div`
     font-size: 16px;
     font-family: Arial;
     max-height: 25px;
+    margin-left: -2px;
 `;
 
 export const StyledSubTitle = styled.div`

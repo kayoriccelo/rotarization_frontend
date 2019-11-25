@@ -6,7 +6,7 @@ export const StyledContentLogo = styled.div`
     align-items: center;
     ${props => props.openDrawer && 'justify-content: center;'}
     height: ${props => props.openDrawer ? '150px' : '80px'};
-    padding-left: ${props => props.openDrawer ? '20px' : '8px'};
+    padding-left: ${props => props.openDrawer ? '0px' : '8px'};
 `;
 
 export const StyledImageLogo = styled.img`

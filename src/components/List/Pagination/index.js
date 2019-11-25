@@ -16,8 +16,8 @@ export const TablePagination = ({ count, page, pageSize, setPages }) => {
     };
 
     useEffect(() => {
-        return () => setPages(0, pageSize);
-    }, [pageSize, setPages])
+        return () => setPages(0, 10);
+    }, [setPages])
 
     return (
         <TableFooter>

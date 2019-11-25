@@ -31,12 +31,12 @@ export const Dashboard = ({ data, load, setTitle }) => {
                 backgroundColor: 'white',
                 padding: 5,
                 borderRadius: 10,
-                height: 'calc(100vh - 120px)',
+                height: 'calc(100vh - 100px)',
                 overflowY: 'auto'
             }}>
                 <div style={{ padding: 15 }}>
                     <div style={{ marginBottom: 10 }}>
-                        <div style={{ fontSize: 14, textAlign: 'center' }}>
+                        <div style={{ fontSize: 16, textAlign: 'center' }}>
                             Quantidade de roteirização por cliente
                         </div>
 
@@ -52,9 +52,8 @@ export const Dashboard = ({ data, load, setTitle }) => {
                                 }
                             }}
                         />
-                        {/* <div style={{ textAlign: 'center' }}>*The graph is limited to the top 10 values.</div> */}
+                        <div style={{ fontSize: 12, textAlign: 'center' }}>*O gráfico está limitado aos 10 principais valores.</div>
                     </div>
-                    <div style={{ border: 0, borderBottom: '1px dashed #ccc', background: '#999', marginBottom: 10 }}></div>
                 </div>
             </div>
         ) : (

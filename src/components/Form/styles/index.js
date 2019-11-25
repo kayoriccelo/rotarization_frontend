@@ -7,7 +7,7 @@ const useStyles = makeStyles({
     },
     cardContent: {
         overflowX: 'auto',
-        height: 'calc(100vh - 270px)',
+        height: 'calc(100vh - 260px)',
         padding: '10px 10px 10px 10px'
     },
     actions: {

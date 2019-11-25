@@ -16,6 +16,7 @@ export default makeStyles({
         padding: 15,
         '&:hover': {
             backgroundColor: 'rgb(214, 214, 214)', cursor: 'pointer'
-        }
+        },
+        color: '#808080'
     }
 });
