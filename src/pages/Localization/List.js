@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import EditLocationIcon from '@material-ui/icons/EditLocation';
 
 import { SearchCustom, TableCustom } from '../../components';
 import { getList, remove, setTitle } from './store/ducks';
@@ -21,7 +22,13 @@ export const List = ({ data, page, pageSize, getList, remove, setTitle, history 
     }, [page, pageSize, getList])
 
     useEffect(() => {
-        setTitle({ title: 'Listagem de Localizações' });
+        setTitle({
+            title: (
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <EditLocationIcon style={{ padding: '0px 8px 4px 0px' }} /> Listagem de Localizações
+                </div>
+            )
+        });
 
         return () => {
             setTitle({ title: '', subTitle: '' });

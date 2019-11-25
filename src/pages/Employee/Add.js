@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { SupervisorAccount } from "@material-ui/icons";
 
 import { FormCustom } from '../../components';
 import Data from './Data';
@@ -11,7 +12,13 @@ const AddEmployee = ({ save, setTitle, history }) => {
     const [employee, setEmployee] = useState(null);
 
     useEffect(() => {
-        setTitle({ title: 'Funcionário' });
+        setTitle({
+            title: (
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <SupervisorAccount style={{ padding: '0px 8px 4px 0px' }} /> Funcionário
+                </div>
+            )
+        });
 
         return () => setTitle({ title: '', subTitle: '' });
     }, [setTitle]);
@@ -33,7 +40,7 @@ const AddEmployee = ({ save, setTitle, history }) => {
     };
 
     return (
-        <FormCustom
+        employee && <FormCustom
             object={employee}
             setObject={setEmployee}
             handleSubmit={handleSubmit}
@@ -42,12 +49,10 @@ const AddEmployee = ({ save, setTitle, history }) => {
                 subTitle: `${employee.cpf} - ${employee.name}`
             })}
         >
-            {employee && (
-                <Data
-                    employee={employee}
-                    handleChange={handleChange}
-                />
-            )}
+            <Data
+                employee={employee}
+                handleChange={handleChange}
+            />
         </FormCustom>
     );
 };

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import MapIcon from '@material-ui/icons/Map';
 
 import api from '../../services/api';
 import { FormCustom } from '../../components';
@@ -13,7 +14,13 @@ const Edit = ({ instance, load, save, setTitle, id, history }) => {
     const [waypoints, setWaypoints] = useState([]);
 
     useEffect(() => {
-        setTitle({ title: 'Roteirização' });
+        setTitle({
+            title: (
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <MapIcon style={{ padding: '0px 8px 4px 0px' }} /> Roteirização
+                </div>
+            )
+        });
 
         return () => setTitle({ title: '', subTitle: '' });
     }, [setTitle]);

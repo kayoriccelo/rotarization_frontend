@@ -28,6 +28,7 @@ const SignUp = ({ history }) => {
                 screen={screen}
                 history={history}
             />
+            
             <Message />
         </StyledContainer>
     );

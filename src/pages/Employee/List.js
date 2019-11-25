@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { SupervisorAccount } from "@material-ui/icons";
 
 import { SearchCustom, TableCustom } from '../../components';
 import { maskCpf } from '../../commons/useful';
@@ -22,7 +23,13 @@ export const List = ({ data, page, pageSize, getList, remove, setTitle, history 
     }, [page, pageSize, getList])
 
     useEffect(() => {
-        setTitle({ title: 'Listagem de Funcionários' });
+        setTitle({
+            title: (
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <SupervisorAccount style={{ padding: '0px 8px 4px 0px' }} /> Listagem de Funcionários
+                </div>
+            )
+        });
 
         return () => {
             setTitle({ title: '', subTitle: '' });

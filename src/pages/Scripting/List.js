@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import MapIcon from '@material-ui/icons/Map';
 
 import { SearchCustom, TableCustom } from '../../components';
 import { getList, remove, setTitle } from './store/ducks';
@@ -9,14 +10,14 @@ import { getList, remove, setTitle } from './store/ducks';
 export const List = ({ data, page, pageSize, getList, remove, setTitle, history }) => {
     let timer = null;
     let search = '';
-    
+
     const columns = [
-        { field: 'description', label: 'Descrição', is_edit: true},
+        { field: 'description', label: 'Descrição', is_edit: true },
         { field: 'date_initial', label: 'Início' },
         { field: 'date_final', label: 'Concluído' },
         { field: 'localizations_count', label: 'Localizações' },
         { field: 'employees_count', label: 'Funcionários' },
-        { field: 'status', label: 'Situação', is_status: true},
+        { field: 'status', label: 'Situação', is_status: true },
         { field: 'actions', label: 'Ações' }
     ];
 
@@ -25,7 +26,13 @@ export const List = ({ data, page, pageSize, getList, remove, setTitle, history 
     }, [page, pageSize, getList])
 
     useEffect(() => {
-        setTitle({ title: 'Listagem de Roteirizaçõ es' });
+        setTitle({
+            title: (
+                <div style={{ display: 'flex', alignItems: 'center'  }}>
+                    <MapIcon style={{ padding: '0px 8px 4px 0px' }} /> Listagem de Roteirizações
+                </div>
+            )
+        });
 
         return () => {
             setTitle({ title: '', subTitle: '' });
@@ -62,8 +69,8 @@ export const List = ({ data, page, pageSize, getList, remove, setTitle, history 
 
 
 const mapStateToProps = ({ scripting, pagination }) => ({
-    data: scripting.data, 
-    page: pagination.page, 
+    data: scripting.data,
+    page: pagination.page,
     pageSize: pagination.pageSize
 });
 const mapDispatchToProps = (dispatch) => bindActionCreators({ getList, remove, setTitle }, dispatch);

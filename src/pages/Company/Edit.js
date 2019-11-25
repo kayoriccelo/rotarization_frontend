@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import LocationCityIcon from '@material-ui/icons/LocationCity';
 
 import { FormCustom } from '../../components';
 import Data from './Data';
@@ -11,7 +12,13 @@ const EditCompany = ({ load, save, setTitle, history }) => {
     const [company, setCompany] = useState(null);
 
     useEffect(() => {
-        setTitle({ title: 'Empresa' });
+        setTitle({
+            title: (
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <LocationCityIcon style={{ padding: '0px 8px 4px 0px' }} /> Empresa
+                </div>
+            )
+        });
 
         return () => setTitle({ title: '', subTitle: '' });
     }, [setTitle]);

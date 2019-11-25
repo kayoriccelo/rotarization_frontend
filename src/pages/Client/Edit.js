@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import EmojiTransportationIcon from '@material-ui/icons/EmojiTransportation';
 
 import { FormCustom } from '../../components';
 import Data from './Data';
@@ -11,7 +12,13 @@ const EditClient = ({ instance, load, save, setTitle, id, history }) => {
     const [client, setClient] = useState(null);
 
     useEffect(() => {
-        setTitle({ title: 'Cliente' });
+        setTitle({
+            title: (
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <EmojiTransportationIcon style={{ padding: '0px 8px 4px 0px' }} /> Cliente
+                </div>
+            )
+        });
 
         return () => setTitle({ title: '', subTitle: '' });
     }, [setTitle]);

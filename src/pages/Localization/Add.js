@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import EditLocationIcon from '@material-ui/icons/EditLocation';
 
 import { FormCustom } from '../../components';
 import Data from './Data';
@@ -11,7 +12,13 @@ const Add = ({ save, setTitle, history }) => {
     const [localization, setLocalization] = useState(null);
 
     useEffect(() => {
-        setTitle({ title: 'Localização' });
+        setTitle({
+            title: (
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <EditLocationIcon style={{ padding: '0px 8px 4px 0px' }} /> Localização
+                </div>
+            )
+        });
 
         return () => setTitle({ title: '', subTitle: '' });
     }, [setTitle]);

@@ -1,17 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { SupervisorAccount } from "@material-ui/icons";
 
 import { FormCustom } from '../../components';
 import Data from './Data';
 import { load, save, setTitle } from './store/ducks';
 
 
-const EditEmployee = ({ instance, load, save, setTitle, id, history }) => {
+const EditEmployee = ({ load, save, setTitle, id, history }) => {
     const [employee, setEmployee] = useState(null);
 
     useEffect(() => {
-        setTitle({ title: 'Funcionário' });
+        setTitle({
+            title: (
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <SupervisorAccount style={{ padding: '0px 8px 4px 0px' }} /> Funcionário
+                </div>
+            )
+        });
 
         return () => setTitle({ title: '', subTitle: '' });
     }, [setTitle]);

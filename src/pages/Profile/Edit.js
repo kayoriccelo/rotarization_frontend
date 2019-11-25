@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import AccountBox from '@material-ui/icons/AccountBox';
 
 import { FormCustom, InputText, InputPassword } from '../../components';
 import * as Actions from './store/ducks';
@@ -10,7 +11,13 @@ export const Form = ({ instance, load, update, loadUser, setTitle, showMessage, 
     const [profile, setProfile] = useState(null);
 
     useEffect(() => {
-        setTitle({ title: 'Perfil' });
+        setTitle({
+            title: (
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <AccountBox style={{ padding: '0px 8px 4px 0px' }} /> Perfil
+                </div>
+            )
+        });
 
         return () => setTitle('');
     }, [setTitle]);
@@ -49,8 +56,7 @@ export const Form = ({ instance, load, update, loadUser, setTitle, showMessage, 
     const handleCancel = () => history.push('dashboard');
 
     return (
-        profile &&
-        <FormCustom
+        profile && <FormCustom
             object={profile}
             handleSubmit={handleSubmit}
             handleCancel={handleCancel}
@@ -86,6 +92,7 @@ export const Form = ({ instance, load, update, loadUser, setTitle, showMessage, 
         </FormCustom>
     );
 };
+
 
 const mapStateToProps = ({ profile }) => ({ instance: profile.instance });
 const mapDispatchToProps = (dispatch) => bindActionCreators(Actions, dispatch);
