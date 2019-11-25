@@ -14,7 +14,7 @@ export const StyledMain = styled.div`
 `;
 
 export const StyledContentTitle = styled.div`
-    height: 40px;
+    height: 50px;
 `;
 
 export const StyledTitle = styled.div`
@@ -39,6 +39,6 @@ export const StyledContent = styled.div`
     background-color: white;
     padding: 5px;
     border-radius: 10px;
-    height: calc(100vh - 180px);
+    height: calc(100vh - 190px);
     box-shadow: 7px 7px 10px -8px rgba(0,0,0,0.75);
 `;

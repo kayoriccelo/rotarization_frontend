@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
 import Checkbox from '@material-ui/core/Checkbox';
 
 import api from '../../../services/api';
-import useStyles from '../styles';
+import { StyledSubList, StyledTitleLocalization } from '../styled';
 
 
 
 export default function ListLocalizations({ localizations, handleLocalizationChange }) {
-	const styles = useStyles();
 	const [checkeds, setCheckeds] = useState([]);
 	const [options, setOptions] = useState([]);
 
@@ -63,14 +61,9 @@ export default function ListLocalizations({ localizations, handleLocalizationCha
 
 	return (
 		<>
-			<div style={{
-				textAlign: 'center',
-				padding: 8,
-				backgroundColor: '#ddd'
-			}}>
-				Localizações
-			</div>
-			<List dense className={styles.rootSubList}>
+			<StyledTitleLocalization children="Localizações" />
+
+			<StyledSubList dense>
 				{options.map(option => {
 					const labelId = `checkbox-list-secondary-label-${option.id}`;
 
@@ -95,7 +88,7 @@ export default function ListLocalizations({ localizations, handleLocalizationCha
 						</ListItem>
 					);
 				})}
-			</List>
+			</StyledSubList>
 		</>
 	);
 };

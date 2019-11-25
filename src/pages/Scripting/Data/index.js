@@ -1,5 +1,4 @@
 import React from 'react';
-import { Grid } from '@material-ui/core';
 
 import {
     InputText, InputDate, SearchLocalizationMap, DirectionMarkerMap,
@@ -7,11 +6,12 @@ import {
 } from '../../../components';
 import ListLocalization from './ListLocalization';
 import ListEmployee from './ListEmployee';
-import useStyles from '../styles';
+import {
+    StyledGridContainer, StyledContent, StyledSearch, StyledMap, StyledListLocalization, StyledListEmployee
+} from '../styled';
 
 
 export default function Data(props) {
-    const styles = useStyles();
     const { scripting, waypoints, handleChange } = props;
 
     return (
@@ -22,7 +22,7 @@ export default function Data(props) {
                 { label: 'Funcionários' }
             ]}
         >
-            <Grid container id="common" className={styles.container}>
+            <StyledGridContainer container id="common">
                 <InputText
                     label="Descrição"
                     columns={{ xs: 12, sm: 12 }}
@@ -60,10 +60,10 @@ export default function Data(props) {
                     value={scripting.hour_final}
                     handleChange={handleChange('hour_final')}
                 />
-            </Grid>
-            <Grid className={styles.container} id="map">
-                <div className={styles.content}>
-                    <div className={styles.searchOrigin}>
+            </StyledGridContainer>
+            <StyledGridContainer id="map">
+                <StyledContent>
+                    <StyledSearch direction="left">
                         <SearchLocalizationMap
                             label="Origem"
                             valueInput={scripting.origin_address}
@@ -71,8 +71,8 @@ export default function Data(props) {
                             handleChangeLongitude={handleChange('origin_longitude')}
                             handleChangeAddress={handleChange('origin_address')}
                         />
-                    </div>
-                    <div className={styles.searchDestiny}>
+                    </StyledSearch>
+                    <StyledSearch direction="right">
                         <SearchLocalizationMap
                             label="Destino"
                             valueInput={scripting.destiny_address}
@@ -80,10 +80,10 @@ export default function Data(props) {
                             handleChangeLongitude={handleChange('destiny_longitude')}
                             handleChangeAddress={handleChange('destiny_address')}
                         />
-                    </div>
-                </div>
-                <div className={styles.content}>
-                    <div className={styles.map}>
+                    </StyledSearch>
+                </StyledContent>
+                <StyledContent>
+                    <StyledMap>
                         {waypoints && <DirectionMarkerMap
                             waypoints={waypoints}
                             origin={{
@@ -99,23 +99,23 @@ export default function Data(props) {
                                 lng: scripting.origin_longitude
                             }}
                         />}
-                    </div>
-                    <div className={styles.listLocalization}>
+                    </StyledMap>
+                    <StyledListLocalization>
                         <ListLocalization
                             localizations={props.scripting.localizations}
                             handleLocalizationChange={props.handleLocalizationChange}
                         />
-                    </div>
-                </div>
-            </Grid>
-            <Grid container id="employees" className={styles.container}>
-                <div className={styles.listEmployee}>
+                    </StyledListLocalization>
+                </StyledContent>
+            </StyledGridContainer>
+            <StyledGridContainer container id="employees">
+                <StyledListEmployee>
                     <ListEmployee
                         employees={props.scripting.employees}
                         handleEmployeeChange={props.handleEmployeeChange}
                     />
-                </div>
-            </Grid>
+                </StyledListEmployee>
+            </StyledGridContainer>
         </TabCustom >
     );
 };

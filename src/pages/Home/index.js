@@ -8,7 +8,7 @@ import Sidebar from '../../components/Layout/Sidebar';
 import Content from '../../components/Layout/Content';
 import Footer from '../../components/Layout/Footer';
 import { Message } from '../../components';
-import useStyles from './styles';
+import { StyledRoot, StyledMain } from './styled';
 
 import { loadUser } from '../../auth/store/ducks';
 
@@ -24,16 +24,15 @@ export function Home({ user, history, loadUser }) {
         return () => window.removeEventListener('resize', updateDimensions(setScreen))
     }, [loadUser]);
 
-    const { root, main } = useStyles(openDrawer);
 
     return (
-        user.isAuthenticated && <div className={root}>
+        user.isAuthenticated && <StyledRoot openDrawer={openDrawer}>
             <Sidebar
                 history={history}
                 openDrawer={openDrawer}
             />
 
-            <div className={main}>
+            <StyledMain openDrawer={openDrawer}>
                 <Header
                     screen={screen}
                     openDrawer={openDrawer}
@@ -44,9 +43,9 @@ export function Home({ user, history, loadUser }) {
                 <Content history={history} />
 
                 <Footer />
-            </div>
+            </StyledMain>
             <Message />
-        </div>
+        </StyledRoot>
     );
 };
 

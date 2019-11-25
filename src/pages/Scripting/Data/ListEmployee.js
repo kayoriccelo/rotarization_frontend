@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
 import Checkbox from '@material-ui/core/Checkbox';
 
 import api from '../../../services/api';
-import useStyles from '../styles';
+import { StyledSubList } from '../styled';
 
 
 
 export default function ListEmployee({ employees, handleEmployeeChange }) {
-    const { rootSubList } = useStyles();
     const [checkeds, setCheckeds] = useState([]);
     const [options, setOptions] = useState([]);
 
@@ -62,7 +60,7 @@ export default function ListEmployee({ employees, handleEmployeeChange }) {
     };
 
     return (
-        <List dense className={rootSubList}>
+        <StyledSubList>
             {options.map(option => {
                 const labelId = `checkbox-list-secondary-label-${option.id}`;
 
@@ -87,6 +85,6 @@ export default function ListEmployee({ employees, handleEmployeeChange }) {
                     </ListItem>
                 );
             })}
-        </List>
+        </StyledSubList>
     );
 };
