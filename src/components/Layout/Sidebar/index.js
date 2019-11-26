@@ -8,7 +8,7 @@ import menus from '../../../routes/menus';
 import { StyledContentLogo, StyledImageLogo, StyledTitleLogo } from './styled';
 
 
-export default function Sidebar({history, openDrawer }) {
+export default function Sidebar({ history, openDrawer }) {
     const [openMenu, setOpenMenu] = useState(true);
 
     return (
