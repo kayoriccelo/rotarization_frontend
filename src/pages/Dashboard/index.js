@@ -8,54 +8,68 @@ import { load, setTitle } from './store/ducks';
 
 
 export const Dashboard = ({ data, load, setTitle }) => {
+
     useEffect(() => {
-        // localStorage.getItem('access') && load();
+        localStorage.getItem('access') && load();
 
         setTitle('Dashboard');
     }, [load, setTitle]);
 
     const options = {
         legend: "none",
-        chartArea: { width: '75%' },
-        bar: { groupHeight: "10" },
+        chartArea: { width: '90%' },
+        bar: { groupWidth: "40" },
         fontSize: 8,
         animation: {
             duration: 1000,
             startup: true,
-        }
+        },
     };
 
     return (
         data !== {} ? (
-            <div style={{
-                backgroundColor: 'white',
-                padding: 5,
-                borderRadius: 10,
-                height: 'calc(100vh - 100px)',
-                overflowY: 'auto'
-            }}>
-                <div style={{ padding: 15 }}>
-                    <div style={{ marginBottom: 10 }}>
-                        <div style={{ fontSize: 16, textAlign: 'center' }}>
-                            Quantidade de roteirização por cliente
+            <>
+                <div style={{ height: '100%', overflowY: 'auto', backgroundColor: 'white' }}>
+                    <div style={{ padding: 10 }}>
+                        <div style={{ fontSize: 12, textAlign: 'left', paddingLeft: 20 }}>
+                            Quantidade de roteirizações por funcionário
                         </div>
 
                         <Chart
-                            chartType="AreaChart"
+                            chartType="ColumnChart"
                             width="100%"
-                            height='calc(100vh - 240px)'
-                            data={data['quantidades']}
+                            height='100%'
+                            data={data['employees']}
                             options={{
                                 ...options,
-                                hAxis: {
-                                    logScale: true
+                                vAxis: {
+                                    logScale: false
                                 }
                             }}
                         />
-                        <div style={{ fontSize: 12, textAlign: 'center' }}>*O gráfico está limitado aos 10 principais valores.</div>
                     </div>
+
+                    <div style={{ padding: 10 }}>
+                        <div style={{ fontSize: 12, textAlign: 'left', paddingLeft: 20 }}>
+                            Quantidade de roteirizações por cliente
+                            </div>
+
+                        <Chart
+                            chartType="BarChart"
+                            width="100%"
+                            height='100%'
+                            data={data['clients']}
+                            options={{
+                                ...options,
+                                hAxis: {
+                                    logScale: false
+                                }
+                            }}
+                        />
+                    </div>
+                    <div style={{ fontSize: 12, textAlign: 'center' }}>*O gráfico está limitado aos 10 principais valores.</div>
                 </div>
-            </div>
+            </>
         ) : (
                 <div style={{
                     display: 'flex',
