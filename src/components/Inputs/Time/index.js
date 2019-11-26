@@ -1,18 +1,15 @@
 import React from 'react';
-import { TextField, Grid } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 
-import useStyles from './styles';
+import { StyledGrid, StyledInput } from '../styled';
 
 
-export default function InputTime({ fieldName, value, label, columns, handleChange }) {
-    const { grid, input } = useStyles();
-
+export default function InputTime({ value, label, columns, handleChange }) {
     return (
         <Grid {...columns}>
-            <div className={grid}>
-                <TextField
+            <StyledGrid>
+                <StyledInput
                     value={value}
-                    className={input}
                     inputProps={{ step: 300 }}
                     InputLabelProps={{
                         shrink: true,
@@ -23,7 +20,7 @@ export default function InputTime({ fieldName, value, label, columns, handleChan
                     label={label}
                     onChange={handleChange}
                 />
-            </div>
+            </StyledGrid>
         </Grid>
     );
 };

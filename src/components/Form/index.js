@@ -1,12 +1,9 @@
 import React, { useEffect } from 'react';
-import { Button } from '@material-ui/core';
 
-import useStyles from './styles';
+import { StyledCard, StyledContent, StyledActions, StyledButton } from './styled';
 
 
 export default function FormCustom(props) {
-    const { card, cardContent, actions, button } = useStyles();
-
     const { object, setSubTitle } = props;
 
     useEffect(() => {
@@ -14,30 +11,25 @@ export default function FormCustom(props) {
     }, [object, setSubTitle]);
 
     return (
-        object &&
-        <div className={card}>
-            <div className={cardContent}>
-                {props.children}
-            </div>
-            <div className={actions}>
-                <Button
+        object && <StyledCard>
+            <StyledContent children={props.children} />
+
+            <StyledActions>
+                <StyledButton
                     size="small"
                     variant="contained"
                     color="primary"
-                    className={button}
                     onClick={props.handleSubmit}
-                >
-                    Salvar
-                </Button>
-                <Button
+                    children="Salvar"
+                />
+
+                <StyledButton
                     size="small"
                     variant="contained"
-                    className={button}
                     onClick={props.handleCancel}
-                >
-                    Cancelar
-                </Button>
-            </div>
-        </div>
+                    children="Cancelar"
+                />
+            </StyledActions>
+        </StyledCard>
     );
 };

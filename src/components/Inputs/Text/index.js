@@ -1,19 +1,16 @@
 import React from 'react';
-import { Grid, TextField } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 
-import useStyles from './styles';
+import { StyledGrid, StyledInput } from '../styled';
 
 
 export default function InputText({ label, value, maxLength, disabled, columns, handleChange }) {
-    const { grid, input } = useStyles();
-
     return (
         <Grid {...columns}>
-            <div className={grid}>
-                <TextField
+            <StyledGrid>
+                <StyledInput
                     disabled={disabled}
                     value={value}
-                    className={input}
                     variant="outlined"
                     type='text'
                     margin="dense"
@@ -23,7 +20,7 @@ export default function InputText({ label, value, maxLength, disabled, columns, 
                     }}
                     onChange={handleChange}
                 />
-            </div>
+            </StyledGrid>
         </Grid>
     );
 };

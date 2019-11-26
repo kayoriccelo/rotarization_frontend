@@ -24,7 +24,7 @@ const Form = ({ screen, history, register }) => {
     const submit = () => register(values, history);
 
     return (
-        <StyledForm  screen={screen}>
+        <StyledForm screen={screen}>
             <StyledImage
                 src={require('../../assets/images/logo.png')}
                 alt="logo"

@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
-import { Grid, TextField, IconButton, InputAdornment } from '@material-ui/core';
+import { Grid, IconButton, InputAdornment } from '@material-ui/core';
 
-import useStyles from './styles';
+import { StyledGrid, StyledInput } from '../styled';
 
 
 export default function InputPassword({ label, password, columns, handleChange }) {
-    const { grid, input } = useStyles();
     const [showPassword, setShowPassword] = useState(false);
 
     const handleClickShowPassword = () => setShowPassword(!showPassword);
@@ -15,9 +14,8 @@ export default function InputPassword({ label, password, columns, handleChange }
 
     return (
         <Grid {...columns}>
-            <div className={grid}>
-                <TextField
-                    className={input}
+            <StyledGrid>
+                <StyledInput
                     variant="outlined"
                     type={showPassword ? 'text' : 'password'}
                     margin="dense"
@@ -40,7 +38,7 @@ export default function InputPassword({ label, password, columns, handleChange }
                         ),
                     }}
                 />
-            </div>
+            </StyledGrid>
         </Grid>
     );
 };

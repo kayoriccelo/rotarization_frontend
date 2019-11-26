@@ -1,13 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-import {
-    Grid, OutlinedInput, InputLabel, MenuItem, FormControl, Select
-} from '@material-ui/core';
+import { Grid, OutlinedInput, InputLabel, MenuItem, Select } from '@material-ui/core';
 
-import useStyles from './styles';
+import { StyledGrid, StyledControl } from '../styled';
 
 
 export default function SelectCustom(props) {
-    const { grid, select } = useStyles();
     const inputLabel = useRef(null);
     const [labelWidth, setLabelWidth] = useState(0);
     const { label, values, fieldName, columns, options, handleChange } = props;
@@ -18,11 +15,10 @@ export default function SelectCustom(props) {
 
     return (
         <Grid {...columns}>
-            <div className={grid}>
-                <FormControl
+            <StyledGrid>
+                <StyledControl
                     key="type"
                     variant="outlined"
-                    className={select}
                 >
                     <InputLabel
                         ref={inputLabel}
@@ -50,8 +46,8 @@ export default function SelectCustom(props) {
                             </MenuItem>
                         ))}
                     </Select>
-                </FormControl>
-            </div>
+                </StyledControl>
+            </StyledGrid>
         </Grid>
     );
 };

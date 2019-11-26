@@ -1,18 +1,15 @@
 import React from 'react';
-import { Grid, TextField } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 
-import useStyles from './styles';
+import { StyledGrid, StyledInput } from '../styled';
 
 
 export default function InputDate({ value, label, columns, handleChange }) {
-    const { grid, input } = useStyles();
-
     return (
         <Grid {...columns}>
-            <div className={grid}>
-                <TextField
+            <StyledGrid>
+                <StyledInput
                     label={label}
-                    className={input}
                     variant="outlined"
                     type="date"
                     margin="dense"
@@ -20,7 +17,7 @@ export default function InputDate({ value, label, columns, handleChange }) {
                     onChange={handleChange}
                     InputLabelProps={{ shrink: true, }}
                 />
-            </div>
+            </StyledGrid>
         </Grid>
     );
 };
