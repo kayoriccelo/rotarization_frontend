@@ -23,6 +23,7 @@ export const TablePagination = ({ count, page, pageSize, setPages }) => {
         <TableFooter>
             <TableRow>
                 <TablePaginationUI
+                    labelRowsPerPage="Registros por página"
                     rowsPerPageOptions={[10, 20, 50]}
                     count={count}
                     rowsPerPage={pageSize}
@@ -31,6 +32,7 @@ export const TablePagination = ({ count, page, pageSize, setPages }) => {
                         inputProps: { 'aria-label': 'rows per page' },
                         native: true,
                     }}
+                    labelDisplayedRows={({ from, to, count }) => `${from}-${to === -1 ? count : to} de ${count}`}
                     onChangePage={handleChangePage}
                     onChangeRowsPerPage={handleChangeRowsPerPage}
                     ActionsComponent={TablePaginationActions}

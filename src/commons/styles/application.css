@@ -7,23 +7,32 @@ body {
 /* Button */
 .MuiListItem-button {
     /* background: linear-gradient(to right, rgb(247, 247, 247) 0%, rgb(255, 255, 255) 100%);   */
+    transition: all .25s ease!important;
 }
 
 .MuiListItem-button:hover {
     background: rgb(255, 255, 255)!important;
     color: #005074!important;
+    border-right: 5px solid #005074!important; 
+    padding-left: 30px!important;
 }
 
 .MuiListItem-button:focus {
     background: rgb(255, 255, 255)!important;  
+    border-right: 5px solid #005074!important; 
     color: #005074!important;
+}
+
+.MuiCollapse-wrapperInner > .MuiListItem-button {
+    transition: all .25s ease!important;
 }
 
 .MuiCollapse-wrapperInner > .MuiListItem-button:hover {
     color: #005074!important;
+    border-right: 5px solid #005074!important; 
     background: rgb(255, 255, 255)!important;
+    padding-left: 30px!important;
 }
-
 
 .MuiCollapse-wrapperInner > .MuiListItem-button:focus {
     color: #005074!important;
