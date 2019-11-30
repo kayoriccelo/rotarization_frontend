@@ -4,46 +4,62 @@ body {
 
 /* Alterando ccs dos componentes do Materia UI */
 
-/* Button */
+/* Menu List */
+
+.MuiButtonBase-root > 
+.MuiListItemIcon-root > 
+.MuiSvgIcon-root {
+    color: #005074!important;
+}
+
 .MuiListItem-button {
-    /* background: linear-gradient(to right, rgb(247, 247, 247) 0%, rgb(255, 255, 255) 100%);   */
+    background-color: #f4f9fc!important;  
     transition: all .25s ease!important;
 }
 
 .MuiListItem-button:hover {
-    background: rgb(255, 255, 255)!important;
     color: #005074!important;
-    border-right: 5px solid #005074!important; 
+    border-right: 4px solid #005074!important; 
     padding-left: 30px!important;
 }
 
 .MuiListItem-button:focus {
-    background: rgb(255, 255, 255)!important;  
-    border-right: 5px solid #005074!important; 
-    color: #005074!important;
+    color: white!important;
+    font-weight: bold!important;
+    border-right: 4px solid #005074!important; 
+    background: #8dbcd8!important;
 }
+
+.MuiListItem-button:focus
+.MuiSvgIcon-root {
+    color: white!important;
+}
+
 
 .MuiCollapse-wrapperInner > .MuiListItem-button {
     transition: all .25s ease!important;
+    background: linear-gradient(to right, #f4f9fc 0%, rgb(255, 255, 255) 100%);  
 }
 
 .MuiCollapse-wrapperInner > .MuiListItem-button:hover {
     color: #005074!important;
-    border-right: 5px solid #005074!important; 
-    background: rgb(255, 255, 255)!important;
+    border-right: 4px solid #005074!important; 
     padding-left: 30px!important;
 }
 
 .MuiCollapse-wrapperInner > .MuiListItem-button:focus {
-    color: #005074!important;
+    color: white!important;
     font-weight: bold!important;
-    border-right: 5px solid #005074!important; 
-    background: rgb(255, 255, 255)!important;
+    border-right: 4px solid #005074!important; 
+    background: #8dbcd8!important;
 }
 
-/* Button */
+.MuiCollapse-wrapperInner > .MuiListItem-button:focus
+.MuiSvgIcon-root {
+    color: white!important;
+}
 
-/* Menu List */
+
 .MuiSelect-selectMenu {
     padding: 12px 14px!important;
 }

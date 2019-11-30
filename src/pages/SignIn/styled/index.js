@@ -20,12 +20,6 @@ export const StyledContent = styled.div`
     width: 85%;
 `;
 
-export const StyledImage = styled.img`
-    width: 80px;
-    height: 80px; 
-    padding-bottom: 10px;
-`;
-
 export const StyledImageBanner = styled.img`
     height: ${props => props.screen.width >= 800 ? '100%' : 0};
     width: ${props => props.screen.width >= 800 ? 'calc(100% - 468px)' : 0};    

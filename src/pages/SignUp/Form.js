@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import { Grid } from '@material-ui/core';
 
 import { InputText, InputPassword, Submit, ButtonLink } from '../../components';
-import { StyledForm, StyledContent, StyledImage, StyledTitle } from './styled';
+import { StyledForm, StyledContent, StyledTitle } from './styled';
+import { StyledContentLogo, StyledLogo, StyledImageLogo } from '../../commons/styled';
 import { register } from './store/ducks';
 
 
@@ -25,10 +26,14 @@ const Form = ({ screen, history, register }) => {
 
     return (
         <StyledForm screen={screen}>
-            <StyledImage
-                src={require('../../assets/images/logo.png')}
-                alt="logo"
-            />
+            <StyledContentLogo>
+                <StyledLogo>
+                    <StyledImageLogo
+                        src={require('../../assets/images/logo.png')}
+                        alt="logo"
+                    />
+                </StyledLogo>
+            </StyledContentLogo>
 
             <StyledTitle children="Inscreva-se no Controle de Rotas" />
 

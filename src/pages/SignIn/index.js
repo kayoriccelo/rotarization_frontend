@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Message } from '../../components';
 import { updateDimensions } from '../../commons/useful';
 import Form from './Form';
-import { StyledContainer, StyledImageBanner } from './styled'
+import { StyledContainer, StyledImageBanner } from './styled';
 
 
 const SignIn = ({ history }) => {
@@ -13,7 +13,7 @@ const SignIn = ({ history }) => {
         updateDimensions(setScreen)();
         window.addEventListener('resize', updateDimensions(setScreen));
 
-        return () => window.removeEventListener('resize', updateDimensions(setScreen))
+        return () => window.removeEventListener('resize', updateDimensions(setScreen));
     }, []);
 
     return (

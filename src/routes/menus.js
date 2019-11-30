@@ -13,12 +13,12 @@ export default [
     {
         title: 'Início',
         path: '/',
-        icon: (<Dashboard style={{ color: '#24292e' }} fontSize="small" />),
+        icon: (<Dashboard fontSize="small" />),
         roles: ['guest', 'admin']
     },
     {
         title: 'Cadastros',
-        icon: (<ViewList style={{ color: '#24292e' }} fontSize="small" />),
+        icon: (<ViewList fontSize="small" />),
         roles: ['admin'],
         menus: [
             {
@@ -46,13 +46,13 @@ export default [
     {
         title: 'Roteirização',
         path: '/scripting',
-        icon: (<MapIcon style={{ color: '#24292e' }} fontSize="small" />),
+        icon: (<MapIcon fontSize="small" />),
         roles: ['guest', 'admin']
     },
     // {
     //     title: 'Configurações',
     //     path: '/configuration',
-    //     icon: (<SettingsApplicationsIcon style={{ color: '#24292e' }} fontSize="small" />),
+    //     icon: (<SettingsApplicationsIcon fontSize="small" />),
     //     roles: ['guest', 'admin']
     // },
 ];

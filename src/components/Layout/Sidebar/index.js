@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Collapse, Divider } from '@material-ui/core';
+import { Collapse } from '@material-ui/core';
 
 import DrawerCustom from './Drawer';
 import ListCustom from './Drawer/List';
 import ListItemCustom from './Drawer/List/ListItem';
 import menus from '../../../routes/menus';
-import { StyledContentLogo, StyledImageLogo, StyledTitleLogo } from './styled';
+import { StyledContentLogo, StyledLogo, StyledImageLogo, StyledTitleLogo } from '../../../commons/styled';
 
 
 export default function Sidebar({ history, openDrawer }) {
@@ -16,10 +16,12 @@ export default function Sidebar({ history, openDrawer }) {
             openDrawer={openDrawer}
         >
             <StyledContentLogo openDrawer={openDrawer}>
-                <StyledImageLogo
-                    src={require('../../../assets/images/logo.png')}
-                    alt="logo"
-                />
+                <StyledLogo>
+                    <StyledImageLogo
+                        src={require('../../../assets/images/logo.png')}
+                        alt="logo"
+                    />
+                </StyledLogo>
 
                 <StyledTitleLogo openDrawer={openDrawer}>
                     Controle de Rotas
@@ -46,8 +48,6 @@ export default function Sidebar({ history, openDrawer }) {
                                     onClick={() => setOpenMenu(!openMenu)}
                                 />
                                 <Collapse in={openMenu} timeout="auto" unmountOnExit>
-                                    <Divider />
-
                                     {item.menus.map((sub_item, sub_index) => {
                                         return (
                                             <ListItemCustom
@@ -65,6 +65,6 @@ export default function Sidebar({ history, openDrawer }) {
                         )
                 })}
             </ListCustom>
-        </DrawerCustom>
+        </DrawerCustom >
     );
 };
