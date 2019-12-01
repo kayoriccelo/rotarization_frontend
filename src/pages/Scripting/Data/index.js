@@ -30,36 +30,38 @@ export default function Data(props) {
                     value={scripting.description}
                     handleChange={handleChange('description')}
                 />
+                {props.isEdit && (
+                    <>
+                    <InputDate
+                        label="Data do Início"
+                        columns={{ xs: 12, sm: 6, md: 3 }}
+                        value={scripting.date_initial}
+                        disabled
+                    />
 
-                <InputDate
-                    label="Data do Início"
-                    columns={{ xs: 12, sm: 6, md: 3 }}
-                    value={scripting.date_initial}
-                    handleChange={handleChange('date_initial')}
-                />
+                    <InputTime
+                        label="Hora do Início"
+                        fieldName="hour_initial"
+                        columns={{ xs: 12, sm: 6, md: 3 }}
+                        value={scripting.hour_initial}
+                        disabled
+                    />
+                    <InputDate
+                        label="Data da Conclusão"
+                        columns={{ xs: 12, sm: 6, md: 3 }}
+                        value={scripting.date_final}
+                        disabled
+                    />
 
-                <InputTime
-                    label="Hora do Início"
-                    fieldName="hour_initial"
-                    columns={{ xs: 12, sm: 6, md: 3 }}
-                    value={scripting.hour_initial}
-                    handleChange={handleChange('hour_initial')}
-                />
-
-                <InputDate
-                    label="Data da Conclusão"
-                    columns={{ xs: 12, sm: 6, md: 3 }}
-                    value={scripting.date_final}
-                    handleChange={handleChange('date_final')}
-                />
-
-                <InputTime
-                    label="Hora da Conclusão"
-                    fieldName="hour_final"
-                    columns={{ xs: 12, sm: 6, md: 3 }}
-                    value={scripting.hour_final}
-                    handleChange={handleChange('hour_final')}
-                />
+                    <InputTime
+                        label="Hora da Conclusão"
+                        fieldName="hour_final"
+                        columns={{ xs: 12, sm: 6, md: 3 }}
+                        value={scripting.hour_final}
+                        disabled
+                    />
+                    </>
+                )}
             </StyledGridContainer>
             <StyledGridContainer id="map">
                 <StyledContent>

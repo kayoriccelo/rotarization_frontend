@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import EmojiTransportationIcon from '@material-ui/icons/EmojiTransportation';
+import DeleteIcon from '@material-ui/icons/Delete';
+import { IconButton } from '@material-ui/core';
 
 import { SearchCustom, TableCustom, Title } from '../../components';
 import { maskCnpj } from '../../commons/useful';
@@ -11,7 +13,7 @@ import { getList, remove, setTitle } from './store/ducks';
 export const List = ({ data, page, pageSize, getList, remove, setTitle, history }) => {
     let timer = null;
     let search = '';
-    
+
     const columns = [
         { field: 'cnpj', label: 'CNPJ', is_edit: true, mask: maskCnpj },
         { field: 'business_name', label: 'Razão social' },
@@ -42,7 +44,13 @@ export const List = ({ data, page, pageSize, getList, remove, setTitle, history 
 
     const clickAdd = () => history.push('/registration/client/new');
 
-    const clickDelete = id => remove(id, 0, pageSize);
+    const clickDelete = id => {
+        return (
+            <IconButton size="small" onClick={() => remove(id, 0, pageSize)}>
+                <DeleteIcon fontSize="small" color="secondary" />
+            </IconButton>
+        )
+    };
 
     return (
         <>
@@ -53,7 +61,7 @@ export const List = ({ data, page, pageSize, getList, remove, setTitle, history 
             <TableCustom
                 columns={columns}
                 data={data}
-                actions={[clickDelete]}
+                actions={[{ action: clickDelete, method: 'delete' }]}
                 path='/registration/client'
             />
         </>
@@ -62,8 +70,8 @@ export const List = ({ data, page, pageSize, getList, remove, setTitle, history 
 
 
 const mapStateToProps = ({ client, pagination }) => ({
-    data: client.data, 
-    page: pagination.page, 
+    data: client.data,
+    page: pagination.page,
     pageSize: pagination.pageSize
 });
 const mapDispatchToProps = (dispatch) => bindActionCreators({ getList, remove, setTitle }, dispatch);

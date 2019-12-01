@@ -4,7 +4,7 @@ import { Grid } from '@material-ui/core';
 import { StyledGrid, StyledInput } from '../styled';
 
 
-export default function InputDate({ value, label, columns, handleChange }) {
+export default function InputDate({ value, label, columns, disabled, handleChange }) {
     return (
         <Grid {...columns}>
             <StyledGrid>
@@ -16,6 +16,7 @@ export default function InputDate({ value, label, columns, handleChange }) {
                     value={value}
                     onChange={handleChange}
                     InputLabelProps={{ shrink: true, }}
+                    disabled={disabled}
                 />
             </StyledGrid>
         </Grid>

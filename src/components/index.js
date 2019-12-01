@@ -7,7 +7,6 @@ import InputDate from './Inputs/Date';
 import InputPassword from './Inputs/Password';
 import InputText from './Inputs/Text';
 import InputTime from './Inputs/Time';
-import ListCustom from './List';
 import SearchCustom from './List/Search';
 import TableCustom from './List/Table';
 import PaginationCustom from './List/Pagination';
@@ -19,7 +18,6 @@ import Title from './Title';
 
 
 export {
-    ListCustom,
     FormCustom,
     Message,
     

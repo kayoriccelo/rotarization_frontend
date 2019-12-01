@@ -15,7 +15,9 @@ export default makeStyles({
     openSide: {
         padding: 15,
         '&:hover': {
-            backgroundColor: 'rgb(214, 214, 214)', cursor: 'pointer'
+            backgroundColor: '#8dbcd8', 
+            cursor: 'pointer',
+            color: 'white'
         },
         color: '#808080'
     }

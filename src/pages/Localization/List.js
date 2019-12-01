@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import EditLocationIcon from '@material-ui/icons/EditLocation';
+import DeleteIcon from '@material-ui/icons/Delete';
+import { IconButton } from '@material-ui/core';
 
 import { SearchCustom, TableCustom, Title } from '../../components';
 import { getList, remove, setTitle } from './store/ducks';
@@ -41,7 +43,13 @@ export const List = ({ data, page, pageSize, getList, remove, setTitle, history 
 
     const clickAdd = () => history.push('/registration/localization/new');
 
-    const clickDelete = id => remove(id, 0, pageSize);
+    const clickDelete = id => {
+        return (
+            <IconButton size="small" onClick={() => remove(id, 0, pageSize)}>
+                <DeleteIcon fontSize="small" color="secondary" />
+            </IconButton>
+        )
+    };
 
     return (
         <>
@@ -52,7 +60,7 @@ export const List = ({ data, page, pageSize, getList, remove, setTitle, history 
             <TableCustom
                 columns={columns}
                 data={data}
-                actions={[clickDelete]}
+                actions={[{ action: clickDelete, method: 'delete' }]}
                 path='/registration/localization'
             />
         </>

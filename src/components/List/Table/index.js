@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Table, TableBody, TableRow, TableCell, Card, IconButton } from '@material-ui/core';
+import { Table, TableBody, TableRow, TableCell, Card } from '@material-ui/core';
 import { HighlightOff, RadioButtonUnchecked, Adjust, CheckCircleOutline } from '@material-ui/icons';
-import DeleteIcon from '@material-ui/icons/Delete';
+
 
 import useStyles from './styles';
 import TablePagination from '../Pagination';
@@ -80,11 +80,22 @@ export default function TableList({ columns, data, actions, path, is_pagination 
                                                     )
                                                 } else if (column.field === 'actions') {
                                                     return (
-                                                        <TableCell key="deleteItem">
-                                                            <IconButton aria-label="delete" onClick={() => actions[0](item.id)}>
-                                                                <DeleteIcon fontSize="small" color="secondary" />
-                                                            </IconButton>
+
+                                                        <TableCell key="actionItem">
+                                                            <div style={{ display: 'flex' }}>
+                                                                {actions.map(itemAction => {
+                                                                    if (item.status === 'P')
+                                                                        return itemAction['action'](item.id)
+
+                                                                    if (item.status === 'I' && itemAction['method'] === 'cancel')
+                                                                        return itemAction['action'](item.id)
+
+                                                                    if (itemAction['method'] === 'delete')
+                                                                        return itemAction['action'](item.id)
+                                                                })}
+                                                            </div>
                                                         </TableCell>
+
                                                     )
                                                 } else if (column.is_status) {
                                                     return (

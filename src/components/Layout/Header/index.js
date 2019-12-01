@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { Widgets } from '@material-ui/icons';
+import MenuOpenIcon from '@material-ui/icons/MenuOpen';
+import MenuIcon from '@material-ui/icons/Menu';
 
 import MenuCustom from './Menu';
 import useStyles from './styles';
@@ -14,9 +15,15 @@ export default function ({ screen, openDrawer, setOpenDrawer, history }) {
     return (
         <div className={styles.root}>
             <div className={styles.toolBar}>
-                <Widgets className={styles.openSide}
-                    onClick={() => setOpenDrawer(!openDrawer)}
-                />
+                {openDrawer ?
+                    <MenuOpenIcon className={styles.openSide}
+                        onClick={() => setOpenDrawer(!openDrawer)}
+                    />
+                    :
+                    <MenuIcon className={styles.openSide}
+                        onClick={() => setOpenDrawer(!openDrawer)}
+                    />
+                }
             </div>
 
             <MenuCustom

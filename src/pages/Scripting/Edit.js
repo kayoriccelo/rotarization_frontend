@@ -125,6 +125,7 @@ const Edit = ({ instance, load, save, setTitle, id, history }) => {
             })}
         >
             <Data
+                isEdit={true}
                 scripting={scripting}
                 waypoints={waypoints}
                 handleChange={handleChange}

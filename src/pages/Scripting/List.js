@@ -1,7 +1,11 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { IconButton } from '@material-ui/core';
 import MapIcon from '@material-ui/icons/Map';
+import DeleteIcon from '@material-ui/icons/Delete';
+import NearMeIcon from '@material-ui/icons/NearMe';
+import CancelIcon from '@material-ui/icons/Cancel';
 
 import { SearchCustom, TableCustom, Title } from '../../components';
 import { getList, remove, setTitle } from './store/ducks';
@@ -45,7 +49,29 @@ export const List = ({ data, page, pageSize, getList, remove, setTitle, history 
 
     const clickAdd = () => history.push('/scripting/new');
 
-    const clickDelete = id => remove(id, 0, pageSize);
+    const clickDelete = id => {
+        return (
+            <IconButton size="small" onClick={() => remove(id, 0, pageSize)}>
+                <DeleteIcon fontSize="small" color="error" titleAccess="Excluir" />
+            </IconButton>
+        )
+    };
+
+    const clickStarting = id => {
+        return (
+            <IconButton size="small" onClick={() => {}}>
+                <NearMeIcon fontSize="small" color="primary" titleAccess="Iniciar" />
+            </IconButton>
+        )
+    };
+
+    const clickCancel = id => {
+        return (
+            <IconButton size="small" onClick={() => {}}>
+                <CancelIcon fontSize="small" color="secondary" titleAccess="Cancelar" />
+            </IconButton>
+        )
+    };
 
     return (
         <>
@@ -56,7 +82,11 @@ export const List = ({ data, page, pageSize, getList, remove, setTitle, history 
             <TableCustom
                 columns={columns}
                 data={data}
-                actions={[clickDelete]}
+                actions={[
+                    { action: clickStarting, method: 'starting' },
+                    { action: clickCancel, method: 'cancel' },
+                    { action: clickDelete, method: 'delete' },
+                ]}
                 path='/scripting'
             />
         </>
