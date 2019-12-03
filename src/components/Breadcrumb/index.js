@@ -18,6 +18,7 @@ export default function () {
                 <StyledLink to="/">
                     <StyledDashboard /> Início
                 </StyledLink>
+
                 <StyledLink
                     color="inherit"
                     href="/getting-started/installation/"
@@ -25,6 +26,7 @@ export default function () {
                 >
                     <StyledWhatshot /> Core
                 </StyledLink>
+                
                 <StyledTypography color="textPrimary">
                     <StyledGrain /> Breadcrumb
                 </StyledTypography>

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 
 export const StyledList = styled(List)`
+    padding: 0px!important;
 `;
 
 export const StyledListItem = styled(ListItem)`

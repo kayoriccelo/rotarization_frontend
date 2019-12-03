@@ -92,6 +92,8 @@ export default function TableList({ columns, data, actions, path, is_pagination 
 
                                                                     if (itemAction['method'] === 'delete')
                                                                         return itemAction['action'](item.id)
+
+                                                                    return <></>
                                                                 })}
                                                             </div>
                                                         </TableCell>
