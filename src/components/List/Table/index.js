@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Table, TableBody, TableRow, TableCell, Card } from '@material-ui/core';
-import { HighlightOff, RadioButtonUnchecked, Adjust, CheckCircleOutline } from '@material-ui/icons';
-
 
 import useStyles from './styles';
 import TablePagination from '../Pagination';
@@ -80,15 +78,17 @@ export default function TableList({ columns, data, actions, path, is_pagination 
                                                     )
                                                 } else if (column.field === 'actions') {
                                                     return (
-
                                                         <TableCell key="actionItem">
                                                             <div style={{ display: 'flex' }}>
                                                                 {actions.map(itemAction => {
-                                                                    if (item.status === 'P')
-                                                                        return itemAction['action'](item.id)
+                                                                    if (item.status === 'P' && itemAction['method'] !== 'completed')
+                                                                        return itemAction['action'](item)
 
                                                                     if (item.status === 'I' && itemAction['method'] === 'cancel')
-                                                                        return itemAction['action'](item.id)
+                                                                        return itemAction['action'](item)
+
+                                                                    if (item.status === 'I' && itemAction['method'] === 'completed')
+                                                                        return itemAction['action'](item)
 
                                                                     if (itemAction['method'] === 'delete')
                                                                         return itemAction['action'](item.id)
@@ -97,15 +97,74 @@ export default function TableList({ columns, data, actions, path, is_pagination 
                                                                 })}
                                                             </div>
                                                         </TableCell>
-
                                                     )
                                                 } else if (column.is_status) {
                                                     return (
                                                         <TableCell key="statusItem">
-                                                            {item[column.field] === 'D' && <HighlightOff style={{ color: '#f50057' }} fontSize="small" />}
-                                                            {item[column.field] === 'P' && <RadioButtonUnchecked style={{ color: '#ff9800' }} fontSize="small" />}
-                                                            {item[column.field] === 'I' && <Adjust style={{ color: '#3f51b5' }} fontSize="small" />}
-                                                            {item[column.field] === 'C' && <CheckCircleOutline style={{ color: '#4caf50' }} fontSize="small" />}
+                                                            {item[column.field] === 'D' && (
+                                                                <div style={{
+                                                                    display: 'flex',
+                                                                    alignItems: 'center',
+                                                                    justifyContent: 'center',
+                                                                    backgroundColor: '#ff1a6a',
+                                                                    color: 'white',
+                                                                    fontSize: 12,
+                                                                    fontWeight: 'bold',
+                                                                    padding: 4,
+                                                                    borderRadius: 4,
+                                                                    boxShadow: '4px 4px 10px -8px rgba(0,0,0,0.75)'
+                                                                }}>
+                                                                    Cancelado
+                                                                </div>
+                                                            )}
+                                                            {item[column.field] === 'P' && (
+                                                                <div style={{
+                                                                    display: 'flex',
+                                                                    alignItems: 'center',
+                                                                    justifyContent: 'center',
+                                                                    backgroundColor: '#ff9800',
+                                                                    color: 'white',
+                                                                    fontSize: 12,
+                                                                    fontWeight: 'bold',
+                                                                    padding: 4,
+                                                                    borderRadius: 4,
+                                                                    boxShadow: '4px 4px 10px -8px rgba(0,0,0,0.75)'
+                                                                }}>
+                                                                    Pendente
+                                                                </div>
+                                                            )}
+                                                            {item[column.field] === 'I' && (
+                                                                <div style={{
+                                                                    display: 'flex',
+                                                                    alignItems: 'center',
+                                                                    justifyContent: 'center',
+                                                                    backgroundColor: '#3f51b5',
+                                                                    color: 'white',
+                                                                    fontSize: 12,
+                                                                    fontWeight: 'bold',
+                                                                    padding: 4,
+                                                                    borderRadius: 4,
+                                                                    boxShadow: '4px 4px 10px -8px rgba(0,0,0,0.75)'
+                                                                }}>
+                                                                    Em andamento
+                                                                </div>
+                                                            )}
+                                                            {item[column.field] === 'C' &&  (
+                                                                <div style={{
+                                                                    display: 'flex',
+                                                                    alignItems: 'center',
+                                                                    justifyContent: 'center',
+                                                                    backgroundColor: '#4caf50',
+                                                                    color: 'white',
+                                                                    fontSize: 12,
+                                                                    fontWeight: 'bold',
+                                                                    padding: 4,
+                                                                    borderRadius: 4,
+                                                                    boxShadow: '4px 4px 10px -8px rgba(0,0,0,0.75)'
+                                                                }}>
+                                                                    Concluído
+                                                                </div>
+                                                            )}
                                                         </TableCell>
                                                     )
                                                 } else {

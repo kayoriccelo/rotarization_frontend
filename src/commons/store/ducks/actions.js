@@ -52,6 +52,7 @@ export const saveDefault = (instance, model, type, history, path) => dispatch =>
                 variant: 'success'
             }));
 
+            history.push('/');
             history.push(path);
         }, err => {
             try {
