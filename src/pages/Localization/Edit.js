@@ -23,7 +23,9 @@ const Edit = ({ load, save, setTitle, id, history }) => {
         !localization && load(id)
             .then(res => localization !== res && setLocalization(res));
 
-        localization && setTitle({ subTitle: `${localization.code} - ${localization.description}` });
+        localization && setTitle({ 
+            subTitle: `${localization.code} - ${localization.description}` 
+        });
     }, [localization, id, load, setTitle]);
 
     const handleSubmit = () => save(localization, history);
@@ -36,7 +38,8 @@ const Edit = ({ load, save, setTitle, id, history }) => {
         });
 
         setLocalization({
-            ...localization, [name]: event.target.value
+            ...localization, 
+            [name]: event.target.value
         });
     };
 

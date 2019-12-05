@@ -39,7 +39,10 @@ const EditClient = ({ instance, load, save, setTitle, id, history }) => {
             event.target.value = event.target.value.replace(/\D/g, '');
         };
 
-        setClient({ ...client, [name]: event.target.value });
+        setClient({ 
+            ...client, 
+            [name]: event.target.value 
+        });
     };
 
     return (

@@ -19,9 +19,10 @@ export const Form = ({ instance, load, update, loadUser, setTitle, showMessage, 
     }, [setTitle]);
 
     useEffect(() => {
-        profile === null && load().then(res => {
-            profile !== instance && setProfile(instance);
-        });
+        profile === null && load()
+            .then(_ => {
+                profile !== instance && setProfile(instance);
+            });
 
         profile && setTitle({
             subTitle: `${profile.first_name} ${profile.last_name}`
@@ -39,7 +40,8 @@ export const Form = ({ instance, load, update, loadUser, setTitle, showMessage, 
         } else if (!profile.new_password && !profile.confirm_password) {
             delete profile.new_password;
             delete profile.confirm_password;
-            update(profile, history).then(res => loadUser());
+            update(profile, history)
+                .then(_ => loadUser());
         } else {
             showMessage({
                 open: true,
@@ -91,5 +93,5 @@ export const Form = ({ instance, load, update, loadUser, setTitle, showMessage, 
 
 
 const mapStateToProps = ({ profile }) => ({ instance: profile.instance });
-const mapDispatchToProps = (dispatch) => bindActionCreators(Actions, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators(Actions, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(Form);

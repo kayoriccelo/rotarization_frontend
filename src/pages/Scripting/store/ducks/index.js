@@ -28,7 +28,7 @@ export function createInstance() {
 export const getList = (page, pageSize, search = '') =>
     getListDefault(search, page, pageSize, 'scripting', Types.LIST);
 
-export const load = (id) => loadDefault(id, 'scripting', Types.GET)
+export const load = id => loadDefault(id, 'scripting', Types.GET);
 
 export const save = (scripting, history) => {
     if (Object.keys(scripting).indexOf('localizations') > -1)

@@ -27,12 +27,15 @@ const AddClient = ({ save, setTitle, history }) => {
 
     const handleCancel = () => history.push('/registration/client');
 
-    const handleChange = (name) => event => {
+    const handleChange = name => event => {
         name === 'business_name' && setTitle({
             subTitle: `${client.cnpj} - ${event.target.value}`
         });
 
-        setClient({ ...client, [name]: event.target.value });
+        setClient({ 
+            ...client, 
+            [name]: event.target.value 
+        });
     };
 
     return (

@@ -91,5 +91,5 @@ const MenuCustom = ({ user, logout, history }) => {
 
 
 const mapStateToProps = ({ auth }) => ({ user: auth.user });
-const mapDispatchToProps = (dispatch) => bindActionCreators({ logout }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ logout }, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(MenuCustom);

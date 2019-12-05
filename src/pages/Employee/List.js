@@ -13,7 +13,7 @@ import { getList, remove, setTitle } from './store/ducks';
 export const List = ({ data, page, pageSize, getList, remove, setTitle, history }) => {
     let timer = null;
     let search = '';
-    
+
     const columns = [
         { field: 'cpf', label: 'CPF', is_edit: true, mask: maskCpf },
         { field: 'name', label: 'Nome' },
@@ -61,7 +61,9 @@ export const List = ({ data, page, pageSize, getList, remove, setTitle, history 
             <TableCustom
                 columns={columns}
                 data={data}
-                actions={[{ action: clickDelete, method: 'delete' }]}
+                actions={[
+                    { action: clickDelete, method: 'delete' }
+                ]}
                 path='/registration/employee'
             />
         </>
@@ -70,9 +72,9 @@ export const List = ({ data, page, pageSize, getList, remove, setTitle, history 
 
 
 const mapStateToProps = ({ employee, pagination }) => ({
-    data: employee.data, 
-    page: pagination.page, 
+    data: employee.data,
+    page: pagination.page,
     pageSize: pagination.pageSize
 });
-const mapDispatchToProps = (dispatch) => bindActionCreators({ getList, remove, setTitle }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ getList, remove, setTitle }, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(List);

@@ -34,7 +34,10 @@ const Add = ({ save, setTitle, history }) => {
             subTitle: `${event.target.value}`
         });
 
-        setScripting({ ...scripting, [name]: event.target.value });
+        setScripting({
+            ...scripting,
+            [name]: event.target.value
+        });
     };
 
     const handleLocalizationChange = value => {
@@ -45,7 +48,17 @@ const Add = ({ save, setTitle, history }) => {
             }))
         );
 
-        setScripting({ ...scripting, localizations: value });
+        setScripting({
+            ...scripting,
+            localizations: value
+        });
+    };
+
+    const handleEmployeeChange = value => {
+        setScripting({
+            ...scripting,
+            employees: value
+        });
     };
 
     return (
@@ -62,6 +75,7 @@ const Add = ({ save, setTitle, history }) => {
                 waypoints={waypoints}
                 handleChange={handleChange}
                 handleLocalizationChange={handleLocalizationChange}
+                handleEmployeeChange={handleEmployeeChange}
             />
         </FormCustom>
     );

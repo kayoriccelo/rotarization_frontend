@@ -39,5 +39,5 @@ const PrivateRoute = ({ user, component: Component, path, history, loadUser, ...
 
 
 const mapStateToProps = ({ auth }) => ({ user: auth.user });
-const mapDispatchToProps = (dispatch) => bindActionCreators({ loadUser }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ loadUser }, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(PrivateRoute);

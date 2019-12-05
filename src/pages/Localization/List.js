@@ -21,7 +21,7 @@ export const List = ({ data, page, pageSize, getList, remove, setTitle, history 
 
     useEffect(() => {
         getList(page, pageSize);
-    }, [page, pageSize, getList])
+    }, [page, pageSize, getList]);
 
     useEffect(() => {
         setTitle({
@@ -48,7 +48,7 @@ export const List = ({ data, page, pageSize, getList, remove, setTitle, history 
             <IconButton size="small" onClick={() => remove(id, 0, pageSize)}>
                 <DeleteIcon fontSize="small" color="secondary" />
             </IconButton>
-        )
+        );
     };
 
     return (
@@ -60,7 +60,9 @@ export const List = ({ data, page, pageSize, getList, remove, setTitle, history 
             <TableCustom
                 columns={columns}
                 data={data}
-                actions={[{ action: clickDelete, method: 'delete' }]}
+                actions={[
+                    { action: clickDelete, method: 'delete' }
+                ]}
                 path='/registration/localization'
             />
         </>
@@ -73,5 +75,5 @@ const mapStateToProps = ({ localization, pagination }) => ({
     page: pagination.page, 
     pageSize: pagination.pageSize
 });
-const mapDispatchToProps = (dispatch) => bindActionCreators({ getList, remove, setTitle }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ getList, remove, setTitle }, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(List);

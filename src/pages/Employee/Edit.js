@@ -39,7 +39,10 @@ const EditEmployee = ({ load, save, setTitle, id, history }) => {
             event.target.value = event.target.value.replace(/\D/g, '');
         };
 
-        setEmployee({ ...employee, [name]: event.target.value });
+        setEmployee({
+            ...employee,
+            [name]: event.target.value
+        });
     };
 
     return (

@@ -27,12 +27,15 @@ const Add = ({ save, setTitle, history }) => {
 
     const handleCancel = () => history.push('/registration/localization');
 
-    const handleChange = (name) => event => {
+    const handleChange = name => event => {
         name === 'description' && setTitle({
             subTitle: `${localization.code} - ${event.target.value}`
         });
 
-        setLocalization({ ...localization, [name]: event.target.value });
+        setLocalization({ 
+            ...localization, 
+            [name]: event.target.value 
+        });
     };
 
     return (

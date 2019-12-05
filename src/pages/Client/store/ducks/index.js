@@ -25,13 +25,13 @@ export function createInstance() {
 export const getList = (page, pageSize, search = '') =>
     getListDefault(search, page, pageSize, 'client', Types.LIST);
 
-export const load = (id) => loadDefault(id, 'client', Types.GET)
+export const load = id => loadDefault(id, 'client', Types.GET);
 
 export const save = (client, history) =>
     saveDefault(client, 'client', Types.POST, history, '/registration/client');
 
 export const remove = (id, page, pageSize) =>
-    removeDefault(id, 'client', [getList(page, pageSize), setPages(page, pageSize)])
+    removeDefault(id, 'client', [getList(page, pageSize), setPages(page, pageSize)]);
 
 export const initialState = {
     data: { itens: [], count: 0 },

@@ -87,5 +87,5 @@ export const Dashboard = ({ data, load, setTitle }) => {
 
 
 const mapStateToProps = ({ dashboard }) => ({ data: dashboard.data });
-const mapDispatchToProps = (dispatch) => bindActionCreators({ load, setTitle }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ load, setTitle }, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

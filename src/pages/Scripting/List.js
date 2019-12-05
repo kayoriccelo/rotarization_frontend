@@ -28,7 +28,7 @@ export const List = ({ data, page, pageSize, getList, save, remove, setTitle, hi
 
     useEffect(() => {
         getList(page, pageSize);
-    }, [page, pageSize, getList])
+    }, [page, pageSize, getList]);
 
     useEffect(() => {
         setTitle({
@@ -51,22 +51,26 @@ export const List = ({ data, page, pageSize, getList, save, remove, setTitle, hi
     const starting = item => {
         let scripting = item;
         scripting['date_initial'] = new Date().toLocaleDateString();
-        scripting['hour_initial'] = new Date().toLocaleTimeString('pt-BR', { hour: "2-digit", minute: "2-digit" });
-        scripting['status'] = 'I'
+        scripting['hour_initial'] = new Date().toLocaleTimeString(
+            'pt-BR', { hour: "2-digit", minute: "2-digit" }
+        );
+        scripting['status'] = 'I';
         save(scripting, history);
     };
 
     const cancel = item => {
         let scripting = item;
-        scripting['status'] = 'D'
+        scripting['status'] = 'D';
         save(scripting, history);
     };
 
     const completed = item => {
         let scripting = item;
         scripting['date_final'] = new Date().toLocaleDateString();
-        scripting['hour_final'] = new Date().toLocaleTimeString('pt-BR', { hour: "2-digit", minute: "2-digit" });
-        scripting['status'] = 'C'
+        scripting['hour_final'] = new Date().toLocaleTimeString(
+            'pt-BR', { hour: "2-digit", minute: "2-digit" }
+        );
+        scripting['status'] = 'C';
         save(scripting, history);
     };
 
@@ -131,5 +135,5 @@ const mapStateToProps = ({ scripting, pagination }) => ({
     page: pagination.page,
     pageSize: pagination.pageSize
 });
-const mapDispatchToProps = (dispatch) => bindActionCreators({ getList, save, remove, setTitle }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ getList, save, remove, setTitle }, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(List);

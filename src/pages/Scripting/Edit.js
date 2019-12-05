@@ -23,9 +23,11 @@ const Edit = ({ instance, load, save, setTitle, id, history }) => {
 
     useEffect(() => {
         scripting === null && load(id)
-            .then(res => setScripting(instance));
+            .then(_ => setScripting(instance));
 
-        scripting && setTitle({ subTitle: `${scripting.description}` });
+        scripting && setTitle({ 
+            subTitle: `${scripting.description}` 
+        });
     }, [scripting, instance, id, load, setTitle]);
 
     useEffect(() => {
@@ -108,11 +110,17 @@ const Edit = ({ instance, load, save, setTitle, id, history }) => {
             }))
         );
 
-        setScripting({ ...scripting, localizations: value });
+        setScripting({
+            ...scripting,
+            localizations: value
+        });
     };
 
     const handleEmployeeChange = value => {
-        setScripting({ ...scripting, employees: value });
+        setScripting({
+            ...scripting,
+            employees: value
+        });
     };
 
     return (

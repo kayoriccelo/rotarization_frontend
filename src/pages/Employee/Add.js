@@ -27,12 +27,15 @@ const AddEmployee = ({ save, setTitle, history }) => {
 
     const handleCancel = () => history.push('/registration/employee');
 
-    const handleChange = (name) => event => {
+    const handleChange = name => event => {
         name === 'name' && setTitle({
             subTitle: `${employee.cpf} - ${event.target.value}`
         });
 
-        setEmployee({ ...employee, [name]: event.target.value });
+        setEmployee({
+            ...employee,
+            [name]: event.target.value
+        });
     };
 
     return (

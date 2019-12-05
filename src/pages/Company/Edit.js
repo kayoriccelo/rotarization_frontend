@@ -30,7 +30,7 @@ const EditCompany = ({ load, save, setTitle, history }) => {
 
     const handleCancel = () => history.push('dashboard');
 
-    const handleChange = (name) => event => {
+    const handleChange = name => event => {
         name === 'business_name' && setTitle({
             subTitle: `${company.cnpj} - ${event.target.value}`
         });
@@ -39,7 +39,10 @@ const EditCompany = ({ load, save, setTitle, history }) => {
             event.target.value = event.target.value.replace(/\D/g, '');
         };
 
-        setCompany({ ...company, [name]: event.target.value });
+        setCompany({ 
+            ...company, 
+            [name]: event.target.value 
+        });
     };
 
     return (
