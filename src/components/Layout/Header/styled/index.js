@@ -16,13 +16,15 @@ export const StyledToolBar = styled.div`
 `;
 
 const openSide = `
-    padding: 18px;
+    padding: 6px;
+    margin: 12px;
+    border-radius: 4px;
+    color: #005074;
     &:hover {
         background-color: #8dbcd8; 
         cursor: pointer;
         color: white;
     },
-    color: #808080;
 `;
 
 export const StyledMenuOpenIcon = styled(MenuOpenIcon)`
