@@ -8,11 +8,6 @@ export const StyledContentLogo = styled.div`
     ${props => props.openDrawer && 'justify-content: center;'}
     height: ${props => props.openDrawer ? '150px' : '80px'};
     ${props => !props.openDrawer && 'padding-left: 4px'}
-    &:hover {
-        flex-direction: column;
-        justify-content: center;
-        height: 150px;
-    }
 `;
 
 export const StyledImageLogo = styled.img`
