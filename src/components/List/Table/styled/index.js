@@ -18,10 +18,9 @@ export const StyledCard = styled(Card)`
 `;
 
 export const StyledTableCell = styled(TableCell)`
-    font-weight: bold;
-    font-size: 14px;
-    font-style: italic;
-    color: black;
+    font-weight: bold!important;
+    font-size: 14px!important;
+    font-style: italic!important;
 `;
 
 const status = `

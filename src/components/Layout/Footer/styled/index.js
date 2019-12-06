@@ -6,10 +6,10 @@ import commonStyles from '../../../../commons/styles';
 
 export const StyledRoot = styled.div`
     height: 30px;
-    padding-top: 10px;,
-    background: ${commonStyles.backgroundColor};
+    padding-top: 10px;
+    background: ${commonStyles.backgroundColor}
 `;
 
 export const StyledTypography = styled(Typography)`
-    color: white;s
+    color: white!important;
 `;
