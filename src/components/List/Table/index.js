@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Table, TableBody, TableRow, TableCell, Card } from '@material-ui/core';
+import { Table, TableBody, TableRow, TableCell } from '@material-ui/core';
 
-import useStyles from './styles';
+import {
+    StyledRoot, StyledCard, StyledStatusPedding, StyledStatusInProgress, StyledStatusDisregarded, StyledStatusCompleted
+} from './styled';
 import TablePagination from '../Pagination';
 import EnhancedTableHead from './EnhancedTableHead';
 
 
 export default function TableList({ columns, data, actions, path, is_pagination = true, params = ['id'], paramsValue = [] }) {
-    const classes = useStyles();
     const [order, setOrder] = useState('asc');
     const [orderBy, setOrderBy] = useState();
 
@@ -48,138 +49,81 @@ export default function TableList({ columns, data, actions, path, is_pagination 
     paramsValue.map(param => paramValue = paramValue + '/' + param);
 
     return (
-        <div className={classes.rootTable}>
-            <Card className={is_pagination ? classes.card : classes.cardNotPagination}>
+        <StyledRoot>
+            <StyledCard is_pagination={is_pagination}>
                 <Table size="small">
                     <EnhancedTableHead
-                        classes={classes}
                         columns={columns}
                         order={order}
                         orderBy={orderBy}
                         onRequestSort={handleRequestSort}
                     />
                     <TableBody>
-                        {
-                            stableSort(data.itens, getSorting(order, orderBy)).map(item => {
-                                let itemValue = '';
-                                params.map(param => itemValue = itemValue + '/' + item[param]);
+                        {stableSort(data.itens, getSorting(order, orderBy)).map(item => {
+                            let itemValue = '';
+                            params.map(param => itemValue = itemValue + '/' + item[param]);
 
-                                return (
-                                    <TableRow key={item.id}>
-                                        {
-                                            columns.map((column, index) => {
-                                                if (column.is_edit) {
-                                                    return (
-                                                        <TableCell key={`${item.id}-${index}`}>
-                                                            <Link to={`${path}${itemValue}${paramValue}`}>
-                                                                {column.mask ? column.mask(item[column.field]) : item[column.field]}
-                                                            </Link>
-                                                        </TableCell>
-                                                    )
-                                                } else if (column.field === 'actions') {
-                                                    return (
-                                                        <TableCell key="actionItem">
-                                                            <div style={{ display: 'flex' }}>
-                                                                {actions.map(itemAction => {
-                                                                    if (item.status === 'P' && itemAction['method'] !== 'completed')
-                                                                        return itemAction['action'](item)
+                            return (
+                                <TableRow key={item.id}>
+                                    {columns.map((column, index) => {
+                                        if (column.is_edit) {
+                                            return (
+                                                <TableCell key={`${item.id}-${index}`}>
+                                                    <Link to={`${path}${itemValue}${paramValue}`}>
+                                                        {column.mask ? column.mask(item[column.field]) : item[column.field]}
+                                                    </Link>
+                                                </TableCell>
+                                            )
+                                        } else if (column.field === 'actions') {
+                                            return (
+                                                <TableCell key="actionItem">
+                                                    <div style={{ display: 'flex' }}>
+                                                        {actions.map(itemAction => {
+                                                            if (item.status === 'P' && itemAction['method'] !== 'completed')
+                                                                return itemAction['action'](item)
 
-                                                                    if (item.status === 'I' && itemAction['method'] === 'cancel')
-                                                                        return itemAction['action'](item)
+                                                            if (item.status === 'I' && itemAction['method'] === 'cancel')
+                                                                return itemAction['action'](item)
 
-                                                                    if (item.status === 'I' && itemAction['method'] === 'completed')
-                                                                        return itemAction['action'](item)
+                                                            if (item.status === 'I' && itemAction['method'] === 'completed')
+                                                                return itemAction['action'](item)
 
-                                                                    if (itemAction['method'] === 'delete')
-                                                                        return itemAction['action'](item.id)
+                                                            if (itemAction['method'] === 'delete')
+                                                                return itemAction['action'](item.id)
 
-                                                                    return <></>
-                                                                })}
-                                                            </div>
-                                                        </TableCell>
-                                                    )
-                                                } else if (column.is_status) {
-                                                    return (
-                                                        <TableCell key="statusItem">
-                                                            {item[column.field] === 'D' && (
-                                                                <div style={{
-                                                                    display: 'flex',
-                                                                    alignItems: 'center',
-                                                                    justifyContent: 'center',
-                                                                    backgroundColor: '#ff1a6a',
-                                                                    color: 'white',
-                                                                    fontSize: 12,
-                                                                    fontWeight: 'bold',
-                                                                    padding: 4,
-                                                                    borderRadius: 4,
-                                                                    boxShadow: '4px 4px 10px -8px rgba(0,0,0,0.75)'
-                                                                }}>
-                                                                    Cancelado
-                                                                </div>
-                                                            )}
-                                                            {item[column.field] === 'P' && (
-                                                                <div style={{
-                                                                    display: 'flex',
-                                                                    alignItems: 'center',
-                                                                    justifyContent: 'center',
-                                                                    backgroundColor: '#ff9800',
-                                                                    color: 'white',
-                                                                    fontSize: 12,
-                                                                    fontWeight: 'bold',
-                                                                    padding: 4,
-                                                                    borderRadius: 4,
-                                                                    boxShadow: '4px 4px 10px -8px rgba(0,0,0,0.75)'
-                                                                }}>
-                                                                    Pendente
-                                                                </div>
-                                                            )}
-                                                            {item[column.field] === 'I' && (
-                                                                <div style={{
-                                                                    display: 'flex',
-                                                                    alignItems: 'center',
-                                                                    justifyContent: 'center',
-                                                                    backgroundColor: '#3f51b5',
-                                                                    color: 'white',
-                                                                    fontSize: 12,
-                                                                    fontWeight: 'bold',
-                                                                    padding: 4,
-                                                                    borderRadius: 4,
-                                                                    boxShadow: '4px 4px 10px -8px rgba(0,0,0,0.75)'
-                                                                }}>
-                                                                    Em andamento
-                                                                </div>
-                                                            )}
-                                                            {item[column.field] === 'C' &&  (
-                                                                <div style={{
-                                                                    display: 'flex',
-                                                                    alignItems: 'center',
-                                                                    justifyContent: 'center',
-                                                                    backgroundColor: '#4caf50',
-                                                                    color: 'white',
-                                                                    fontSize: 12,
-                                                                    fontWeight: 'bold',
-                                                                    padding: 4,
-                                                                    borderRadius: 4,
-                                                                    boxShadow: '4px 4px 10px -8px rgba(0,0,0,0.75)'
-                                                                }}>
-                                                                    Concluído
-                                                                </div>
-                                                            )}
-                                                        </TableCell>
-                                                    )
-                                                } else {
-                                                    return <TableCell key={`${item.id}-${index}`}>{column.mask ? column.mask(item[column.field]) : item[column.field]}</TableCell>
-                                                };
-                                            })
-                                        }
-                                    </TableRow>
-                                )
-                            })
-                        }
+                                                            return <></>
+                                                        })}
+                                                    </div>
+                                                </TableCell>
+                                            )
+                                        } else if (column.is_status) {
+                                            return (
+                                                <TableCell key="statusItem">
+                                                    {item[column.field] === 'D' && <StyledStatusDisregarded children="Cancelado" />}
+
+                                                    {item[column.field] === 'P' && <StyledStatusPedding children="Pendente" />}
+
+                                                    {item[column.field] === 'I' && <StyledStatusInProgress children="Em andamento" />}
+
+                                                    {item[column.field] === 'C' && <StyledStatusCompleted children="Concluído" />}
+                                                </TableCell>
+                                            )
+                                        } else {
+                                            return (
+                                                <TableCell key={`${item.id}-${index}`}>
+                                                    {column.mask ? column.mask(item[column.field]) : item[column.field]}
+                                                </TableCell>
+                                            );
+                                        };
+                                    })}
+                                </TableRow>
+                            )
+                        })}
                     </TableBody>
+
                     {is_pagination && <TablePagination count={data.count} />}
                 </Table>
-            </Card>
-        </div>
+            </StyledCard>
+        </StyledRoot>
     );
 };

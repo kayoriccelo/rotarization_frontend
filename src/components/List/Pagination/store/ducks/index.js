@@ -2,9 +2,8 @@ export const Types = {
     PAGES: 'pagination/PAGES',
 };
 
-export const setPages = (page, pageSize) => {
-    return dispatch => dispatch({ type: Types.PAGES, payload: { page, pageSize } });
-};
+export const setPages = (page, pageSize) => dispatch =>
+    dispatch({ type: Types.PAGES, payload: { page, pageSize } });
 
 const initialState = {
     page: 0,

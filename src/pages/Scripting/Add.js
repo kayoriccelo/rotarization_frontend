@@ -6,7 +6,6 @@ import MapIcon from '@material-ui/icons/Map';
 import { FormCustom, Title } from '../../components';
 import Data from './Data';
 import { createInstance, save, setTitle } from './store/ducks';
-const iconUser = 'https://cdn0.iconfinder.com/data/icons/user-icons-4/100/user-17-512.png';
 
 
 const Add = ({ save, setTitle, history }) => {
@@ -43,8 +42,8 @@ const Add = ({ save, setTitle, history }) => {
     const handleLocalizationChange = value => {
         setWaypoints(
             value.map(item => ({
-                position: item.address,
-                icon: iconUser
+                location: item.address,
+                stopover: true
             }))
         );
 

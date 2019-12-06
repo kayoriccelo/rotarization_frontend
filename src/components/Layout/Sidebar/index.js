@@ -12,20 +12,16 @@ export default function Sidebar({ history, openDrawer }) {
     const [openMenu, setOpenMenu] = useState(true);
 
     return (
-        <DrawerCustom
-            openDrawer={openDrawer}
-        >
+        <DrawerCustom openDrawer={openDrawer} >
             <StyledContentLogo openDrawer={openDrawer}>
-                <StyledLogo>
+                <StyledLogo children={
                     <StyledImageLogo
                         src={require('../../../assets/images/logo.png')}
                         alt="logo"
-                    />
-                </StyledLogo>
+                    />}
+                />
 
-                <StyledTitleLogo openDrawer={openDrawer}>
-                    Controle de Rotas
-                </StyledTitleLogo>
+                <StyledTitleLogo openDrawer={openDrawer} children={'Controle de Rotas'} />
             </StyledContentLogo>
 
             <ListCustom>

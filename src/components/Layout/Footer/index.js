@@ -1,21 +1,20 @@
 import React from 'react';
-import { Container, Typography } from '@material-ui/core';
+import { Container } from '@material-ui/core';
 
-import useStyles from './styles';
+import { StyledRoot, StyledTypography } from './styled';
 
 
 export default function Header() {
-    const { root, textSecondary } = useStyles();
-
     return (
-        <div className={root}>
+        <StyledRoot>
             <Container maxWidth="sm">
-                <Typography
+                <StyledTypography
                     variant="body2"
                     color="textSecondary"
                     align="center"
-                    className={textSecondary}>
+                >
                     {'Copyright © '}
+
                     <a
                         href="https://www.linkedin.com/in/kayoriccelo/"
                         style={{ color: 'white', fontWeight: 'bold' }}
@@ -24,9 +23,10 @@ export default function Header() {
                     >
                         Kayo Riccelo
                     </a>
+                    
                     {' 2019'}
-                </Typography>
+                </StyledTypography>
             </Container>
-        </div>
+        </StyledRoot>
     );
 };

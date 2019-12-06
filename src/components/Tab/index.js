@@ -4,7 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
-import useStyles from './styles';
+import { StyledRoot } from './styled';
 
 
 function TabPanel(props) {
@@ -32,13 +32,12 @@ function a11yProps(index) {
 };
 
 export default function TabCustom(props) {
-    const classes = useStyles();
     const [value, setValue] = useState(0);
 
     const handleChange = (event, newValue) => setValue(newValue);
 
     return (
-        <div className={classes.root}>
+        <StyledRoot>
             <AppBar position="static" color="default">
                 <Tabs
                     value={value}
@@ -72,7 +71,7 @@ export default function TabCustom(props) {
                     )
                 })
             }
-        </div>
+        </StyledRoot>
     );
 };
 

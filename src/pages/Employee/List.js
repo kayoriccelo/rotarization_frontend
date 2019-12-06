@@ -22,7 +22,7 @@ export const List = ({ data, page, pageSize, getList, remove, setTitle, history 
 
     useEffect(() => {
         getList(page, pageSize);
-    }, [page, pageSize, getList])
+    }, [page, pageSize, getList]);
 
     useEffect(() => {
         setTitle({

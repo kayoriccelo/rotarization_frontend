@@ -1,21 +1,17 @@
 import React from 'react';
-import { Paper, InputBase, Button } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
-import SearchIcon from '@material-ui/icons/Search';
 
-import useStyles from './styles';
+import { StyledRoot, StyledPaper, StyledSearchIcon, StyledInputBase, StyledButtonAdd } from './styled';
 
 
 export default function SearchList({ onSearch, clickAdd, children }) {
-    const classes = useStyles();
-    
+
     return (
-        <div className={classes.rootSearch}>
-            <Paper className={classes.paperSearch}>
-                <SearchIcon className={classes.iconButton} />
+        <StyledRoot>
+            <StyledPaper>
+                <StyledSearchIcon />
                 
-                <InputBase
-                    className={classes.inputSearch}
+                <StyledInputBase
                     placeholder="Search"
                     inputProps={{ 'aria-label': 'Journey' }}
                     onChange={onSearch}
@@ -24,15 +20,14 @@ export default function SearchList({ onSearch, clickAdd, children }) {
                 {children}
                 
                 {clickAdd &&
-                    <Button
+                    <StyledButtonAdd
                         variant="contained"
-                        className={classes.buttonAdd}
                         onClick={clickAdd}
                     >
                         <AddIcon />
-                    </Button>
+                    </StyledButtonAdd>
                 }
-            </Paper>
-        </div>
+            </StyledPaper>
+        </StyledRoot>
     );
 };

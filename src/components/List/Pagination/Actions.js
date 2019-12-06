@@ -7,11 +7,10 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
 
-import { useStylesActions } from './styles';
+import { StyledRoot } from './styled';
 
 
 export const TablePaginationActions = props => {
-    const classes = useStylesActions();
     const theme = useTheme();
     const { count, page, rowsPerPage, onChangePage } = props;
 
@@ -24,7 +23,7 @@ export const TablePaginationActions = props => {
     const handleLastPageButtonClick = event => onChangePage(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
 
     return (
-        <div className={classes.root}>
+        <StyledRoot>
             <IconButton
                 onClick={handleFirstPageButtonClick}
                 disabled={page === 0}
@@ -52,9 +51,10 @@ export const TablePaginationActions = props => {
             >
                 {theme.direction === 'rtl' ? <FirstPageIcon /> : <LastPageIcon />}
             </IconButton>
-        </div>
+        </StyledRoot>
     );
 };
+
 
 TablePaginationActions.propTypes = {
     count: PropTypes.number.isRequired,

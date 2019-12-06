@@ -48,7 +48,9 @@ const DirectionMarkerMap = (props) => {
             defaultCenter={newCenter}
         >
             <DirectionsRenderer directions={directions} />
+
             <TrafficLayer autoUpdate />
+            
             {localizations.map(localization => {
                 let is_exist = false;
 

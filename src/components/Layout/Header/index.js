@@ -1,35 +1,27 @@
 import React, { useEffect } from 'react';
-import MenuOpenIcon from '@material-ui/icons/MenuOpen';
-import MenuIcon from '@material-ui/icons/Menu';
 
 import MenuCustom from './Menu';
-import useStyles from './styles';
+import { StyledRoot, StyledToolBar, StyledMenuOpenIcon, StyledMenuIcon } from './styled';
+
 
 export default function ({ screen, openDrawer, setOpenDrawer, history }) {
-    const styles = useStyles();
-
+    
     useEffect(() => {
         setOpenDrawer(screen.width > 800);
     }, [screen, setOpenDrawer]);
 
     return (
-        <div className={styles.root}>
-            <div className={styles.toolBar}>
+        <StyledRoot>
+            <StyledToolBar>
                 {openDrawer ?
-                    <MenuOpenIcon className={styles.openSide}
-                        onClick={() => setOpenDrawer(!openDrawer)}
-                    />
+                    <StyledMenuOpenIcon onClick={() => setOpenDrawer(!openDrawer)} />
                     :
-                    <MenuIcon className={styles.openSide}
-                        onClick={() => setOpenDrawer(!openDrawer)}
-                    />
+                    <StyledMenuIcon onClick={() => setOpenDrawer(!openDrawer)} />
                 }
-            </div>
+            </StyledToolBar>
 
-            <MenuCustom
-                history={history}
-            />
-        </div >
+            <MenuCustom history={history} />
+        </StyledRoot>
     );
 };
 
