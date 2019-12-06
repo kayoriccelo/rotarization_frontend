@@ -79,6 +79,9 @@ export default function TableList({ columns, data, actions, path, is_pagination 
                                                 <TableCell key="actionItem">
                                                     <div style={{ display: 'flex' }}>
                                                         {actions.map(itemAction => {
+                                                            if (itemAction['method'] === 'delete')
+                                                                return itemAction['action'](item.id)
+
                                                             if (item.status === 'P' && itemAction['method'] !== 'completed')
                                                                 return itemAction['action'](item)
 
@@ -87,9 +90,6 @@ export default function TableList({ columns, data, actions, path, is_pagination 
 
                                                             if (item.status === 'I' && itemAction['method'] === 'completed')
                                                                 return itemAction['action'](item)
-
-                                                            if (itemAction['method'] === 'delete')
-                                                                return itemAction['action'](item.id)
 
                                                             return <></>
                                                         })}

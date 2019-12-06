@@ -16,7 +16,7 @@ export const StyledToolBar = styled.div`
 `;
 
 const openSide = `
-    padding: 15px;
+    padding: 18px;
     &:hover {
         background-color: #8dbcd8; 
         cursor: pointer;

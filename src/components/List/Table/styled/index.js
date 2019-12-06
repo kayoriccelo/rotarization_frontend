@@ -28,9 +28,9 @@ const status = `
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 12px;
+    font-size: 9px;
     font-weight: bold;
-    padding: 4px;
+    padding: 3px;
     border-radius: 4px;
     box-shadow: 4px 4px 10px -8px rgba(0,0,0,0.75);
 `;

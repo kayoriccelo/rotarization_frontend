@@ -15,14 +15,14 @@ body {
 .MuiListItem-button {
     background-color: #f4f9fc!important;  
     transition: all .25s ease!important;
-    border-radius: 4px!important;
     margin: 0px 4px!important;
     width: calc(100% - 8px)!important;
 }
 
 .MuiListItem-button:hover {
     color: #005074!important;
-    border-right: 4px solid #005074!important; 
+    border-right: 4px solid #005074!important;
+    border-radius: 4px!important;
     padding-left: 30px!important;
 }
 
@@ -30,6 +30,7 @@ body {
     color: white!important;
     font-weight: bold!important;
     border-right: 4px solid #005074!important; 
+    border-radius: 4px!important;
     background: #8dbcd8!important;
 }
 
@@ -40,16 +41,16 @@ body {
 
 
 .MuiCollapse-wrapperInner > .MuiListItem-button {
-    transition: all .25s ease!important;
+    transition: all .50s ease!important;
     background: linear-gradient(to right, #f4f9fc 0%, rgb(255, 255, 255) 100%);
-    border-radius: 4px!important;
     margin: 0px 4px!important;
     width: calc(100% - 8px)!important;  
 }
 
 .MuiCollapse-wrapperInner > .MuiListItem-button:hover {
     color: #005074!important;
-    border-right: 4px solid #005074!important; 
+    border-right: 4px solid #005074!important;
+    border-radius: 4px!important;
     padding-left: 30px!important;
 }
 
@@ -57,6 +58,7 @@ body {
     color: white!important;
     font-weight: bold!important;
     border-right: 4px solid #005074!important; 
+    border-radius: 4px!important;
     background: #8dbcd8!important;
 }
 
