@@ -20,6 +20,7 @@ export const StyledButtonMenu = styled(Button)`
     &:hover {
         background-color: #8dbcd8!important;
         color: white!important;
+        box-shadow: 4px 4px 10px -8px rgba(0,0,0,0.90);
     };
 `;
 

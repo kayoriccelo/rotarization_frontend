@@ -24,6 +24,7 @@ const openSide = `
         background-color: #8dbcd8; 
         cursor: pointer;
         color: white;
+        box-shadow: 4px 4px 10px -8px rgba(0,0,0,0.90);
     },
 `;
 
