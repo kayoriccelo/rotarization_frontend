@@ -5,10 +5,8 @@ import {
     Button, ClickAwayListener, Paper, Popper, CardActionArea, CardActions,
     CardContent, Typography
 } from '@material-ui/core';
-import { ArrowDropDown } from '@material-ui/icons';
 
 import { logout } from '../../../../auth/store/ducks';
-import profile from '../../../../assets/images/profile.png';
 import {
     StyledButtonMenu, StyledAvatar, StyledCard, StyledCardMedia, StyledGrow,
     StyleName
@@ -44,11 +42,9 @@ const MenuCustom = ({ user, logout, history }) => {
                 aria-haspopup="true"
                 onClick={handleClick}
             >
-                <StyledAvatar alt="R" src={profile} />
+                <StyleName children={`Olá, ${user.first_name}`} />
 
-                <StyleName children={user.first_name} />
-
-                <ArrowDropDown fontSize="small" />
+                <StyledAvatar variant="rounded">{user.first_name.charAt(0)}</StyledAvatar>
             </StyledButtonMenu>
 
             <Popper open={open} anchorEl={anchorRef.current} transition>

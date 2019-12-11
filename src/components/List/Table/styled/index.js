@@ -1,20 +1,24 @@
 import styled from 'styled-components';
-import { Card, TableCell } from '@material-ui/core';
+import { Card, Table, TableCell } from '@material-ui/core';
 
 
 export const StyledRoot = styled.div`
-    overflow: auto;
+    overflow: hidden;
     margin: 2px;
 `;
 
 export const StyledCard = styled(Card)`
-    height: calc(100vh - 280px);
-    min-width:  calc(100vh - 180px);
+    height: calc(100vh - 280px)!important;
+    min-width: 100vh - 280px)!important;
     ${props => props.is_pagination ?
-        'overflow: auto;'
+        'overflow: auto!important;'
         :
-        'overflow-x: auto; overflow-y: visible;'
+        'overflow-x: auto!important; overflow-y: visible!important;'
     }
+`;
+
+export const StyledTable = styled(Table)`
+    min-width: 100vh!important;
 `;
 
 export const StyledTableCell = styled(TableCell)`

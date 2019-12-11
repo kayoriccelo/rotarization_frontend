@@ -4,11 +4,11 @@ import { bindActionCreators } from 'redux';
 
 import { updateDimensions } from '../../commons/useful';
 import Header from '../../components/Layout/Header';
-import Sidebar from '../../components/Layout/Sidebar';
+import { Sidebar, SidebarMobile } from '../../components/Layout/Sidebar';
 import Content from '../../components/Layout/Content';
 import Footer from '../../components/Layout/Footer';
 import { Message } from '../../components';
-import { StyledRoot, StyledMain } from './styled';
+import { StyledRoot, StyledMain, StyledMainMobile } from './styled';
 
 import { loadUser } from '../../auth/store/ducks';
 
@@ -24,28 +24,53 @@ export function Home({ user, history, loadUser }) {
         return () => window.removeEventListener('resize', updateDimensions(setScreen))
     }, [loadUser]);
 
+    useEffect(() => {
+        setOpenDrawer(screen.width > 800);
+    }, [screen, setOpenDrawer]);
 
     return (
-        user.isAuthenticated && <StyledRoot openDrawer={openDrawer}>
-            <Sidebar
-                history={history}
-                openDrawer={openDrawer}
-            />
+        <>
+            {screen.width >= 800 ? (
+                user.isAuthenticated && <StyledRoot>
+                    <Sidebar
+                        history={history}
+                        openDrawer={openDrawer}
+                        setOpenDrawer={setOpenDrawer}
+                    />
+                    <StyledMain openDrawer={openDrawer}>
+                        <Header
+                            openDrawer={openDrawer}
+                            setOpenDrawer={setOpenDrawer}
+                            history={history}
+                        />
 
-            <StyledMain openDrawer={openDrawer}>
-                <Header
-                    screen={screen}
-                    openDrawer={openDrawer}
-                    setOpenDrawer={setOpenDrawer}
-                    history={history}
-                />
+                        <Content history={history} />
 
-                <Content history={history} />
+                        <Footer />
+                    </StyledMain>
+                </StyledRoot>
+            ) : (
+                    user.isAuthenticated && <StyledRoot>
+                        <SidebarMobile
+                            history={history}
+                            openDrawer={openDrawer}
+                            setOpenDrawer={setOpenDrawer}
+                        />
+                        <StyledMainMobile openDrawer={!openDrawer}>
+                            <Header
+                                openDrawer={openDrawer}
+                                setOpenDrawer={setOpenDrawer}
+                                history={history}
+                            />
 
-                <Footer />
-            </StyledMain>
+                            <Content history={history} />
+
+                            <Footer />
+                        </StyledMainMobile>
+                    </StyledRoot>
+                )}
             <Message />
-        </StyledRoot>
+        </>
     );
 };
 

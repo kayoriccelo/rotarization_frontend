@@ -15,3 +15,13 @@ export const StyledMain = styled.div`
     margin-left: ${props => props.openDrawer ? '0px' : '61px'};
     position: ${props => props.openDrawer ? 'relative' : 'absolute'};
 `;
+
+export const StyledMainMobile = styled.div`
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    margin-left: '0px';
+    position: absolute;
+`;
+

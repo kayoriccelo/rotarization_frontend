@@ -1,14 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import MenuCustom from './Menu';
 import { StyledRoot, StyledToolBar, StyledMenuOpenIcon, StyledMenuIcon } from './styled';
 
 
-export default function ({ screen, openDrawer, setOpenDrawer, history }) {
-    
-    useEffect(() => {
-        setOpenDrawer(screen.width > 800);
-    }, [screen, setOpenDrawer]);
+export default function ({ openDrawer, setOpenDrawer, history }) {
 
     return (
         <StyledRoot>
@@ -18,9 +14,8 @@ export default function ({ screen, openDrawer, setOpenDrawer, history }) {
                     :
                     <StyledMenuIcon onClick={() => setOpenDrawer(!openDrawer)} />
                 }
+                <MenuCustom history={history} />
             </StyledToolBar>
-
-            <MenuCustom history={history} />
         </StyledRoot>
     );
 };

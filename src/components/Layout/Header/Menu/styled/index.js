@@ -14,21 +14,22 @@ export const StyledButtonMenu = styled(Button)`
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #8c8c8c;
-    height: 40px;
-    margin: 10px!important;
+    height: 36px;
+    margin: 12px!important;
+    color: white!important;
+    background: linear-gradient(to right, #67a6cb 0%, #549bc4 100%)!important;
+    box-shadow: 4px 4px 10px -8px rgba(0,0,0,0.90)!important;
+    cursor: pointer;
     &:hover {
-        background-color: #8dbcd8!important;
-        color: white!important;
-        box-shadow: 4px 4px 10px -8px rgba(0,0,0,0.90);
+        background: linear-gradient(to right, #549bc4 0%, #549bc4 100%)!important;
     };
 `;
 
 export const StyledAvatar = styled(Avatar)`
-    height: 28px!important;
-    width: 28px!important;
-    margin-right: 10px!important;
-    background-color: #8c8c8c!important;
+    height: 26px!important;
+    width: 26px!important;
+    margin-left: 8px!important;
+    background-color: #67a6cb!important;
     align-items: center;
     justify-content: center;
 `;
@@ -40,7 +41,4 @@ export const StyledGrow = styled(Grow)`
 export const StyleName = styled.div`
     font-size: 10px;
     font-weight: bold;
-    &:hover {
-        background-color: #8dbcd8!important;
-    };
 `;

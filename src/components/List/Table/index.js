@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Table, TableBody, TableRow, TableCell } from '@material-ui/core';
+import { TableBody, TableRow, TableCell } from '@material-ui/core';
 
 import {
-    StyledRoot, StyledCard, StyledStatusPedding, StyledStatusInProgress, StyledStatusDisregarded, StyledStatusCompleted
+    StyledRoot, StyledCard, StyledTable, StyledStatusPedding, StyledStatusInProgress, StyledStatusDisregarded, StyledStatusCompleted
 } from './styled';
 import TablePagination from '../Pagination';
 import EnhancedTableHead from './EnhancedTableHead';
@@ -51,7 +51,7 @@ export default function TableList({ columns, data, actions, path, is_pagination 
     return (
         <StyledRoot>
             <StyledCard is_pagination={is_pagination}>
-                <Table size="small">
+                <StyledTable size="small">
                     <EnhancedTableHead
                         columns={columns}
                         order={order}
@@ -122,7 +122,7 @@ export default function TableList({ columns, data, actions, path, is_pagination 
                     </TableBody>
 
                     {is_pagination && <TablePagination count={data.count} />}
-                </Table>
+                </StyledTable>
             </StyledCard>
         </StyledRoot>
     );

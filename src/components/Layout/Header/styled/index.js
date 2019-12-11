@@ -7,24 +7,25 @@ export const StyledRoot = styled.div`
     height: 60px;
     width: 100%;
     background: #f5f5f5;
-    display: flex;
+    display: flex; 
 `;
 
 export const StyledToolBar = styled.div`
     flex: 1;
     display: flex;
+    justify-content: flex-end;
 `;
 
 const openSide = `
     padding: 6px;
-    margin: 12px;
+    margin: 12px 0px 12px 12px;
     border-radius: 4px;
-    color: #005074;
+    color: white;
+    background: linear-gradient(to right, #67a6cb 0%, #549bc4 100%);
+    box-shadow: 4px 4px 10px -8px rgba(0,0,0,0.90);
+    cursor: pointer;
     &:hover {
-        background-color: #8dbcd8; 
-        cursor: pointer;
-        color: white;
-        box-shadow: 4px 4px 10px -8px rgba(0,0,0,0.90);
+        background: #549bc4; 
     },
 `;
 
