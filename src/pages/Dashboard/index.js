@@ -4,6 +4,9 @@ import { bindActionCreators } from 'redux';
 import { CircularProgress } from '@material-ui/core';
 import Chart from "react-google-charts";
 
+import { 
+    StyledMain, StyledGrid, StyledCard, StyledTitle, StyledTitleFooter, StyledLoading
+ } from './styled';
 import { load, setTitle } from './store/ducks';
 
 
@@ -29,58 +32,59 @@ export const Dashboard = ({ data, load, setTitle }) => {
     return (
         data !== {} ? (
             <>
-                <div style={{ height: '100%', overflowY: 'auto', backgroundColor: 'white' }}>
-                    <div style={{ padding: 10 }}>
-                        <div style={{ fontSize: 12, textAlign: 'left', paddingLeft: 20 }}>
-                            Quantidade de roteirizações por funcionário
-                        </div>
+                <StyledMain container direction="row">
+                    <StyledGrid item xs={12} md={6} lg={6}>
+                        <StyledCard>
+                            <StyledTitle>
+                                Roteirizações por funcionário
+                            </StyledTitle>
 
-                        <Chart
-                            chartType="ColumnChart"
-                            width="100%"
-                            height='100%'
-                            data={data['employees']}
-                            options={{
-                                ...options,
-                                vAxis: {
-                                    logScale: false
-                                }
-                            }}
-                        />
-                    </div>
+                            <Chart
+                                chartType="ColumnChart"
+                                data={data['employees']}
+                                options={{
+                                    ...options,
+                                    vAxis: {
+                                        logScale: false
+                                    }
+                                }}
+                            />
 
-                    <div style={{ padding: 10 }}>
-                        <div style={{ fontSize: 12, textAlign: 'left', paddingLeft: 20 }}>
-                            Quantidade de roteirizações por cliente
-                            </div>
+                            <StyledTitleFooter>
+                                *O gráfico está limitado aos 10 principais valores.
+                            </StyledTitleFooter>
+                        </StyledCard>
+                    </StyledGrid>
 
-                        <Chart
-                            chartType="BarChart"
-                            width="100%"
-                            height='100%'
-                            data={data['clients']}
-                            options={{
-                                ...options,
-                                hAxis: {
-                                    logScale: false
-                                }
-                            }}
-                        />
-                    </div>
-                    <div style={{ fontSize: 12, textAlign: 'center' }}>*O gráfico está limitado aos 10 principais valores.</div>
-                </div>
+                    <StyledGrid item xs={12} md={6} lg={6}>
+                        <StyledCard>
+                            <StyledTitle>
+                                Roteirizações por cliente
+                            </StyledTitle>
+
+                            <Chart
+                                chartType="BarChart"
+                                data={data['clients']}
+                                options={{
+                                    ...options,
+                                    hAxis: {
+                                        logScale: false
+                                    }
+                                }}
+                            />
+
+                            <StyledTitleFooter>
+                                *O gráfico está limitado aos 10 principais valores.
+                            </StyledTitleFooter>
+                        </StyledCard>
+                    </StyledGrid>
+                </StyledMain>
             </>
         ) : (
-                <div style={{
-                    display: 'flex',
-                    flexDirection: 'flex-end',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    height: '100vh'
-                }}>
-                    <CircularProgress style={{ margin: 4 }} />
-                    <b style={{ marginTop: 4 }}>Carregando...</b>
-                </div>
+                <StyledLoading>
+                    <CircularProgress style={{ margin: '8px 4px 4px 4px' }} />
+                    <b>Carregando...</b>
+                </StyledLoading>
             )
     );
 };

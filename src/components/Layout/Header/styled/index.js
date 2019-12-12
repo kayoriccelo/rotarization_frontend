@@ -7,7 +7,7 @@ export const StyledRoot = styled.div`
     height: 60px;
     width: 100%;
     background: #f5f5f5;
-    display: flex; 
+    display: flex;
 `;
 
 export const StyledToolBar = styled.div`
