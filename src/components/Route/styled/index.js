@@ -5,13 +5,13 @@ import commonStyles from '../../../commons/styles';
 
 const keyframeRoot = keyframes`
     0% {
-        transform: translateX(1000px) scaleX(2.5) scaleY(0.2);
-        transform-origin: 0% 50%;
+        transform: translateY(-1000px) scaleY(2.5) scaleX(0.2);
+        transform-origin: 50% 0%;
         filter: blur(40px);
         opacity: 0;
-    },
+    }
     100% {
-        transform: translateX(0) scaleY(1) scaleX(1);
+        transform: translateY(0) scaleY(1) scaleX(1);
         transform-origin: 50% 50%;
         filter: blur(0);
         opacity: 1;

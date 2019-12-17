@@ -8,6 +8,7 @@ export const StyledRoot = styled.div`
     width: 100%;
     background: #f5f5f5;
     display: flex;
+    box-shadow: inset 1px -12px 3px -12px rgba(0,0,0,0.26);
 `;
 
 export const StyledToolBar = styled.div`
