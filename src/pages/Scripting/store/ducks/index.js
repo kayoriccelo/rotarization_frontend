@@ -1,3 +1,5 @@
+import api from '../../../../services/api';
+import { showMessage } from '../../../../components/Message/store/ducks';
 import { setTitle } from '../../../../components/Route/store/ducks';
 import { getListDefault, loadDefault, saveDefault, removeDefault } from '../../../../commons/store/ducks/actions';
 import { setPages } from '../../../../components/List/Pagination/store/ducks';
@@ -43,6 +45,34 @@ export const save = (scripting, history) => {
 
     return saveDefault(scripting, 'scripting', Types.POST, history, '/scripting');
 };
+
+export const saveInList = (scripting, page, pageSize) => dispatch => {
+    return api.put(`v1/scripting/${scripting['id']}/`, scripting)
+        .then(res => {
+            dispatch(showMessage({
+                open: true,
+                message: 'Registro atualizado com sucesso..',
+                variant: 'success'
+            }));
+
+            dispatch(getList(page, pageSize));
+            dispatch(setPages(page, pageSize));
+        }, err => {
+            try {
+                dispatch(showMessage({
+                    open: true,
+                    message: err.response.data.non_field_errors[0],
+                    variant: 'error'
+                }));
+            } catch (e) {
+                dispatch(showMessage({
+                    open: true,
+                    message: 'Não foi possível atualizar o registro.',
+                    variant: 'error'
+                }));
+            };
+        });
+}
 
 export const remove = (id, page, pageSize) =>
     removeDefault(id, 'scripting', [getList(page, pageSize), setPages(page, pageSize)])

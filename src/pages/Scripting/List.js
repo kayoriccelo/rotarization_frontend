@@ -10,13 +10,13 @@ import CancelIcon from '@material-ui/icons/Cancel';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 
 import { SearchCustom, TableCustom, Title } from '../../components';
-import { getList, remove, setTitle, save } from './store/ducks';
+import { getList, remove, setTitle, saveInList } from './store/ducks';
 
 
 export const List = props => {
     const history = useHistory();
     const { data, page, pageSize } = props;
-    const { getList, save, remove, setTitle } = props;
+    const { getList, saveInList, remove, setTitle } = props;
     const columns = [
         { field: 'description', label: 'Descrição', is_edit: true },
         { field: 'date_initial', label: 'Início' },
@@ -58,13 +58,13 @@ export const List = props => {
             'pt-BR', { hour: "2-digit", minute: "2-digit" }
         );
         scripting['status'] = 'I';
-        save(scripting, history);
+        saveInList(scripting, page, pageSize);
     };
 
     const cancel = item => {
         let scripting = item;
         scripting['status'] = 'D';
-        save(scripting, history);
+        saveInList(scripting, page, pageSize);
     };
 
     const completed = item => {
@@ -74,7 +74,7 @@ export const List = props => {
             'pt-BR', { hour: "2-digit", minute: "2-digit" }
         );
         scripting['status'] = 'C';
-        save(scripting, history);
+        saveInList(scripting, page, pageSize);
     };
 
     const clickAdd = () => history.push('/scripting/new');
@@ -138,5 +138,5 @@ const mapStateToProps = ({ scripting, pagination }) => ({
     page: pagination.page,
     pageSize: pagination.pageSize
 });
-const mapDispatchToProps = dispatch => bindActionCreators({ getList, save, remove, setTitle }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ getList, saveInList, remove, setTitle }, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(List);
