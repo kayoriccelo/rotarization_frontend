@@ -12,7 +12,8 @@ import {
 
 
 export default function Data(props) {
-    const { scripting, waypoints, handleChange } = props;
+    const { scripting, waypoints, isEdit } = props;
+    const { handleChange, handleLocalizationChange, handleEmployeeChange } = props;
 
     return (
         <TabCustom
@@ -30,7 +31,7 @@ export default function Data(props) {
                     value={scripting.description}
                     handleChange={handleChange('description')}
                 />
-                {props.isEdit && (
+                {isEdit && (
                     <>
                         <InputDate
                             label="Data do Início"
@@ -104,8 +105,8 @@ export default function Data(props) {
                     </StyledMap>
                     <StyledListLocalization>
                         <ListLocalization
-                            localizations={props.scripting.localizations}
-                            handleLocalizationChange={props.handleLocalizationChange}
+                            localizations={scripting.localizations}
+                            handleLocalizationChange={handleLocalizationChange}
                         />
                     </StyledListLocalization>
                 </StyledContent>
@@ -113,8 +114,8 @@ export default function Data(props) {
             <StyledGridContainer container id="employees">
                 <StyledListEmployee>
                     <ListEmployee
-                        employees={props.scripting.employees}
-                        handleEmployeeChange={props.handleEmployeeChange}
+                        employees={scripting.employees}
+                        handleEmployeeChange={handleEmployeeChange}
                     />
                 </StyledListEmployee>
             </StyledGridContainer>

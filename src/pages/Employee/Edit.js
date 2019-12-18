@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { useHistory } from "react-router-dom";
 import { SupervisorAccount } from "@material-ui/icons";
 
 import { FormCustom, Title } from '../../components';
@@ -8,7 +9,8 @@ import Data from './Data';
 import { load, save, setTitle } from './store/ducks';
 
 
-const EditEmployee = ({ load, save, setTitle, id, history }) => {
+const EditEmployee = ({ load, save, setTitle, id }) => {
+    const history = useHistory();
     const [employee, setEmployee] = useState(null);
 
     useEffect(() => {

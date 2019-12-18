@@ -6,7 +6,7 @@ import { StyledRoot } from './styled';
 import PrivateRoute, { routes } from '../../../routes';
 
 
-const Content = ({ user, history }) => {
+const Content = ({ user }) => {
     return (
         <StyledRoot>
             <Switch>
@@ -14,7 +14,6 @@ const Content = ({ user, history }) => {
                     if (route.roles.indexOf(user.role) > -1) {
                         return <PrivateRoute
                             {...route}
-                            history={history}
                         />
                     };
 

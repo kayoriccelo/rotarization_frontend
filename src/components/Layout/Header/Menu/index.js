@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { useHistory } from "react-router-dom";
 import {
     Button, ClickAwayListener, Paper, Popper, CardActionArea, CardActions,
     CardContent, Typography
@@ -13,7 +14,8 @@ import {
 } from './styled';
 
 
-const MenuCustom = ({ user, logout, history }) => {
+const MenuCustom = ({ user, logout }) => {
+    const history = useHistory();
     const [open, setOpen] = useState(false);
     const anchorRef = useRef(null);
     const prevOpen = useRef(open);

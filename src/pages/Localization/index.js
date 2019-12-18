@@ -5,13 +5,8 @@ import Add from './Add';
 import Edit from './Edit';
 
 
-export const ListLocalization = ({ history }) => <List history={history} />;
+export const ListLocalization = () => <List />;
 
-export const AddLocalization = ({ history }) => <Add history={history} />;
+export const AddLocalization = () => <Add />;
 
-export const EditLocalization = ({ history, match }) => (
-    <Edit 
-        history={history} 
-        id={match.params.id}
-    />
-);
+export const EditLocalization = ({ match }) => <Edit id={match.params.id} />;

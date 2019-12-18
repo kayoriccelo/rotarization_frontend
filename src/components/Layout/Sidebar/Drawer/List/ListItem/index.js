@@ -6,17 +6,20 @@ import { StyledListItem } from '../styled';
 
 
 export default function ListItemCustom(props) {
+    const { key, icon, label, isSubMenu, open} = props;
+    const { onClick } = props;
+
     return (
         <StyledListItem
             button
-            key={props.key + 1}
-            onClick={props.onClick}
+            key={key + 1}
+            onClick={onClick}
         >
-            {props.icon && <ListItemIcon> {props.icon} </ListItemIcon>}
+            {icon && <ListItemIcon> {icon} </ListItemIcon>}
 
-            <ListItemText primary={props.label} />
+            <ListItemText primary={label} />
 
-            {props.isSubMenu && (props.open ? <ExpandLess /> : <ExpandMore />)}
+            {isSubMenu && (open ? <ExpandLess /> : <ExpandMore />)}
         </StyledListItem >
     );
 };

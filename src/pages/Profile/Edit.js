@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { useHistory } from "react-router-dom";
 import AccountBox from '@material-ui/icons/AccountBox';
 
 import { FormCustom, InputText, InputPassword, Title } from '../../components';
 import * as Actions from './store/ducks';
 
 
-export const Form = ({ instance, load, update, loadUser, setTitle, showMessage, history }) => {
+export const Form = ({ load, update, loadUser, setTitle, showMessage }) => {
+    const history = useHistory();
     const [profile, setProfile] = useState(null);
 
     useEffect(() => {
@@ -19,15 +21,15 @@ export const Form = ({ instance, load, update, loadUser, setTitle, showMessage, 
     }, [setTitle]);
 
     useEffect(() => {
-        profile === null && load()
-            .then(_ => {
-                profile !== instance && setProfile(instance);
+        !profile && load()
+            .then(res => {
+                profile !== res && setProfile(res);
             });
 
         profile && setTitle({
             subTitle: `${profile.first_name} ${profile.last_name}`
         });
-    }, [profile, instance, load, setTitle]);
+    }, [profile, load, setTitle]);
 
     const handleChange = name => event => {
         setProfile({ ...profile, [name]: event.target.value });

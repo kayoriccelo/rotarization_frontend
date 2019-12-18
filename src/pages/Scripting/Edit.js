@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { useHistory } from "react-router-dom";
 import MapIcon from '@material-ui/icons/Map';
 
 import api from '../../services/api';
@@ -9,7 +10,8 @@ import Data from './Data';
 import { load, save, setTitle } from './store/ducks';
 
 
-const Edit = ({ instance, load, save, setTitle, id, history }) => {
+const Edit = ({ load, save, setTitle, id }) => {
+    const history = useHistory();
     const [scripting, setScripting] = useState(null);
     const [waypoints, setWaypoints] = useState([]);
 
@@ -22,21 +24,21 @@ const Edit = ({ instance, load, save, setTitle, id, history }) => {
     }, [setTitle]);
 
     useEffect(() => {
-        scripting === null && load(id)
-            .then(_ => setScripting(instance));
+        !scripting && load(id)
+            .then(res => scripting !== res && setScripting(res));
 
         scripting && setTitle({ 
             subTitle: `${scripting.description}` 
         });
-    }, [scripting, instance, id, load, setTitle]);
+    }, [scripting, id, load, setTitle]);
 
     useEffect(() => {
-        if (instance)
-            if (instance.localizations)
-                if (instance.localizations.length > 0) {
+        if (scripting)
+            if (scripting.localizations)
+                if (scripting.localizations.length > 0) {
                     let ids = '';
-                    instance.localizations.map(item => {
-                        let itemCount = instance.localizations[instance.localizations.length - 1];
+                    scripting.localizations.map(item => {
+                        let itemCount = scripting.localizations[scripting.localizations.length - 1];
                         itemCount = itemCount.id ? itemCount.id : itemCount;
                         item = item.id ? item.id : item;
 
@@ -55,20 +57,20 @@ const Edit = ({ instance, load, save, setTitle, id, history }) => {
                             );
 
                             setScripting({
-                                ...instance,
+                                ...scripting,
                                 localizations: res.data.results
                             });
                         });
                 };
-    }, [instance]);
+    }, [scripting]);
 
     useEffect(() => {
-        if (instance)
-            if (instance.employees)
-                if (instance.employees.length > 0) {
+        if (scripting)
+            if (scripting.employees)
+                if (scripting.employees.length > 0) {
                     let ids = '';
-                    instance.employees.map(item => {
-                        let itemCount = instance.employees[instance.employees.length - 1];
+                    scripting.employees.map(item => {
+                        let itemCount = scripting.employees[scripting.employees.length - 1];
                         itemCount = itemCount.id ? itemCount.id : itemCount;
                         item = item.id ? item.id : item;
 
@@ -80,12 +82,12 @@ const Edit = ({ instance, load, save, setTitle, id, history }) => {
                     api.get(`v1/employee/?ids=${ids}`)
                         .then(res => {
                             setScripting({
-                                ...instance,
+                                ...scripting,
                                 employees: res.data.results
                             });
                         });
                 };
-    }, [instance]);
+    }, [scripting]);
 
     const handleSubmit = () => save(scripting, history);
 

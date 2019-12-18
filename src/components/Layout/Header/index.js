@@ -4,7 +4,7 @@ import MenuCustom from './Menu';
 import { StyledRoot, StyledToolBar, StyledMenuOpenIcon, StyledMenuIcon } from './styled';
 
 
-export default function ({ openDrawer, setOpenDrawer, history }) {
+export default function ({ openDrawer, setOpenDrawer }) {
 
     return (
         <StyledRoot>
@@ -14,7 +14,7 @@ export default function ({ openDrawer, setOpenDrawer, history }) {
                     :
                     <StyledMenuIcon onClick={() => setOpenDrawer(!openDrawer)} />
                 }
-                <MenuCustom history={history} />
+                <MenuCustom />
             </StyledToolBar>
         </StyledRoot>
     );

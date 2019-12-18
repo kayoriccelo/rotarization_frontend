@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { useHistory } from "react-router-dom";
 import EditLocationIcon from '@material-ui/icons/EditLocation';
 
 import { FormCustom, Title } from '../../components';
@@ -8,7 +9,8 @@ import Data from './Data';
 import { createInstance, save, setTitle } from './store/ducks';
 
 
-const Add = ({ save, setTitle, history }) => {
+const Add = ({ save, setTitle }) => {
+    const history = useHistory();
     const [localization, setLocalization] = useState(null);
 
     useEffect(() => {
@@ -19,9 +21,7 @@ const Add = ({ save, setTitle, history }) => {
         return () => setTitle({ title: '', subTitle: '' });
     }, [setTitle]);
 
-    useEffect(() => {
-        setLocalization(createInstance());
-    }, []);
+    useEffect(() => setLocalization(createInstance()), []);
 
     const handleSubmit = () => save(localization, history);
 

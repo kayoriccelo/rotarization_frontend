@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { useHistory } from "react-router-dom";
 import { Grid } from '@material-ui/core';
 
 import { InputText, InputPassword, Submit, ButtonLink } from '../../components';
@@ -9,9 +10,10 @@ import { StyledContentLogo, StyledLogo, StyledImageLogo } from '../../commons/st
 import { login } from './store/ducks';
 
 
-const Form = ({ screen, history, login }) => {
+const Form = ({ screen, login }) => {
+    const history = useHistory();
     const [values, setValues] = useState({
-        username: null,
+        username: null, 
         password: null
     });
 

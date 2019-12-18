@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { useHistory } from "react-router-dom";
 import EditLocationIcon from '@material-ui/icons/EditLocation';
 
 import { FormCustom, Title } from '../../components';
@@ -8,7 +9,8 @@ import Data from './Data';
 import { load, save, setTitle } from './store/ducks';
 
 
-const Edit = ({ load, save, setTitle, id, history }) => {
+const Edit = ({ load, save, setTitle, id }) => {
+    const history = useHistory();
     const [localization, setLocalization] = useState(null);
 
     useEffect(() => {

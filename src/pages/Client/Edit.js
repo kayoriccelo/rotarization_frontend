@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { useHistory } from "react-router-dom";
 import EmojiTransportationIcon from '@material-ui/icons/EmojiTransportation';
 
 import { FormCustom, Title } from '../../components';
@@ -8,7 +9,8 @@ import Data from './Data';
 import { load, save, setTitle } from './store/ducks';
 
 
-const EditClient = ({ instance, load, save, setTitle, id, history }) => {
+const EditClient = ({ load, save, setTitle, id }) => {
+    const history = useHistory();
     const [client, setClient] = useState(null);
 
     useEffect(() => {

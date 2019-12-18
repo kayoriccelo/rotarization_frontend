@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { useHistory } from "react-router-dom";
 import LocationCityIcon from '@material-ui/icons/LocationCity';
 
 import { FormCustom, Title } from '../../components';
@@ -8,7 +9,8 @@ import Data from './Data';
 import { load, save, setTitle } from './store/ducks';
 
 
-const EditCompany = ({ load, save, setTitle, history }) => {
+const EditCompany = ({ load, save, setTitle }) => {
+    const history = useHistory();
     const [company, setCompany] = useState(null);
 
     useEffect(() => {

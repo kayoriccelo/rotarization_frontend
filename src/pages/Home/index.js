@@ -12,7 +12,7 @@ import { StyledRoot, StyledMain, StyledMainMobile } from './styled';
 
 import { loadUser } from '../../auth/store/ducks';
 
-export function Home({ user, history, loadUser }) {
+export function Home({ user, loadUser }) {
     const [screen, setScreen] = useState({ width: 0 });
     const [openDrawer, setOpenDrawer] = useState(false);
 
@@ -24,16 +24,13 @@ export function Home({ user, history, loadUser }) {
         return () => window.removeEventListener('resize', updateDimensions(setScreen))
     }, [loadUser]);
 
-    useEffect(() => {
-        setOpenDrawer(screen.width > 800);
-    }, [screen, setOpenDrawer]);
+    useEffect(() => setOpenDrawer(screen.width > 800), [screen, setOpenDrawer]);
 
     return (
         <>
             {screen.width >= 800 ? (
                 user.isAuthenticated && <StyledRoot>
                     <Sidebar
-                        history={history}
                         openDrawer={openDrawer}
                         setOpenDrawer={setOpenDrawer}
                     />
@@ -41,10 +38,9 @@ export function Home({ user, history, loadUser }) {
                         <Header
                             openDrawer={openDrawer}
                             setOpenDrawer={setOpenDrawer}
-                            history={history}
                         />
 
-                        <Content history={history} />
+                        <Content />
 
                         <Footer />
                     </StyledMain>
@@ -52,7 +48,6 @@ export function Home({ user, history, loadUser }) {
             ) : (
                     user.isAuthenticated && <StyledRoot>
                         <SidebarMobile
-                            history={history}
                             openDrawer={openDrawer}
                             setOpenDrawer={setOpenDrawer}
                         />
@@ -60,10 +55,9 @@ export function Home({ user, history, loadUser }) {
                             <Header
                                 openDrawer={openDrawer}
                                 setOpenDrawer={setOpenDrawer}
-                                history={history}
                             />
 
-                            <Content history={history} />
+                            <Content />
 
                             <Footer />
                         </StyledMainMobile>

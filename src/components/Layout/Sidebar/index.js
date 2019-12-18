@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from "react-router-dom";
 import { Collapse } from '@material-ui/core';
 
 import { DrawerCustom, DrawerMobileCustom } from './Drawer';
@@ -7,7 +8,8 @@ import ListItemCustom from './Drawer/List/ListItem';
 import menus from '../../../routes/menus';
 
 
-export const Sidebar = ({ openDrawer, history, setOpenDrawer }) => {
+export const Sidebar = ({ openDrawer, setOpenDrawer }) => {
+    const history = useHistory();
     const [openMenu, setOpenMenu] = useState(true);
 
     return (

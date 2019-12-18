@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { useHistory } from "react-router-dom";
 import EditLocationIcon from '@material-ui/icons/EditLocation';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { IconButton } from '@material-ui/core';
@@ -9,19 +10,19 @@ import { SearchCustom, TableCustom, Title } from '../../components';
 import { getList, remove, setTitle } from './store/ducks';
 
 
-export const List = ({ data, page, pageSize, getList, remove, setTitle, history }) => {
-    let timer = null;
-    let search = '';
-    
+export const List = props => {
+    const history = useHistory();
+    const { data, page, pageSize } = props;
+    const { getList, remove, setTitle } = props;
     const columns = [
         { field: 'code', label: 'Código', is_edit: true },
         { field: 'description', label: 'Descrição' },
         { field: 'actions', label: 'Ações' }
     ];
+    let timer = null;
+    let search = '';
 
-    useEffect(() => {
-        getList(page, pageSize);
-    }, [page, pageSize, getList]);
+    useEffect(() => getList(page, pageSize), [page, pageSize, getList]);
 
     useEffect(() => {
         setTitle({

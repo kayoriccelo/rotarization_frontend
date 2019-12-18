@@ -5,13 +5,8 @@ import Add from './Add';
 import Edit from './Edit';
 
 
-export const ListEmployee = ({ history }) => <List history={history} />;
+export const ListEmployee = () => <List />;
 
-export const AddEmployee = ({ history }) => <Add history={history} />;
+export const AddEmployee = () => <Add />;
 
-export const EditEmployee = ({ history, match }) => (
-    <Edit 
-        history={history} 
-        id={match.params.id}
-    />
-);
+export const EditEmployee = ({ match }) => <Edit id={match.params.id} />;
