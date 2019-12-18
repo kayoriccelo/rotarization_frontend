@@ -22,7 +22,9 @@ export const List = props => {
     let timer = null;
     let search = '';
 
-    useEffect(() => getList(page, pageSize), [page, pageSize, getList]);
+    useEffect(() => {
+        getList(page, pageSize)
+    }, [page, pageSize, getList]);
 
     useEffect(() => {
         setTitle({
@@ -72,8 +74,8 @@ export const List = props => {
 
 
 const mapStateToProps = ({ localization, pagination }) => ({
-    data: localization.data, 
-    page: pagination.page, 
+    data: localization.data,
+    page: pagination.page,
     pageSize: pagination.pageSize
 });
 const mapDispatchToProps = dispatch => bindActionCreators({ getList, remove, setTitle }, dispatch);

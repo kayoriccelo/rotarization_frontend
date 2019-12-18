@@ -10,7 +10,7 @@ import Data from './Data';
 import { load, save, setTitle } from './store/ducks';
 
 
-const Edit = ({ load, save, setTitle, id }) => {
+const Edit = ({ instance, load, save, setTitle, id }) => {
     const history = useHistory();
     const [scripting, setScripting] = useState(null);
     const [waypoints, setWaypoints] = useState([]);
@@ -33,12 +33,12 @@ const Edit = ({ load, save, setTitle, id }) => {
     }, [scripting, id, load, setTitle]);
 
     useEffect(() => {
-        if (scripting)
-            if (scripting.localizations)
-                if (scripting.localizations.length > 0) {
+        if (instance)
+            if (instance.localizations)
+                if (instance.localizations.length > 0) {
                     let ids = '';
-                    scripting.localizations.map(item => {
-                        let itemCount = scripting.localizations[scripting.localizations.length - 1];
+                    instance.localizations.map(item => {
+                        let itemCount = instance.localizations[instance.localizations.length - 1];
                         itemCount = itemCount.id ? itemCount.id : itemCount;
                         item = item.id ? item.id : item;
 
@@ -57,20 +57,20 @@ const Edit = ({ load, save, setTitle, id }) => {
                             );
 
                             setScripting({
-                                ...scripting,
+                                ...instance,
                                 localizations: res.data.results
                             });
                         });
                 };
-    }, [scripting]);
+    }, [instance]);
 
     useEffect(() => {
-        if (scripting)
-            if (scripting.employees)
-                if (scripting.employees.length > 0) {
+        if (instance)
+            if (instance.employees)
+                if (instance.employees.length > 0) {
                     let ids = '';
-                    scripting.employees.map(item => {
-                        let itemCount = scripting.employees[scripting.employees.length - 1];
+                    instance.employees.map(item => {
+                        let itemCount = instance.employees[instance.employees.length - 1];
                         itemCount = itemCount.id ? itemCount.id : itemCount;
                         item = item.id ? item.id : item;
 
@@ -82,12 +82,12 @@ const Edit = ({ load, save, setTitle, id }) => {
                     api.get(`v1/employee/?ids=${ids}`)
                         .then(res => {
                             setScripting({
-                                ...scripting,
+                                ...instance,
                                 employees: res.data.results
                             });
                         });
                 };
-    }, [scripting]);
+    }, [instance]);
 
     const handleSubmit = () => save(scripting, history);
 

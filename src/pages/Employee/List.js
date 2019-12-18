@@ -23,7 +23,9 @@ export const List = props => {
     let timer = null;
     let search = '';
 
-    useEffect(() => getList(page, pageSize), [page, pageSize, getList]);
+    useEffect(() => {
+        getList(page, pageSize)
+    }, [page, pageSize, getList]);
 
     useEffect(() => {
         setTitle({
