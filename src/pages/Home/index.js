@@ -34,6 +34,7 @@ export function Home({ user, loadUser }) {
                         openDrawer={openDrawer}
                         setOpenDrawer={setOpenDrawer}
                     />
+
                     <StyledMain openDrawer={openDrawer}>
                         <Header
                             openDrawer={openDrawer}
@@ -51,7 +52,8 @@ export function Home({ user, loadUser }) {
                             openDrawer={openDrawer}
                             setOpenDrawer={setOpenDrawer}
                         />
-                        <StyledMainMobile openDrawer={!openDrawer}>
+
+                        <StyledMainMobile>
                             <Header
                                 openDrawer={openDrawer}
                                 setOpenDrawer={setOpenDrawer}
@@ -63,6 +65,7 @@ export function Home({ user, loadUser }) {
                         </StyledMainMobile>
                     </StyledRoot>
                 )}
+
             <Message />
         </>
     );

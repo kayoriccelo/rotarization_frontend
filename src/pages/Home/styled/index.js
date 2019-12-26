@@ -24,4 +24,3 @@ export const StyledMainMobile = styled.div`
     margin-left: '0px';
     position: absolute;
 `;
-
