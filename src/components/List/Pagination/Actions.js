@@ -1,13 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useTheme } from '@material-ui/core/styles';
-import { IconButton } from '@material-ui/core';
-import FirstPageIcon from '@material-ui/icons/FirstPage';
-import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
-import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
-import LastPageIcon from '@material-ui/icons/LastPage';
 
-import { StyledRoot } from './styled';
+import {
+    StyledRoot, StyledIconButton, StyledFirstPageIcon, StyledKeyboardArrowLeft, StyledKeyboardArrowRight, StyledLastPageIcon
+} from './styled';
 
 
 export const TablePaginationActions = props => {
@@ -24,33 +21,33 @@ export const TablePaginationActions = props => {
 
     return (
         <StyledRoot>
-            <IconButton
+            <StyledIconButton
                 onClick={handleFirstPageButtonClick}
                 disabled={page === 0}
                 aria-label="first page"
             >
-                {theme.direction === 'rtl' ? <LastPageIcon /> : <FirstPageIcon />}
-            </IconButton>
+                {theme.direction === 'rtl' ? <StyledLastPageIcon /> : <StyledFirstPageIcon />}
+            </StyledIconButton>
 
-            <IconButton onClick={handleBackButtonClick} disabled={page === 0} aria-label="previous page">
-                {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
-            </IconButton>
+            <StyledIconButton onClick={handleBackButtonClick} disabled={page === 0} aria-label="previous page">
+                {theme.direction === 'rtl' ? <StyledKeyboardArrowRight /> : <StyledKeyboardArrowLeft />}
+            </StyledIconButton>
             
-            <IconButton
+            <StyledIconButton
                 onClick={handleNextButtonClick}
                 disabled={page >= Math.ceil(count / rowsPerPage) - 1}
                 aria-label="next page"
             >
-                {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
-            </IconButton>
+                {theme.direction === 'rtl' ? <StyledKeyboardArrowLeft /> : <StyledKeyboardArrowRight />}
+            </StyledIconButton>
             
-            <IconButton
+            <StyledIconButton
                 onClick={handleLastPageButtonClick}
                 disabled={page >= Math.ceil(count / rowsPerPage) - 1}
                 aria-label="last page"
             >
-                {theme.direction === 'rtl' ? <FirstPageIcon /> : <LastPageIcon />}
-            </IconButton>
+                {theme.direction === 'rtl' ? <StyledFirstPageIcon /> : <StyledLastPageIcon />}
+            </StyledIconButton>
         </StyledRoot>
     );
 };
