@@ -7,17 +7,11 @@ const useStyles = makeStyles(theme => ({
         whiteSpace: 'nowrap',
         width: 280,
         height: '100vh',
-        transition: theme.transitions.create('width', {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.enteringScreen,
-        }),
+        borderRight: 'none'
     },
     drawerPaperClose: {
         overflowX: 'hidden',
-        transition: theme.transitions.create('width', {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen,
-        }),
+        transition: 'all .60s ease',
         width: 60,
         [theme.breakpoints.up('sm')]: {
             width: 60,

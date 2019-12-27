@@ -8,7 +8,7 @@ import {
 } from '../../../../commons/styled';
 
 
-export const DrawerCustom = ({ children, openDrawer, setOpenDrawer }) => {
+export const DrawerSidebar = ({ children, openDrawer, setOpenDrawer }) => {
     const { drawerPaper, drawerPaperClose } = useStyles();
 
     return (
@@ -46,7 +46,7 @@ export const DrawerCustom = ({ children, openDrawer, setOpenDrawer }) => {
     );
 };
 
-export const DrawerMobileCustom = ({ children, openDrawer, setOpenDrawer }) => {
+export const DrawerMobileSidebar = ({ children, openDrawer, setOpenDrawer }) => {
     const { drawerPaper } = useStyles();
 
     return (
