@@ -3,7 +3,7 @@ import { routerReducer } from 'react-router-redux';
 
 import paginationReducer from '../components/List/Pagination/store/ducks';
 import messageReducer from '../components/Message/store/ducks';
-import routeCustomReducer from '../components/Route/store/ducks';
+import routePrivateReducer from '../components/Route/store/ducks';
 
 import authReducer from '../auth/store/ducks';
 
@@ -25,7 +25,7 @@ const reducers = combineReducers({
 
     pagination: paginationReducer,
     message: messageReducer,
-    routeCustom: routeCustomReducer,
+    routePrivate: routePrivateReducer,
 
     auth: authReducer,
 
