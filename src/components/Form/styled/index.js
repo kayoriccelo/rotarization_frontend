@@ -22,6 +22,14 @@ export const StyledActions = styled.div`
     border-radius: 5px;
 `;
 
-export const StyledButton = styled(Button)`
+export const StyledButtonSave = styled(Button)`
+    margin: 2px!important;
+    background-color: #55C39E!important;
+    &:hover {
+        background-color: #159270!important;
+    }
+`;
+
+export const StyledButtonCancel = styled(Button)`
     margin: 2px!important;
 `;

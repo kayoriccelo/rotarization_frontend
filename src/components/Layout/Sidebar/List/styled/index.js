@@ -14,24 +14,18 @@ export const StyledListItem = styled(ListItem)`
     width: calc(100% - 4px)!important;
     border-radius: 4px!important;
     color: rgba(103, 103, 103, 0.90)!important;
-    &:hover {                                
+    &:hover {                          
         border-right: 4px solid #6c7293!important;
         padding-left: 22px!important;
     }
     &:focus {
         font-weight: bold!important;
-        border-right: 4px solid #6c7293!important;
-        color: #6c7293!important;
+        color: #f5f5f5!important;
+        border-right: 0px!important;
+        background: rgb(96, 128, 163)!important;
     }
-    ${props => props.isInicio ? `
-        font-weight: bold!important;
-        color: white!important;
-        background-color: #0abb87!important;` : 
-        
-        !props.isItemSubMenu ? 'background-color: #f4f9fc!important;' : 
-        `background: linear-gradient(to right, #f4f9fc 0%, rgb(255, 255, 255) 100%)!important;
-         padding-left: 18px!important;
-        `
+    ${props => !props.isItemSubMenu ? 'background: #f4f9fc!important;' : 
+        `background: linear-gradient(to right, #f4f9fc 0%, rgb(255, 255, 255) 100%)!important;`
     }
 `;
 

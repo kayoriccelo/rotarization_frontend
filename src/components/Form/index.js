@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import { StyledCard, StyledContent, StyledActions, StyledButton } from './styled';
+import { StyledCard, StyledContent, StyledActions, StyledButtonSave, StyledButtonCancel } from './styled';
 
 
 export default function FormCustom(props) {
@@ -15,7 +15,7 @@ export default function FormCustom(props) {
             <StyledContent children={props.children} />
 
             <StyledActions>
-                <StyledButton
+                <StyledButtonSave
                     size="small"
                     variant="contained"
                     color="primary"
@@ -23,7 +23,7 @@ export default function FormCustom(props) {
                     children="Salvar"
                 />
 
-                <StyledButton
+                <StyledButtonCancel
                     size="small"
                     variant="contained"
                     onClick={props.handleCancel}

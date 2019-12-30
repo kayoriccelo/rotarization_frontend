@@ -120,10 +120,10 @@ export default function TableList({ columns, data, actions, path, is_pagination 
                             )
                         })}
                     </TableBody>
-
-                    {is_pagination && <TablePagination count={data.count} />}
                 </StyledTable>
             </StyledCard>
+            
+            {is_pagination && <TablePagination count={data.count} />}
         </StyledRoot>
     );
 };

@@ -4,6 +4,11 @@ body {
 
 /* Alterando ccs dos componentes do Materia UI */
 
+#search-size-small {
+    padding: 10px 10px!important;
+    font-size: 12px!important;
+}
+
 /* Scroll Bar */
 ::-webkit-scrollbar {
     width: 5px;

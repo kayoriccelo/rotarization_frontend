@@ -1,30 +1,35 @@
 import styled from 'styled-components';
-import { Paper, InputBase, Button } from '@material-ui/core';
+import { TextField, Button } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 
 
 export const StyledRoot = styled.div`
-    margin: 15px 2px 15px 2px;
-`;
-
-export const StyledPaper = styled(Paper)`
+    margin: 8px 2px 12px 8px;
     display: flex;
-    align-items: center;
-    width: 100%;
+    justify-content: space-between;
 `;
 
 export const StyledSearchIcon = styled(SearchIcon)`
-    padding: 2px 4px;
+    padding: 2px 0px!important;
+    height: 20px!important;
+    width: 20px!important;
+    color: #74788d!important;
 `;
 
-export const StyledInputBase = styled(InputBase)`
-    width: 100%;
-    padding: 2px 4px;
+export const StyledInput = styled(TextField)`
+    width: calc(100vh - 200px)!important;
+    &:focus {
+        outline: 2px dashed blue!important;
+    }
 `;
 
 export const StyledButtonAdd = styled(Button)`
-    background-color: #40bf40!important;
+    background-color: #55C39E!important;
     color: white!important;
     padding: 2px!important;
     margin-right: 2px!important;
+    height: 30px!important;
+    &:hover {
+        background-color: #159270!important;
+    }
 `;

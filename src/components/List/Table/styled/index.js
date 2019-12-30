@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Card, Table, TableCell } from '@material-ui/core';
+import { Table, TableCell } from '@material-ui/core';
 
 
 export const StyledRoot = styled.div`
@@ -7,13 +7,14 @@ export const StyledRoot = styled.div`
     margin: 2px;
 `;
 
-export const StyledCard = styled(Card)`
-    height: calc(100vh - 280px)!important;
-    min-width: 100vh - 280px)!important;
+export const StyledCard = styled.div`
+    height: calc(100vh - 280px);
+    min-width: 100vh - 280px);
+    border-bottom: 1px solid #8dbcd8;
     ${props => props.is_pagination ?
-        'overflow: auto!important;'
+        'overflow: auto;'
         :
-        'overflow-x: auto!important; overflow-y: visible!important;'
+        'overflow-x: auto; overflow-y: visible;'
     }
 `;
 

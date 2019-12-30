@@ -5,12 +5,12 @@ import commonStyles from '../../../commons/styles';
 
 const keyframeRoot = keyframes`
     0% {
-        transform: scaleX(2);
+        transform: scaleY(2);
         filter: blur(4px);
         opacity: 0;
     }
     100% {
-        transform: scaleX(1);
+        transform: scaleY(1);
         filter: blur(0px);
         opacity: 1;
     }

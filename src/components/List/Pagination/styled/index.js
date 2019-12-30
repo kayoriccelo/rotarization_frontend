@@ -8,10 +8,10 @@ import LastPageIcon from '@material-ui/icons/LastPage';
 
 export const StyledRoot = styled.div`
     flex-shrink: 0;
-    margin-left: 4px;
-    display: flex!important;
-    align-items: center!important;
-    justify-content: center!important;
+    padding: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 `;
 
 export const StyledIconButton = styled(IconButton)`
@@ -21,6 +21,14 @@ export const StyledIconButton = styled(IconButton)`
     color: #ffffff!important;
     border-radius: 4px!important;
     margin: 2px!important;
+    transition: all .50s ease!important;
+    &:hover {
+        background-color: 006b99!important;
+    },
+    ,
+    ${props => props.disabled && `
+        background-color: 006b99!important;
+        opacity: 0.6!important;`}
 `;
 
 const style = `
