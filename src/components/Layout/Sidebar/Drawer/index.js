@@ -23,7 +23,7 @@ export const DrawerSidebar = ({ children, openDrawer, setOpenDrawer }) => {
             }}
         >
             <StyledContentLogo openDrawer={openDrawer}>
-                <StyledLogo children={
+                <StyledLogo openDrawer={openDrawer} children={
                     <StyledImageLogo
                         src={require('../../../../assets/images/logo.png')}
                         alt="logo"
