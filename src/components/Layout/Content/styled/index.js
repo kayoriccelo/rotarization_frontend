@@ -6,4 +6,5 @@ export const StyledRoot = styled.div`
     padding: 0px;
     overflow-y: auto;
     height: 100vh;
+    width: 100%;
 `;

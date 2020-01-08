@@ -8,8 +8,6 @@ import { StyledList, StyledListItem, StyledIcon, StyledTypography } from './styl
 
 export default function ListCustom(props) {
 
-    const handleClick = path => _ => props.history.push(path);
-
     const renderSubMenus = (index, menuPrimary) => (
         <>
             <ListItemSidebar
@@ -27,7 +25,7 @@ export default function ListCustom(props) {
                         key={subIndex}
                         open={props.openMenu}
                         isItemSubMenu={true}
-                        onClick={handleClick(subItem.path)}
+                        onClick={props.handleClick(subItem.path)}
                     />
                 ))}
             </Collapse>
@@ -43,7 +41,7 @@ export default function ListCustom(props) {
                             {...item}
                             isInicio={index === 0}
                             key={index}
-                            onClick={handleClick(item.path)}
+                            onClick={props.handleClick(item.path)}
                         />
                     ) : renderSubMenus(index, item)
                 )

@@ -7,19 +7,20 @@ const useStyles = makeStyles(theme => ({
         whiteSpace: 'nowrap',
         width: 280,
         height: '100vh',
-        borderRight: 'none'
+        borderRight: 'none',
+        transition: 'all .60s ease'
     },
     drawerPaperClose: {
         overflowX: 'hidden',
-        transition: 'all .60s ease',
         width: 60,
+        transition: 'all .60s ease',
         [theme.breakpoints.up('sm')]: {
             width: 60,
         },
         '&:hover': {
             width: 280,
-            position: 'absolute'
-        }
+        },
+        position: 'absolute'
     }
 }));
 

@@ -4,24 +4,24 @@ import commonStyles from '../../../commons/styles';
 
 
 const keyframeRoot = keyframes`
-    0% {
-        transform: scaleY(2);
-        filter: blur(4px);
-        opacity: 0;
-    }
-    100% {
-        transform: scaleY(1);
-        filter: blur(0px);
-        opacity: 1;
-    }
+0% {
+    transform: rotateX(-100deg);
+    transform-origin: top;
+    opacity: 0;
+  }
+  100% {
+    transform: rotateX(0deg);
+    transform-origin: top;
+    opacity: 1;
+  }
 `;
 
 export const StyledRoot = styled.div`
     background: ${commonStyles.backgroundColor};
     height: 200px;
     width: 100%;
-    -webkit-animation: ${keyframeRoot} 0.3s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
-    animation: ${keyframeRoot} 0.3s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+    -webkit-animation: ${keyframeRoot} 0.8s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+    animation: ${keyframeRoot} 0.8s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
 `;
 
 export const StyledMain = styled.div`

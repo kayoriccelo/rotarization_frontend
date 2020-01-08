@@ -4,6 +4,15 @@ body {
 
 /* Alterando ccs dos componentes do Materia UI */
 
+
+.MuiTableSortLabel-iconDirectionAsc {
+    height: 0.62em!important;
+}
+
+.MuiTableSortLabel-iconDirectionDesc {
+    height: 0.62em!important;
+}
+
 #search-size-small {
     padding: 10px 10px!important;
     font-size: 12px!important;

@@ -5,9 +5,10 @@ export const StyledContentLogo = styled.div`
     display: flex;
     flex-direction: ${props => props.openDrawer ? 'column' : 'row'};
     align-items: center;
-    ${props => props.openDrawer && 'justify-content: center;'}
+    justify-content: ${props => props.openDrawer ? 'center' : 'flex-start'};
     height: ${props => props.openDrawer ? '150px' : '80px'};
     ${props => !props.openDrawer && 'padding-left: 4px'}
+    transition: all .60s ease;
 `;
 
 export const StyledImageLogo = styled.img`
@@ -28,4 +29,5 @@ export const StyledTitleLogo = styled.div`
     font-weight: bold;
     margin-top: 10px;
     ${props => !props.openDrawer && 'padding-left: 20px'}
+    transition: all .60s ease;
 `;

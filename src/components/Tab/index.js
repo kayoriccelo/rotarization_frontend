@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
 
-import { StyledRoot } from './styled';
+import { StyledRoot, StyledTabs, StyledTab } from './styled';
 
 
 function TabPanel(props) {
@@ -38,29 +35,27 @@ export default function TabCustom(props) {
 
     return (
         <StyledRoot>
-            <AppBar position="static" color="default">
-                <Tabs
-                    value={value}
-                    onChange={handleChange}
-                    variant="scrollable"
-                    scrollButtons="on"
-                    indicatorColor="primary"
-                    textColor="primary"
-                    aria-label="scrollable force tabs example"
-                >
-                    {props.tabsTitle
-                        .map((tabTitle, index) => {
-                            return (
-                                <Tab
-                                    label={tabTitle.label}
-                                    icon={tabTitle.icon}
-                                    {...a11yProps(index)}
-                                />
-                            )
-                        })
-                    }
-                </Tabs>
-            </AppBar>
+            <StyledTabs
+                value={value}
+                onChange={handleChange}
+                variant="scrollable"
+                scrollButtons="on"
+                indicatorColor="primary"
+                textColor="primary"
+                aria-label="scrollable force tabs example"
+            >
+                {props.tabsTitle
+                    .map((tabTitle, index) => {
+                        return (
+                            <StyledTab
+                                label={tabTitle.label}
+                                icon={tabTitle.icon}
+                                {...a11yProps(index)}
+                            />
+                        )
+                    })
+                }
+            </StyledTabs>            
 
             {props.children
                 .map((item, index) => {

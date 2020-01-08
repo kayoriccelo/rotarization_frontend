@@ -22,24 +22,22 @@ export const DrawerSidebar = ({ children, openDrawer, setOpenDrawer }) => {
                 )
             }}
         >
-            <div style={{ flexGrow: 1 }}>
-                <StyledContentLogo openDrawer={openDrawer}>
-                    <StyledLogo children={
-                        <StyledImageLogo
-                            src={require('../../../../assets/images/logo.png')}
-                            alt="logo"
-                        />}
-                    />
+            <StyledContentLogo openDrawer={openDrawer}>
+                <StyledLogo children={
+                    <StyledImageLogo
+                        src={require('../../../../assets/images/logo.png')}
+                        alt="logo"
+                    />}
+                />
 
-                    <StyledTitleLogo openDrawer={openDrawer} children={'Controle de Rotas'} />
-                </StyledContentLogo>
+                <StyledTitleLogo openDrawer={openDrawer} children={'Controle de Rotas'} />
+            </StyledContentLogo>
 
-                {React.Children.map(children, child => {
-                    return React.cloneElement(child, {
-                        ...child.props, openDrawer
-                    });
-                })}
-            </div>
+            {React.Children.map(children, child => {
+                return React.cloneElement(child, {
+                    ...child.props, openDrawer
+                });
+            })}
 
             <Divider />
         </Drawer>

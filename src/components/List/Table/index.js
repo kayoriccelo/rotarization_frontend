@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { TableBody, TableRow, TableCell } from '@material-ui/core';
 
 import {
-    StyledRoot, StyledCard, StyledTable, StyledStatusPedding, StyledStatusInProgress, StyledStatusDisregarded, StyledStatusCompleted
+    StyledRoot, StyledRowTableCell, StyledCard, StyledTable, StyledStatusPedding, StyledStatusInProgress, 
+    StyledStatusDisregarded, StyledStatusCompleted
 } from './styled';
 import TablePagination from '../Pagination';
 import EnhancedTableHead from './EnhancedTableHead';
@@ -68,11 +69,11 @@ export default function TableList({ columns, data, actions, path, is_pagination 
                                     {columns.map((column, index) => {
                                         if (column.is_edit) {
                                             return (
-                                                <TableCell key={`${item.id}-${index}`}>
+                                                <StyledRowTableCell key={`${item.id}-${index}`}>
                                                     <Link to={`${path}${itemValue}${paramValue}`}>
                                                         {column.mask ? column.mask(item[column.field]) : item[column.field]}
                                                     </Link>
-                                                </TableCell>
+                                                </StyledRowTableCell>
                                             )
                                         } else if (column.field === 'actions') {
                                             return (
@@ -110,9 +111,9 @@ export default function TableList({ columns, data, actions, path, is_pagination 
                                             )
                                         } else {
                                             return (
-                                                <TableCell key={`${item.id}-${index}`}>
+                                                <StyledRowTableCell key={`${item.id}-${index}`}>
                                                     {column.mask ? column.mask(item[column.field]) : item[column.field]}
-                                                </TableCell>
+                                                </StyledRowTableCell>
                                             );
                                         };
                                     })}

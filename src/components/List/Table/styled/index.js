@@ -24,8 +24,13 @@ export const StyledTable = styled(Table)`
 
 export const StyledTableCell = styled(TableCell)`
     font-weight: bold!important;
-    font-size: 14px!important;
-    font-style: italic!important;
+    font-size: 11px!important;
+    color: #595d6e!important;
+`;
+
+export const StyledRowTableCell = styled(TableCell)`
+    font-size: 11px!important;
+    color: #595d6e!important;
 `;
 
 const status = `
